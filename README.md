@@ -3,7 +3,7 @@
 ## About
 LinkedUp is a clone of LinkedIn. With LinkedUp, users can widen their professional network, develop their careers, and look for new jobs posted by employers. Share your professional experiences and relate to other's here!
 
-*Live Site:* LinkedUp
+*Live Site:* [LinkedUp](https://linkedup.onrender.com)
 
 ## Tech Stack
 - Languages, Frameworks, Platforms and Libraries:
