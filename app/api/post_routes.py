@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Post, User
-
+from app.forms import PostForm
 post_routes = Blueprint('posts', __name__)
 
 
@@ -22,9 +22,12 @@ def post(id):
     return posts.to_dict()
 
 
-# # post a new post
+# post a new post
+@post_routes.route("/", methods=["POST"])
+def make_post():
+    form = PostForm()
 
-# # update a post
+# update a post
 
 
 # delete a post
