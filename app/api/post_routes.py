@@ -46,7 +46,7 @@ def make_post():
         return {'error': form.errors}
 
 # update a post
-@post_routes.routes("/<int:postId>", methods=["PUT"])
+@post_routes.route("/<int:postId>", methods=["PUT"])
 def update_post(postId):
     current_user_info = User.query.get(current_user.id).to_dict()
     current_user_id = current_user_info['id']
@@ -57,7 +57,11 @@ def update_post(postId):
     if update_this_post:
         if update_this_post.user_id == current_user_id:
             #  i left off here
-            return "hello"
+            existing_post_data = request.get_json()
+            update_this_post.body = existing_post_data["body"]
+            print("*******************************************", update_this_post.to_dict())
+            db.session.commit()
+            return update_this_post.to_dict(), 200
         else:
             return {'error': {
                 'message': 'Forbidden',
