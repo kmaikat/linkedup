@@ -15,11 +15,14 @@ def posts():
     return {'posts': [post.to_dict() for post in posts]}
 
 
-# get post by id ()
-@post_routes.route('/<int:id>')
-def post(id):
-    posts = Post.query.get(id)
-    return posts.to_dict()
+# get posts by user id ()
+@post_routes.route('/recent-activity')
+def post_by_user():
+    current_user_info = User.query.get(current_user.id).to_dict()
+    current_user_id = current_user_info['id']
+
+    posts = Post.query.filter(Post.user_id == current_user_id).all()
+    return {'posts': [post.to_dict() for post in posts]}
 
 
 # post a new post
