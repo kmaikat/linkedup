@@ -1,3 +1,59 @@
-#landing-page-nav-bar-logo{
-    width: 10%;
+#landing-page-nav-bar-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 6rem;
+    padding: 1rem 0 1.6rem;
+}
+
+#landing-page-nav-bar-main-right {
+    display: flex;
+    justify-content: space-between;
+}
+
+#nav-bar-right-left {
+    display: flex;
+    color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+}
+
+#repo-icon-container {
+    margin: 0 1rem;
+    height: min-content;
+}
+
+#repo-icon-content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+#connect-icon-container {
+    margin: 0 1rem;
+    height: min-content;
+}
+
+#connect-icon-content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+#nav-bar-right-right {
+    display: flex;
+    font-size: 1.8rem;
+}
+
+#landing-page-nav-bar-logo {
+    width: 13.5rem;
+}
+
+#join-now-container {
+    padding: 1.2rem 1.5rem;
+}
+
+#sign-in-container {
+    padding: 1.2rem 1.8rem;
+    border: 1px solid #2977c9;
+    color: #2977c9;
+    border-radius: 2.4rem;
 }
