@@ -20,6 +20,27 @@ export function getPostsByIdAction(posts) {
     }
 }
 
+export function createPostAction(post) {
+    return {
+        type: CREATE_POST,
+        post
+    }
+}
+
+export function editPostAction(post) {
+    return {
+        type: EDIT_POST,
+        post
+    }
+}
+
+export function deletePostAction(post) {
+    return {
+        type: DELETE_POST,
+        post
+    }
+}
+
 // thunks
 export const getPostsThunk = () => async dispatch => {
     const response = await fetch("/api/posts")
