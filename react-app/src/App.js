@@ -7,7 +7,9 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import LandingPageNavBar from "./components/LandingPageNavBar"
 import { authenticate } from './store/session';
+import "./stylesheets/reset.css";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -26,7 +28,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -41,6 +42,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
+          <LandingPageNavBar />
           <h1>My Home Page</h1>
         </Route>
       </Switch>
