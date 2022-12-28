@@ -1,11 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import linkedUp from "../assets/linkedup.svg"
+import "../stylesheets/LandingPageNavBar.css"
 
 const LandingPageNavBar = () => {
     return (
         <div>
             <div id="nav-bar-left">
-                LinkedUp
+                <img id="landing-page-nav-bar-logo" src={linkedUp}></img>
             </div>
             <div id="nav-bar-right">
                 <div id="nav-bar-right-left">
