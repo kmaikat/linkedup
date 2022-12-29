@@ -11,6 +11,7 @@ import LandingPageNavBar from "./components/LandingPageNavBar"
 import LandingPageHome from './components/LandingPageHome';
 import { authenticate } from './store/session';
 import "./stylesheets/reset.css";
+import "./stylesheets/global.css";
 
 function App() {
   const [loaded, setLoaded] = useState(false);

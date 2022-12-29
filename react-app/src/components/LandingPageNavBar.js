@@ -28,9 +28,9 @@ const LandingPageNavBar = () => {
                         </div>
                     </div>
                 </div>
-                <div id="nav-bar-right-right">
-                    <div id="join-now-container">Join now</div>
-                    <div id="sign-in-container">Sign in</div>
+                <div id="nav-bar-right-actions">
+                    <a id="join-now-container" href="/sign-up">Join now</a>
+                    <a id="sign-in-container" href="/login">Sign in</a>
                 </div>
             </div>
         </div>
