@@ -1,7 +1,14 @@
+#landing-page-heading {
+    display: flex;
+    justify-content: center;
+}
+
 #landing-page-nav-bar-container {
+    max-width: 1128px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 0 6rem;
+    /* margin: 0 6rem; */
     padding: 1rem 0 1.6rem;
 }
 
@@ -28,8 +35,19 @@
 }
 
 #connect-icon-container {
+    display: flex;
     margin: 0 1rem;
     height: min-content;
+}
+
+#connect-icon-container::after {
+    display: flex;
+    align-items: center;
+    content: "";
+    height: 4rem;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.6);
+
 }
 
 #connect-icon-content {
