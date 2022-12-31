@@ -10,7 +10,9 @@ const LandingPageHome = () => {
                 <div id="landing-page-section-one">
                     <div id="section-one-left-container">
                         <div id="landing-subtitle">Welcome to your professional community</div>
-                        <LoginForm />
+                        <div id="landing-section-login-form">
+                            <LoginForm />
+                        </div>
                     </div>
                     <div id="section-one-right-container">
                         <img id="man-sitting" src={manSitting} />
