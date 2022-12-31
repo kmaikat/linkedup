@@ -8,57 +8,73 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /* margin: 0 6rem; */
     padding: 1rem 0 1.6rem;
 }
 
 #landing-page-nav-bar-main-right {
     display: flex;
     justify-content: space-between;
+
 }
 
 #nav-bar-right-left {
     display: flex;
-    color: rgba(0, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.75);
+    justify-content: center;
     align-items: center;
 }
 
-#repo-icon-container {
-    margin: 0 1rem;
-    height: min-content;
+.navbar-icons {
+    display: flex;
+    margin: 0 10px;
+    justify-content: center;
+    width: 5rem;
 }
 
-#repo-icon-content {
+.navbar-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.icon-content {
     display: flex;
     flex-direction: column;
-    align-content: center;
+    margin: 2px;
 }
 
-#connect-icon-container {
+#nav-icon {
     display: flex;
-    margin: 0 1rem;
-    height: min-content;
+    justify-content: center;
+    font-size: 2rem;
 }
 
-#connect-icon-container::after {
+.icon-names {
+    font-size: 1.3rem;
+}
+
+#nav-bar-right-left::after {
     display: flex;
     align-items: center;
     content: "";
     height: 4rem;
     width: 1px;
     background-color: rgba(0, 0, 0, 0.6);
+    margin-left: 2rem;
 
 }
 
-#connect-icon-content {
+/* #connect-icon-content {
     display: flex;
     flex-direction: column;
-    align-content: center;
-}
+    align-items: center;
+} */
 
 #nav-bar-right-actions {
     display: flex;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    font-weight: 500;
 }
 
 #landing-page-nav-bar-logo {
@@ -66,12 +82,21 @@
 }
 
 #join-now-container {
-    padding: 1.2rem 1.5rem;
+    padding: 1.2rem 3rem;
+    border-radius: 30px;
+    margin: 0 .5rem;
+    color: rgba(0, 0, 0, 0.75);
+
 }
 
+#join-now-container:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
 #sign-in-container {
     padding: 1.2rem 1.8rem;
     border: 1px solid #2977c9;
     color: #2977c9;
+    font-weight: 500;
     border-radius: 2.4rem;
 }

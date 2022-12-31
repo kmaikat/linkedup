@@ -13,18 +13,18 @@ const LandingPageNavBar = () => {
                 </div>
                 <div id="landing-page-nav-bar-main-right">
                     <ul id="nav-bar-right-left">
-                        <li id="repo-icon-container">
-                            <a id="repo-icon-content" href="https://github.com/kmaikat/linkedIn-clone">
-                                <i class="fa-solid fa-compass"></i>
-                                <div>
+                        <li className='navbar-icons' id="repo-icon-container">
+                            <a className="icon-content" href="https://github.com/kmaikat/linkedIn-clone">
+                                <i id='nav-icon' className="fa-solid fa-compass"></i>
+                                <div className="icon-names">
                                     Repo
                                 </div>
                             </a>
                         </li>
-                        <li id="connect-icon-container">
-                            <a id="connect-icon-content" href="https://www.linkedin.com/in/kpmai20/">
-                                <i class="fa-solid fa-user-group"></i>
-                                <div>
+                        <li className='navbar-icons' id="connect-icon-container">
+                            <a className="icon-content" href="https://www.linkedin.com/in/kpmai20/">
+                                <i id='nav-icon' className="fa-solid fa-user-group"></i>
+                                <div className="icon-names">
                                     Connect
                                 </div>
                             </a>
