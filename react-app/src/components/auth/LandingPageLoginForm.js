@@ -22,6 +22,11 @@ const LandingPageLoginForm = () => {
     }
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+  }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -36,7 +41,6 @@ const LandingPageLoginForm = () => {
 
   return (
     <form onSubmit={onLogin}>
-      {console.log(emailFieldContainer, passwordFieldContainer)}
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -71,7 +75,8 @@ const LandingPageLoginForm = () => {
           onChange={updatePassword}
         />
       </div>
-      <button type='submit'>Sign in</button>
+      <button id="landing-page-demo-user" onClick={demoLogin}> Sign in as Demo User</button>
+      <button type='submit' id="landing-page-login-sign-in">Sign in</button>
     </form>
   );
 };

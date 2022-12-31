@@ -7,6 +7,7 @@
     padding: 2rem 1.2rem .4rem;
     margin-bottom: 1.2rem;
     cursor: text;
+    border-radius: .2rem;
 }
 
 .landing-page-login-input label {
@@ -14,9 +15,15 @@
     top: 15%;
     padding-top: .6rem;
     font-size: 1.8rem;
-    transition: font-size 200ms;
-    transition: top 200ms;
+    transition: font-size 1000ms ease-in;
+    transition: top 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    user-select: none;
 
+}
+
+.landing-page-login-input:focus-within {
+    box-shadow: 0 0 0 1px #0073b1;
+    border-color: #0073b1;
 }
 
 .landing-page-login-input:focus-within label {
@@ -33,4 +40,33 @@
     line-height: 1.5rem;
     border-radius: .2rem;
     font-size: 1.6rem;
+}
+
+#landing-page-demo-user {
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+}
+
+#landing-page-demo-user:hover {
+    cursor: pointer;
+    color: #006097;
+    text-decoration: underline;
+}
+
+#landing-page-login-sign-in {
+    width: 100%;
+    padding: 0 3.2rem;
+    background-color: #2977c9;
+    height: 5.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: white;
+    border-radius: 5rem;
+    font-weight: 500;
+}
+
+#landing-page-login-sign-in:hover {
+    background-color: #006097;
 }
