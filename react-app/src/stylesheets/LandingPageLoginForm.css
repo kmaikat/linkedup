@@ -1,0 +1,36 @@
+.landing-page-login-input {
+    border: 1px solid black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 4.8rem;
+    padding: 2rem 1.2rem .4rem;
+    margin-bottom: 1.2rem;
+    cursor: text;
+}
+
+.landing-page-login-input label {
+    position: absolute;
+    top: 15%;
+    padding-top: .6rem;
+    font-size: 1.8rem;
+    transition: font-size 200ms;
+    transition: top 200ms;
+
+}
+
+.landing-page-login-input:focus-within label {
+    font-size: 1.2rem;
+    top: 0;
+}
+
+.landing-page-login-input .landing-page-login-label-filled {
+    font-size: 1.2rem;
+    top: 0;
+}
+
+.landing-page-login-input input {
+    line-height: 1.5rem;
+    border-radius: .2rem;
+    font-size: 1.6rem;
+}

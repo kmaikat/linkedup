@@ -1,7 +1,7 @@
 import React from "react";
 import "../stylesheets/LandingPageHome.css"
 import manSitting from "../assets/man-sitting.svg"
-import LoginForm from "./auth/LoginForm";
+import LandingPageLoginForm from "./auth/LandingPageLoginForm";
 
 const LandingPageHome = () => {
     return (
@@ -11,7 +11,7 @@ const LandingPageHome = () => {
                     <div id="section-one-left-container">
                         <div id="landing-subtitle">Welcome to your professional community</div>
                         <div id="landing-section-login-form">
-                            <LoginForm />
+                            <LandingPageLoginForm />
                         </div>
                     </div>
                     <div id="section-one-right-container">
