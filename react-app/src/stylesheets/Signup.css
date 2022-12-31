@@ -1,0 +1,43 @@
+#signup-outer-container{
+    background-color: #f3f2ef;
+    display: flex;
+    height: auto;
+    justify-content: center;
+}
+
+#signup-inner-container{
+    padding: 2.5rem 0rem;
+    max-width: 1128px;
+    width: 100%;
+    min-height: 100vh;
+}
+
+#heading-logo-container {
+    width: 12%;
+}
+
+#heading-subtitle-content{
+    display: flex;
+    justify-content: center;
+    font-size: 3.2rem;
+    padding: 2.5rem 1.6rem;
+}
+
+#signup-bottom-container {
+    display: flex;
+    justify-content: center;
+}
+
+#signup-form {
+    background-color: white;
+    padding: 2.4rem;
+    border-radius: 8px;
+    width: 36rem;
+}
+
+.input {
+    border: 1px solid rgba(0,0,0,0.6);
+    width: 35rem;
+    height: 3rem;
+    border-radius: 4px;
+}
