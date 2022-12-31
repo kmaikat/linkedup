@@ -1,21 +1,41 @@
-#landing-page-container{
+#landing-page-container {
     display: flex;
     justify-content: center;
 }
 
-#landing-page-app-container{
+#landing-page-app-container {
     max-width: 1128px;
     width: 100%;
-    background-color: brown;
 }
 
-#landing-page-section-one{
+#landing-page-section-one {
     position: relative;
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: flex-start;
     padding-top: 4rem;
+    min-height: 560px;
+}
+
+#section-one-left-container {
+    width: 50%;
+    height: 100%;
+}
+
+#section-one-right-container {
+    width: 55%;
+    height: 560px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+}
+
+#section-one-right-container img {
+    height: 100%;
+    width: 115%;
+    object-fit: cover;
+    object-position: left;
 }
 
 #man-sitting {

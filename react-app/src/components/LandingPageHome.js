@@ -9,12 +9,12 @@ const LandingPageHome = () => {
             <div id="landing-page-app-container">
                 <div id="landing-page-section-one">
                     <div id="section-one-left-container">
-                        <div>Welcome to your professional community</div>
+                        <div id="landing-subtitle">Welcome to your professional community</div>
                         <LoginForm />
                     </div>
-                    <img id="man-sitting" src={manSitting} />
-                    {/* <div id="section-one-right-container">
-                    </div> */}
+                    <div id="section-one-right-container">
+                        <img id="man-sitting" src={manSitting} />
+                    </div>
                 </div>
             </div>
         </div>
