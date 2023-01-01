@@ -12,13 +12,14 @@ import LandingPageHome from './components/LandingPageHome';
 import { authenticate } from './store/session';
 import "./stylesheets/reset.css";
 import "./stylesheets/global.css";
+import AppHome from './components/AppHome';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -38,7 +39,7 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -47,6 +48,9 @@ function App() {
           <LandingPageNavBar />
           <LandingPageHome />
         </Route>
+        <ProtectedRoute path="/posts/create" exact>
+          <AppHome />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

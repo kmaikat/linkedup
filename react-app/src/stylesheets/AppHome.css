@@ -1,0 +1,25 @@
+.app-home-outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.app-home-main-container {
+    max-width: 1128px;
+    width: 100%;
+    background-color: rgba(89, 89, 207, 0.454);
+    display: flex;
+}
+
+.app-home-profile-section {
+    width: 30%;
+}
+
+.app-home-feed {
+    width: 40%;
+}
+
+.app-home-right {
+    width: 30%;
+}
