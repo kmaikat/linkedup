@@ -27,4 +27,19 @@
     display: flex;
 }
 
+#create-post-user-info-icon {
+    border-radius: 50%;
+    width: 5rem;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
 
+#no-pp{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#no-pp {
+    object-fit: fill;
+}

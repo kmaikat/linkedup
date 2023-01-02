@@ -20,7 +20,9 @@ function CreatePost({ setShowModal }) {
                 </div>
             </div>
             <div id="create-post-user-info-container">
-                <div id="create-post-user-info-icon"><img src={noPP}/></div>
+                <div id="create-post-user-info-icon">
+                    <img id='no-pp' src={noPP} />
+                </div>
                 <div id="create-post-user-info-name">
                     <div id="create-post-user-info-name">
                         <div className="create-post-user-name">firstn</div>
