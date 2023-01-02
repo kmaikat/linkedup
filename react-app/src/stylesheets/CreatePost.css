@@ -78,6 +78,42 @@
     min-height: 96px;
 }
 
-#create-post-footer-container{
+#create-post-footer-container {
     min-height: 120px;
+}
+
+#empty-div {
+    height: 56px;
+}
+
+#post-container {
+    padding: 12px 24px;
+    height: 6.4rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#create-post-form-can-submit {
+    display: flex;
+    justify-content: center;
+    border-radius: 10%;
+    padding: .6rem 1.6rem;
+    font-weight: 600;
+    font-size: 1.55rem;
+    width: 6.5rem;
+    height: 3.2rem;
+    align-items: center;
+    background-color: #0A66C2;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    max-width: 480px;
+    min-height: 40px;
+}
+
+#create-post-form-can-submit:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.3);
 }
