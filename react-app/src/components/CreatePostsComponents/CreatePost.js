@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../../stylesheets/CreatePost.css"
+import noPP from "../../assets/no-pp.png";
+
 function CreatePost({ setShowModal }) {
     const [body, setBody] = useState("");
 
@@ -18,7 +20,7 @@ function CreatePost({ setShowModal }) {
                 </div>
             </div>
             <div id="create-post-user-info-container">
-                <div id="create-post-user-info-icon">profile pic here</div>
+                <div id="create-post-user-info-icon"><img src={noPP}/></div>
                 <div id="create-post-user-info-name">
                     <div id="create-post-user-info-name">
                         <div className="create-post-user-name">firstn</div>
