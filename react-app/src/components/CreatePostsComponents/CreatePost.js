@@ -14,11 +14,14 @@ function CreatePost({ setShowModal }) {
     return (
         <div id="create-post-modal-container">
             <div id="create-post-heading-exit-container">
+                <div id="create-post-heading-exit-content">
+
                 <div id="create-post-subtitle">
                     Create a post
                 </div>
                 <div id='create-post-exit-button'>
                     <i onClick={() => setShowModal(false)} className="fa-solid fa-x"></i>
+                </div>
                 </div>
             </div>
             <div id="create-post-user-info-container">
