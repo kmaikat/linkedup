@@ -1,10 +1,11 @@
 import { useState } from "react";
-import "../../stylesheets/CreatePost.css"
+import {useSelector} from "react-redux"
+import "../../stylesheets/CreatePost.css";
 import noPP from "../../assets/no-pp.png";
 
 function CreatePost({ setShowModal }) {
     const [body, setBody] = useState("");
-
+    const user = useSelector(state => state.session.user)
     const updateBody = (e) => {
         setBody(e.target.value);
     };
@@ -24,7 +25,7 @@ function CreatePost({ setShowModal }) {
                     <img id='no-pp' src={noPP} />
                 </div>
                 <div id="create-post-user-info-name">
-                    Regina George
+                    {user.first_name} {user.last_name}
                 </div>
             </div>
             <form>
