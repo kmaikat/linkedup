@@ -1,3 +1,5 @@
+import { useDispatch } from "react-redux"
+
 // action types
 const GET_POSTS = 'posts/GET_POSTS'
 const GET_POST_BY_USER_ID = 'posts/GET_POST'
@@ -61,12 +63,29 @@ export const getPostsByUserThunk = () => async dispatch => {
 
 }
 
+export const createPostThunk = (post) => async dispatch => {
+    const response = await fetch("/api/posts/", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(post)
+    })
+
+    if (response.ok) {
+        const post = await response.json()
+        dispatch(createPostAction(post))
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_POSTS: {
-
             return state
         }
         default: {

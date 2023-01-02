@@ -1,15 +1,35 @@
-import { useState } from "react";
-import { useSelector } from "react-redux"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux"
 import "../../stylesheets/CreatePost.css";
 import noPP from "../../assets/no-pp.png";
+import { createPostThunk } from "../../store/post";
 
 function CreatePost({ setShowModal }) {
     const [body, setBody] = useState("");
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user);
+    const dispatch = useDispatch();
+
     const updateBody = (e) => {
         setBody(e.target.value);
         if (e.target.style.height.slice(0, -2) <= 216) e.target.style.height = e.target.scrollHeight + "px"
     };
+
+    const submitPost = (event) => {
+        event.preventDefault();
+        const submission = {
+            "body": body,
+            "user": user.id
+        }
+        console.log(submission)
+
+        const reponseErrors = dispatch(createPostThunk(submission))
+
+        if (reponseErrors) {
+            return;
+        } else {
+            setShowModal(false)
+        }
+    }
 
     return (
         <div id="create-post-modal-container">
@@ -33,7 +53,7 @@ function CreatePost({ setShowModal }) {
                 </div>
             </div>
             <div id="form-container">
-                <form id="body-form" onSubmit={(e) => { e.preventDefault(); console.log(body) }}>
+                <form id="body-form" onSubmit={submitPost}>
                     <div id="create-post-textarea">
                         <textarea name='body' placeholder='What do you want to talk about?' value={body} onChange={updateBody} />
                     </div>
