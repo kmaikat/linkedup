@@ -1,4 +1,5 @@
 import "../stylesheets/AppHome.css"
+import CreatePostModal from "./CreatePostsComponents/CreatePostModal"
 
 const AppHome = () => {
     return (
@@ -9,7 +10,7 @@ const AppHome = () => {
                     "PROFILE SECTION WILL GO HERE"
                 </div>
                 <div className="app-home-feed">
-                    <button>This is a button</button>
+                    <CreatePostModal/>
                 </div>
                 <div className="app-home-right">
 
