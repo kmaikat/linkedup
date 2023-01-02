@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "../../stylesheets/CreatePost.css"
 function CreatePost({ setShowModal }) {
     const [body, setBody] = useState("");
 
