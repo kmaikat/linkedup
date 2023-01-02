@@ -1,7 +1,8 @@
 #modal-content {
     max-width: 552px;
-    max-height: 379px;
-    height: 100%;
+    height: min-content;
+    min-height: 379px;
+    max-height: 504px;
     width: 100%;
     top: 3rem;
 }
@@ -35,7 +36,7 @@
     overflow: hidden;
 }
 
-#no-pp{
+#no-pp {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -51,4 +52,26 @@
     margin-left: 4px;
     font-size: 15px;
     font-weight: 500;
+}
+
+#form-container {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+}
+
+#body-form textarea {
+    width: 100%;
+    font-size: 16px;
+    resize: none;
+}
+
+#body-form {
+    max-width: 504px;
+    width: 100%;
+    min-height: 96px;
+}
+
+#create-post-footer-container{
+    min-height: 120px;
 }

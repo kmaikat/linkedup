@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux"
 import "../../stylesheets/CreatePost.css";
 import noPP from "../../assets/no-pp.png";
 
@@ -8,6 +8,7 @@ function CreatePost({ setShowModal }) {
     const user = useSelector(state => state.session.user)
     const updateBody = (e) => {
         setBody(e.target.value);
+        if (e.target.style.height.slice(0, -2) <= 216) e.target.style.height = e.target.scrollHeight + "px"
     };
 
     return (
@@ -28,11 +29,13 @@ function CreatePost({ setShowModal }) {
                     {user.first_name} {user.last_name}
                 </div>
             </div>
-            <form>
-                <div id="create-post-textarea">
-                    <textarea name='body' placeholder='What do you want to talk about?' value={body} onChange={updateBody} />
-                </div>
-            </form>
+            <div id="form-container">
+                <form id="body-form">
+                    <div id="create-post-textarea">
+                        <textarea name='body' placeholder='What do you want to talk about?' value={body} onChange={updateBody} />
+                    </div>
+                </form>
+            </div>
             <div id="create-post-footer-container">
                 <button>Post</button>
             </div>
