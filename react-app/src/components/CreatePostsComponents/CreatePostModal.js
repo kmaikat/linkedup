@@ -12,7 +12,7 @@ function CreatePostModal() {
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CreatePost />
+                    <CreatePost setShowModal={setShowModal} />
                 </Modal>
             )}
         </>
