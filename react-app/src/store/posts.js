@@ -45,7 +45,7 @@ export function deletePostAction(post) {
 
 // thunks
 export const getPostsThunk = () => async dispatch => {
-    const response = await fetch("/api/posts")
+    const response = await fetch("/api/posts/")
     if (response.ok) {
         const data = await response.json()
         dispatch(getPostsAction(data))
@@ -85,8 +85,14 @@ const initialState = {};
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case CREATE_POST: {
+            const newState = { ...state }
+            newState.posts = newState.posts.concat(action.post)
+            return newState
+        }
+
         case GET_POSTS: {
-            return state
+            return action.posts
         }
         default: {
             return state

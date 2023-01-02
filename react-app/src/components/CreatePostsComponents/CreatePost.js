@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import "../../stylesheets/CreatePost.css";
 import noPP from "../../assets/no-pp.png";
-import { createPostThunk } from "../../store/post";
+import { createPostThunk } from "../../store/posts";
 
 function CreatePost({ setShowModal }) {
     const [body, setBody] = useState("");
@@ -14,16 +14,14 @@ function CreatePost({ setShowModal }) {
         if (e.target.style.height.slice(0, -2) <= 216) e.target.style.height = e.target.scrollHeight + "px"
     };
 
-    const submitPost = (event) => {
+    const submitPost = async (event) => {
         event.preventDefault();
         const submission = {
             "body": body,
             "user": user.id
         }
-        console.log(submission)
 
-        const reponseErrors = dispatch(createPostThunk(submission))
-
+        const reponseErrors = await dispatch(createPostThunk(submission))
         if (reponseErrors) {
             return;
         } else {
