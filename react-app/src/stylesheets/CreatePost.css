@@ -25,6 +25,7 @@
 
 #create-post-user-info-container {
     display: flex;
+    padding: 12px 24px;
 }
 
 #create-post-user-info-icon {
@@ -42,4 +43,12 @@
 
 #no-pp {
     object-fit: fill;
+}
+
+#create-post-user-info-name {
+    display: flex;
+    padding-left: 8px;
+    margin-left: 4px;
+    font-size: 15px;
+    font-weight: 500;
 }

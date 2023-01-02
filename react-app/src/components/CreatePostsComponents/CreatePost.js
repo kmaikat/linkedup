@@ -24,10 +24,7 @@ function CreatePost({ setShowModal }) {
                     <img id='no-pp' src={noPP} />
                 </div>
                 <div id="create-post-user-info-name">
-                    <div id="create-post-user-info-name">
-                        <div className="create-post-user-name">firstn</div>
-                        <div className="create-post-user-name">lastn</div>
-                    </div>
+                    Regina George
                 </div>
             </div>
             <form>
