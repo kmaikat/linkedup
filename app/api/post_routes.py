@@ -12,7 +12,7 @@ def posts():
     Query for all posts and returns them in a list of post dictionaries
     """
     posts = Post.query.all()
-    return {'posts': [post.to_dict() for post in posts]}
+    return {'posts': [post.to_dict_with_user() for post in posts]}
 
 
 # get posts by user id ()
@@ -37,8 +37,8 @@ def make_post():
     if form.validate():
         try:
             new_post = Post(
-                body = form.data['body'],
-                user_id = current_user_id
+                body=form.data['body'],
+                user_id=current_user_id
             )
             db.session.add(new_post)
             db.session.commit()
@@ -49,6 +49,8 @@ def make_post():
         return {'error': form.errors}
 
 # update a post
+
+
 @post_routes.route("/<int:postId>", methods=["PUT"])
 def update_post(postId):
     current_user_info = User.query.get(current_user.id).to_dict()
@@ -62,7 +64,8 @@ def update_post(postId):
             #  i left off here
             existing_post_data = request.get_json()
             update_this_post.body = existing_post_data["body"]
-            print("*******************************************", update_this_post.to_dict())
+            print("*******************************************",
+                  update_this_post.to_dict())
             db.session.commit()
             return update_this_post.to_dict(), 200
         else:
