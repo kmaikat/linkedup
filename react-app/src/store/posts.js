@@ -46,6 +46,7 @@ export function deletePostAction(post) {
 // thunks
 export const getPostsThunk = () => async dispatch => {
     const response = await fetch("/api/posts/")
+
     if (response.ok) {
         const data = await response.json()
         dispatch(getPostsAction(data))
@@ -56,6 +57,7 @@ export const getPostsThunk = () => async dispatch => {
 
 export const getPostsByUserThunk = () => async dispatch => {
     const response = await fetch("/api/posts/recent-activity")
+
     if (response.ok) {
         const data = await response.json()
         dispatch(getPostsByIdAction(data))
@@ -81,19 +83,39 @@ export const createPostThunk = (post) => async dispatch => {
     }
 }
 
+export const deletePostThunk = (post) => async dispatch => {
+    const response = await fetch(`/api/posts/${post.id}`, {
+        method: "DELETE",
+        headers: {
+            "content-type": "application/json"
+        }
+    })
+
+    if (response.ok) {
+        dispatch(deletePostAction(post))
+    }
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case CREATE_POST: {
-            const newState = { ...state }
-            newState.posts = newState.posts.concat(action.post)
-            return newState
-        }
-
         case GET_POSTS: {
             return action.posts
         }
+
+        case CREATE_POST: {
+            const newState = { ...state }
+            newState[action.post.id] = action.post
+            return newState
+        }
+
+        case DELETE_POST: {
+            const newState = { ...state }
+            delete newState[action.post.id]
+            return newState
+        }
+
         default: {
             return state
         }

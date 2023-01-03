@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import CreatePostModal from "./CreatePostsComponents/CreatePostModal"
 import NavBar from "./NavBar"
 import threeDots from "../assets/three-dots.svg"
 import noPP from "../assets/no-pp.png";
 import "../stylesheets/AppHome.css"
+import { deletePostThunk } from "../store/posts"
 
 const AppHome = () => {
-    const posts = useSelector(state => state.posts?.posts);
-
+    const posts = useSelector(state => Object.values(state.posts));
+    const dispatch = useDispatch()
     const [showPostOptions, setShowPostOptions] = useState(-1);
 
     const dayPosted = (createdAtDate) => {
@@ -16,6 +17,10 @@ const AppHome = () => {
         const posted = new Date(createdAtDate).getUTCDay()
         const duration = today - posted
         return duration + "d"
+    }
+
+    const handleDeleteToggle = async (post) => {
+        const errors = dispatch(deletePostThunk(post))
     }
 
     return (
@@ -28,7 +33,8 @@ const AppHome = () => {
                 <div className="app-home-feed">
                     <CreatePostModal />
                     <ul>
-                        {posts?.map((post, idx) => {
+                        {console.log(posts)}
+                        {posts.length > 0 && posts.map((post, idx) => {
                             return (<li className="app-home-post">
                                 <div id="app-home-post-heading-container">
                                     <div id="app-home-heading-left-container">
@@ -52,7 +58,7 @@ const AppHome = () => {
                                         {showPostOptions === idx &&
                                             <ul id="app-home-heading-right-container-options-list">
                                                 <li>Edit</li>
-                                                <li>Delete</li>
+                                                <li onClick={() => handleDeleteToggle(post)}>Delete</li>
                                             </ul>
                                         }
                                     </div>

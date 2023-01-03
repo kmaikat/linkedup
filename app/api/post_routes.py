@@ -12,7 +12,7 @@ def posts():
     Query for all posts and returns them in a list of post dictionaries
     """
     posts = Post.query.all()
-    return {'posts': [post.to_dict_with_user() for post in posts]}
+    return jsonify({post.id: post.to_dict_with_user() for post in posts}), 200
 
 
 # get posts by user id ()
@@ -42,7 +42,7 @@ def make_post():
             )
             db.session.add(new_post)
             db.session.commit()
-            return new_post.to_dict(), 201
+            return new_post.to_dict_with_user(), 201
         except Exception:
             return {'error': 'cannot submit at this time, try again later'}
     if form.errors:
