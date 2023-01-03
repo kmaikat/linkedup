@@ -5,7 +5,7 @@ import NavBar from "./NavBar"
 import threeDots from "../assets/three-dots.svg"
 import noPP from "../assets/no-pp.png";
 import "../stylesheets/AppHome.css"
-import { deletePostThunk } from "../store/posts"
+import { deletePostThunk, editPostThunk } from "../store/posts"
 
 const AppHome = () => {
     const posts = useSelector(state => Object.values(state.posts));
@@ -21,6 +21,11 @@ const AppHome = () => {
 
     const handleDeleteToggle = async (post) => {
         const errors = dispatch(deletePostThunk(post))
+    }
+
+    const handleEditToggle = async (post) => {
+        const errors = dispatch(editPostThunk)
+        console.log(errors)
     }
 
     return (
@@ -57,7 +62,7 @@ const AppHome = () => {
                                         <img id="three-dots" src={threeDots} />
                                         {showPostOptions === idx &&
                                             <ul id="app-home-heading-right-container-options-list">
-                                                <li>Edit</li>
+                                                <li onClick={() => handleEditToggle(post)}>Edit</li>
                                                 <li onClick={() => handleDeleteToggle(post)}>Delete</li>
                                             </ul>
                                         }
