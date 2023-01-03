@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import CreatePostModal from "./CreatePostsComponents/CreatePostModal"
 import NavBar from "./NavBar"
@@ -9,11 +9,12 @@ import "../stylesheets/AppHome.css"
 const AppHome = () => {
     const posts = useSelector(state => state.posts?.posts);
 
+    const [showPostOptions, setShowPostOptions] = useState(-1);
+
     const dayPosted = (createdAtDate) => {
         const today = new Date().getUTCDay();
         const posted = new Date(createdAtDate).getUTCDay()
         const duration = today - posted
-        console.log(today, posted, duration, createdAtDate)
         return duration + "d"
     }
 
@@ -27,7 +28,7 @@ const AppHome = () => {
                 <div className="app-home-feed">
                     <CreatePostModal />
                     <ul>
-                        {posts?.map(post => {
+                        {posts?.map((post, idx) => {
                             return (<li className="app-home-post">
                                 <div id="app-home-post-heading-container">
                                     <div id="app-home-heading-left-container">
@@ -46,8 +47,14 @@ const AppHome = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="app-home-heading-right-container-options">
+                                    <div id="app-home-heading-right-container-options" onClick={() => setShowPostOptions(idx)} tabIndex={idx === showPostOptions ? 1 : -1} onBlur={() => setShowPostOptions(-1)}>
                                         <img id="three-dots" src={threeDots} />
+                                        {showPostOptions === idx &&
+                                            <ul id="app-home-heading-right-container-options-list">
+                                                <li>Edit</li>
+                                                <li>Delete</li>
+                                            </ul>
+                                        }
                                     </div>
                                 </div>
                                 <div id="post-body-container">
@@ -65,7 +72,6 @@ const AppHome = () => {
                     </ul>
                 </div>
                 <div className="app-home-right">
-
                 </div>
             </div>
         </div>

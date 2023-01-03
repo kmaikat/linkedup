@@ -47,8 +47,9 @@
     aspect-ratio: 1 /1;
     transition-property: background-color;
     transition-duration: 0.167s;
-    transition-timing-function:ease-in;
+    transition-timing-function: ease-in;
     cursor: pointer;
+    position: relative;
     /* transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) */
 }
 
@@ -61,13 +62,37 @@
     padding: .4rem;
 }
 
+#app-home-heading-right-container-options-list {
+    position: absolute;
+    top: 100%;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: .8rem;
+    border-top-right-radius: .2rem;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 15%);
+    min-width: 16.8rem;
+    right: 0;
+}
+
+#app-home-heading-right-container-options-list>* {
+    display: flex;
+    align-items: center;
+    height: 5.6rem;
+    padding: .8rem 1.6rem;
+}
+
+#app-home-heading-right-container-options-list>li:hover {
+    background-color: rgb(242, 242, 242);
+
+}
+
 #app-home-post-heading-name {
     margin-left: .8rem;
 }
 
 .app-home-post-user-subheading {
     font-size: 12px;
-    color: rgba(0,0,0, 0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
 
@@ -92,7 +117,8 @@
 #interaction-container {
     display: flex;
     justify-content: flex-end;
-    color: rgba(0, 0, 0, 0.6);;
+    color: rgba(0, 0, 0, 0.6);
+    ;
 }
 
 #comment-interaction {
@@ -105,7 +131,7 @@
     border-radius: .35rem;
     transition-property: background-color;
     transition-duration: 0.167s;
-    transition-timing-function:ease-in;
+    transition-timing-function: ease-in;
     cursor: pointer;
     user-select: none;
     /* transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1); */
