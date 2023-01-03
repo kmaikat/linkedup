@@ -3,12 +3,13 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
 .app-home-main-container {
     max-width: 1128px;
     width: 100%;
-    background-color: rgba(89, 89, 207, 0.454);
+    /* background-color: rgba(89, 89, 207, 0.454); */
     display: flex;
 }
 
@@ -22,4 +23,16 @@
 
 .app-home-right {
     width: 30%;
+}
+
+.app-home-post {
+    background-color: white;
+    border: 1px solid rgba(226, 225, 223, 1);
+    border-radius: .8rem;
+    height: fit-content;
+    line-height: 2.4rem;
+    margin-bottom: .8rem;
+    font-size: 1.4rem;
+    padding: 1.6rem;
+
 }
