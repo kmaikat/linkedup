@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: rgba(243, 242, 239, 1);
 }
 
 .app-home-main-container {
@@ -118,7 +118,6 @@
     display: flex;
     justify-content: flex-end;
     color: rgba(0, 0, 0, 0.6);
-    ;
 }
 
 #comment-interaction {
