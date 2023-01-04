@@ -48,7 +48,7 @@ function App() {
           <LandingPageNavBar />
           <LandingPageHome />
         </Route>
-        <ProtectedRoute path="/posts/create" exact>
+        <ProtectedRoute path="/feed" exact>
           <AppHome />
         </ProtectedRoute>
       </Switch>
