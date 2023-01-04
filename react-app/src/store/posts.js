@@ -1,5 +1,3 @@
-import { useDispatch } from "react-redux"
-
 // action types
 const GET_POSTS = 'posts/GET_POSTS'
 const GET_POST_BY_USER_ID = 'posts/GET_POST'
@@ -72,15 +70,15 @@ export const createPostThunk = (post) => async dispatch => {
             "content-type": "application/json"
         },
         body: JSON.stringify(post)
-    })
+    });
 
     if (response.ok) {
-        const post = await response.json()
-        dispatch(createPostAction(post))
+        const post = await response.json();
+        dispatch(createPostAction(post));
     } else {
         const errors = await response.json();
         return errors;
-    }
+    };
 }
 
 export const deletePostThunk = (post) => async dispatch => {
@@ -89,11 +87,29 @@ export const deletePostThunk = (post) => async dispatch => {
         headers: {
             "content-type": "application/json"
         }
-    })
+    });
 
     if (response.ok) {
-        dispatch(deletePostAction(post))
-    }
+        dispatch(deletePostAction(post));
+    };
+}
+
+export const editPostThunk = (post) => async dispatch => {
+    const response = await fetch(`/api/posts/${post.id}`, {
+        method: "PUT",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(post)
+    });
+
+    if (response.ok) {
+        const post = await response.json();
+        dispatch(editPostAction(post));
+    } else {
+        const errors = await response.json();
+        return errors;
+    };
 }
 
 const initialState = {};
@@ -113,6 +129,13 @@ export default function reducer(state = initialState, action) {
         case DELETE_POST: {
             const newState = { ...state }
             delete newState[action.post.id]
+            return newState
+        }
+
+        case EDIT_POST: {
+            const newState = { ...state }
+            const editedPost = action.post
+            newState.posts[action.post.id] = editedPost
             return newState
         }
 

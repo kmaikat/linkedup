@@ -5,23 +5,18 @@ import NavBar from "./NavBar"
 import threeDots from "../assets/three-dots.svg"
 import noPP from "../assets/no-pp.png";
 import "../stylesheets/AppHome.css"
-import { deletePostThunk } from "../store/posts"
+import { deletePostThunk, editPostThunk } from "../store/posts"
+import PostCard from "./PostCard"
+
 
 const AppHome = () => {
     const posts = useSelector(state => Object.values(state.posts));
     const dispatch = useDispatch()
-    const [showPostOptions, setShowPostOptions] = useState(-1);
+    
 
-    const dayPosted = (createdAtDate) => {
-        const today = new Date().getUTCDay();
-        const posted = new Date(createdAtDate).getUTCDay()
-        const duration = today - posted
-        return duration + "d"
-    }
-
-    const handleDeleteToggle = async (post) => {
-        const errors = dispatch(deletePostThunk(post))
-    }
+    // const handleEditToggle = async (post) => {
+    //     const errors = dispatch(editPostThunk(post))
+    // }
 
     return (
         <div className="app-home-outer-container">
@@ -34,46 +29,8 @@ const AppHome = () => {
                     <CreatePostModal />
                     <ul>
                         {console.log(posts)}
-                        {posts.length > 0 && posts.map((post, idx) => {
-                            return (<li className="app-home-post">
-                                <div id="app-home-post-heading-container">
-                                    <div id="app-home-heading-left-container">
-                                        <div id="create-post-user-info-icon">
-                                            <img id='no-pp' src={noPP} />
-                                        </div>
-                                        <div id="app-home-post-heading-name">
-                                            <div className="app-home-post-user-heading">
-                                                {post.user.first_name} {post.user.last_name}
-                                            </div>
-                                            <div className="app-home-post-user-subheading">
-                                                {post.user.title}
-                                            </div>
-                                            <div className="app-home-post-user-subheading">
-                                                {dayPosted(post.created_at)} • <i class="fa-solid fa-earth-americas"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="app-home-heading-right-container-options" onClick={() => setShowPostOptions(idx)} tabIndex={idx === showPostOptions ? 1 : -1} onBlur={() => setShowPostOptions(-1)}>
-                                        <img id="three-dots" src={threeDots} />
-                                        {showPostOptions === idx &&
-                                            <ul id="app-home-heading-right-container-options-list">
-                                                <li>Edit</li>
-                                                <li onClick={() => handleDeleteToggle(post)}>Delete</li>
-                                            </ul>
-                                        }
-                                    </div>
-                                </div>
-                                <div id="post-body-container">
-                                    {post.body}
-                                </div>
-                                <div id="post-spacer"></div>
-                                <div id="interaction-container">
-                                    <div id="comment-interaction">
-                                        <i id="comment-icon" className="fa-regular fa-comment-dots"></i>
-                                        <div className="comment-text">Comment</div>
-                                    </div>
-                                </div>
-                            </li>)
+                        {posts.length > 0 && posts.map((post) => {
+                            return (<PostCard post={post} />)
                         }).reverse()}
                     </ul>
                 </div>

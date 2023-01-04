@@ -1,3 +1,42 @@
+#create-post-container {
+    background-color: white;
+    height: 8rem;
+    margin-bottom: .8rem;
+    display: flex;
+    border-radius: .8rem;
+    border: 1px solid rgba(226, 225, 223, 1);
+}
+
+#create-post-content {
+    display: flex;
+    align-items: center;
+    justify-items: spa;
+    margin: .8rem;
+}
+
+#create-post-button:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+#create-post-button {
+    border-radius: 5rem;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 37rem;
+    height: min-content;
+    padding: 1.7rem 2.2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+    transition: background-color 167ms cubic-bezier(.4, 0, .2, 1);
+}
+
+#post-separator {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.06);
+    margin-bottom: .8rem;
+}
+
 #modal-content {
     max-width: 552px;
     height: min-content;
