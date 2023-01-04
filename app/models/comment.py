@@ -15,7 +15,7 @@ class Comment(db.Model):
         add_prefix_for_prod("posts.id")), nullable=False)
     body = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     # relationship with user
     user = db.relationship("User", back_populates="comments")
@@ -29,6 +29,6 @@ class Comment(db.Model):
             'post_id': self.post_id,
             'body': self.body,
             'created_at': self.created_at,
-            'updated_at': self.created_at,
+            'updated_at': self.updated_at,
             'user': self.user.to_dict(),
         }
