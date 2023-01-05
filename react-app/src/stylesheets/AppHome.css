@@ -4,6 +4,7 @@
     align-items: center;
     width: 100%;
     background-color: rgba(243, 242, 239, 1);
+    position: relative;
 }
 
 .app-home-main-container {
@@ -11,6 +12,7 @@
     width: 100%;
     /* background-color: rgba(89, 89, 207, 0.454); */
     display: flex;
+    margin-top: 2.4rem;
 }
 
 .app-home-profile-section {

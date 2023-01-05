@@ -1,0 +1,54 @@
+#app-feed-nav-bar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+    height: 5.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+}
+
+#app-feed-nav-bar-inner-container {
+    max-width: 1278px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#app-feed-nav-bar-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 8%;
+    padding: 0 .5rem;
+}
+
+#app-nav-bar-logo {
+    height: 4rem;
+}
+
+.navbar-action-labels {
+    display: flex;
+    font-size: 1.4rem;
+}
+
+.app-feed-nav-bar-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar-user-icon{
+    border-radius: 50%;
+    width: 2.8rem;
+    height: 2.8rem;
+    /* aspect-ratio: 1 / 1; */
+    overflow: hidden;
+}
+
+#caret-down {
+    height: 1rem;
+}
