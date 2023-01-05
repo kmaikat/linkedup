@@ -146,3 +146,42 @@
 .all-comments-sections-comment-options li:hover{
     background-color: rgba(0, 0, 0, 0.06);
 }
+
+.all-comment-section-edit-comment-buttons {
+    margin-top: 1rem;
+}
+
+#comment-section-save-changes-button {
+    background-color:#0a66c2;
+    border-radius: 3rem;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: .1rem 1.2rem ;
+    margin-right: .5rem;
+    transition: background-color 167ms cubic-bezier(.4, 0, .2, 1)
+}
+#comment-section-save-changes-button:disabled {
+    background-color: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+}
+
+#comment-section-save-changes-button:enabled:not(disabled):hover {
+    background-color:#004182;
+}
+
+#comment-section-cancel-button {
+    border: 1.5px solid rgba(0, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.6);
+    border-radius: 3rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: .1rem 1.2rem ;
+    transition: background-color 167ms cubic-bezier(.4, 0, .2, 1)
+}
+#comment-section-cancel-button:hover {
+    color: rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.6) ;
+    background-color: rgba(0, 0, 0, 0.08);
+}
