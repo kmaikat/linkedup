@@ -10,7 +10,6 @@ import "../stylesheets/Comments.css"
 
 function CommentCard({ comment, user }) {
     const [showCommentOptions, setShowCommentOptions] = useState(false);
-    const [body, setBody] = useState('')
     const dispatch = useDispatch()
 
 

@@ -20,7 +20,8 @@ const Comments = ({ post }) => {
     // div for all comments
 
     const updateBody = (e) => {
-        setBody(e.target.value);
+        console.log(e)
+        setBody(e.target.textContent);
     };
 
     const submitComment = async (event) => {
@@ -33,7 +34,6 @@ const Comments = ({ post }) => {
 
     const comments = Object.values(post.comments)
 
-    console.log(comments)
     return (
         <div id="comment-section-container">
             <div id="comment-input-section-container">
@@ -43,14 +43,14 @@ const Comments = ({ post }) => {
                         <img id='no-pp' src={noPP} />
                     </div>
                     <div id="comment-input-and-submit">
-                        <p contentEditable={true} name="body" placeholder="Add a comment..." value={body} onChange={updateBody} />
-                        <button>Post</button>
+                        <p contentEditable={true} name="body" placeholder="Add a comment..." onInput={updateBody} />
+                        {body && <button>Post</button>}
                     </div>
                 </form>
             </div>
             <ul id="all-comment-section-container">
                 {comments.map(comment => (
-                <CommentCard key={comment.id} comment={comment} user={user}/>
+                    <CommentCard key={comment.id} comment={comment} user={user} />
                 ))}
             </ul>
         </div>
