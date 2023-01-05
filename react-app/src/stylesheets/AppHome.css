@@ -124,7 +124,7 @@
 
 #comment-interaction {
     display: flex;
-    width: 12rem;
+    width: 50%;
     justify-content: center;
     align-items: center;
     font-size: 1.4rem;

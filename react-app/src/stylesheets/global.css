@@ -2,3 +2,10 @@ body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 }
+
+[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    pointer-events: none;
+    display: block;
+    /* For Firefox */
+}

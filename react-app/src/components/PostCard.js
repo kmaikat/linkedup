@@ -4,7 +4,7 @@ import noPP from "../assets/no-pp.png";
 import { deletePostThunk, editPostThunk } from "../store/posts"
 import "../stylesheets/AppHome.css"
 import { useState } from "react";
-import CommentCard from "./CommentCard";
+import Comments from "./Comments";
 
 function PostCard({ post }) {
     const [showPostOptions, setShowPostOptions] = useState(false)
@@ -69,7 +69,7 @@ function PostCard({ post }) {
             <div id="comment-container">
                     {showCommentSection &&
                         <div>
-                            <CommentCard/>
+                            <Comments/>
                         </div>
                     }
             </div>
