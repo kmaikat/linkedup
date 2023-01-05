@@ -86,8 +86,8 @@ function CommentCard({ comment, user }) {
                             }
                         }} />
                         <div className="all-comment-section-edit-comment-buttons">
-                            <button onClick={submitComment} disabled={body.length < 1}>Save Change</button>
-                            <button onClick={() => setShowEdit(false)}>Cancel</button>
+                            <button id="comment-section-save-changes-button" onClick={submitComment} disabled={body.length < 1}>Save Changes</button>
+                            <button id="comment-section-cancel-button" onClick={() => setShowEdit(false)}>Cancel</button>
                         </div>
                     </div>
 
