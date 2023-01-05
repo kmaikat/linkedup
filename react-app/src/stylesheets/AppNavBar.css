@@ -12,6 +12,7 @@
 #app-feed-nav-bar-inner-container {
     max-width: 1278px;
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,8 +22,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 8%;
-    padding: 0 .5rem;
+    height: 100%;
+
+    /* padding: 0 .5rem; */
 }
 
 #app-nav-bar-logo {
@@ -37,18 +39,95 @@
 .app-feed-nav-bar-icon {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    width: 9rem;
+    height: 100%;
+    padding: .6rem 0;
+    color: black;
 }
 
-#navbar-user-icon{
+#app-navbar-home-container {
+    height: 100%;
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+
+#navbar-user-icon {
     border-radius: 50%;
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 2.4rem;
+    height: 2.4rem;
     /* aspect-ratio: 1 / 1; */
     overflow: hidden;
 }
 
 #caret-down {
     height: 1rem;
+}
+
+#navbar-options-container {
+    position: absolute;
+    top: 6.3rem;
+    background-color: white;
+    padding: .8rem;
+    height: 11.4rem;
+    width: 25.2rem;
+    right: 3.9rem;
+    border-radius: .8rem 0 .8rem .8rem;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 6px 9px rgb(0 0 0 / 20%);
+}
+
+#navbar-options-content {
+    position: relative;
+}
+
+#navbar-user-info-container {
+    height: 6.4rem;
+    display: flex;
+    column-gap: .8rem;
+}
+
+#sign-out-button {
+    border-radius: 3rem;
+    border: 1px solid rgb(10, 102, 194);
+    color: rgb(10, 102, 194);
+    display: flex;
+    font-size: 1.6rem;
+    font-weight: 500;
+    justify-content: center;
+    margin-top: .9rem;
+    padding: .2rem 0;
+    transition: background-color 167ms cubic-bezier(.4, 0, .2, 1);
+    width: 100%;
+}
+
+#sign-out-button:hover {
+    background-color: rgba(10, 102, 194, .2);
+}
+
+#navbar-user-profile-picture {
+    width: 5.6rem;
+    height: 5.6rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#navbar-user-profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#navbar-user-profile-information {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    font-size: 1.2rem;
+}
+
+#navbar-user-profile-information :first-child{
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 700;
 }

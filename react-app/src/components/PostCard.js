@@ -1,10 +1,15 @@
 import { useDispatch } from "react-redux";
+import TimeAgo from "javascript-time-ago"
+import en from "javascript-time-ago/locale/en.json"
+import ReactTimeAgo from "react-time-ago"
 import threeDots from "../assets/three-dots.svg"
 import noPP from "../assets/no-pp.png";
 import { deletePostThunk, editPostThunk } from "../store/posts"
 import "../stylesheets/AppHome.css"
 import { useState } from "react";
 import CommentCard from "./CommentCard";
+
+TimeAgo.addDefaultLocale(en)
 
 function PostCard({ post }) {
     const [showPostOptions, setShowPostOptions] = useState(false)
@@ -40,7 +45,7 @@ function PostCard({ post }) {
                             {post.user.title}
                         </div>
                         <div className="app-home-post-user-subheading">
-                            {dayPosted(post.created_at)} • <i class="fa-solid fa-earth-americas"></i>
+                            <ReactTimeAgo date={post.created_at} timeStyle="twitter"/> • <i class="fa-solid fa-earth-americas"></i>
                         </div>
                     </div>
                 </div>
@@ -67,11 +72,11 @@ function PostCard({ post }) {
                 </div>
             </div>
             <div id="comment-container">
-                    {showCommentSection &&
-                        <div>
-                            <CommentCard/>
-                        </div>
-                    }
+                {showCommentSection &&
+                    <div>
+                        <CommentCard />
+                    </div>
+                }
             </div>
         </li>
     )

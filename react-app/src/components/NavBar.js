@@ -1,6 +1,6 @@
 
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { getPostsThunk } from '../store/posts';
 import LogoutButton from './auth/LogoutButton';
@@ -13,6 +13,9 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const user = useSelector(state => state.session.user)
+  const [showNavbarOptions, setShowNavbarOptions] = useState(false)
+
   useEffect(() => {
     dispatch(getPostsThunk())
   }, [history.location.pathname])
@@ -24,22 +27,41 @@ const NavBar = () => {
           <img id="app-nav-bar-logo" src={up}></img>
         </div>
         <ul id='app-feed-nav-bar-actions'>
-          <li className='app-feed-nav-bar-icon'>
-            <NavLink to='/' exact={true} activeClassName='active'>
+          <li className='app-feed-nav-bar-icon' id='app-navbar-home-container'>
+            <NavLink className='app-feed-nav-bar-icon' to='/' exact={true} activeClassName='active'>
               <i className="fa-solid fa-house-chimney"></i>
               <div className='navbar-action-labels'>
-                  Home
+                Home
               </div>
             </NavLink>
           </li>
-          <li className='app-feed-nav-bar-icon'>
+          <li className='app-feed-nav-bar-icon' onClick={() => setShowNavbarOptions(true)} tabIndex={showNavbarOptions ? 1 : -1} onBlur={() => setShowNavbarOptions(false)}>
             <div id="navbar-user-icon">
               <img id='no-pp' src={noPP} />
             </div>
             <div className='navbar-action-labels'>
               Me <img id="caret-down" src={caratDown} />
             </div>
-            {/* <LogoutButton /> */}
+            {showNavbarOptions &&
+              <div id='navbar-options-container'>
+                <div id='navbar-options-content'>
+                  <div id='navbar-user-info-container'>
+                    <div id="navbar-user-profile-picture">
+                      <img src={user?.profilePicture || noPP} alt="Profile Image" />
+                    </div>
+                    <div id="navbar-user-profile-information">
+                      {user &&
+                        <>
+                          <p>{user.first_name} {user.last_name}</p>
+                          <p>{user.title}</p>
+                        </>
+                      }
+                    </div>
+                  </div>
+                  <LogoutButton />
+                </div>
+              </div>
+            }
           </li>
         </ul>
       </div>
