@@ -16,29 +16,6 @@ comment_routes = Blueprint('comments', __name__)
 
 #     return jsonify({comment.id: comment.to_dict() for comment in post.comments}), 200
 # create comment
-@comment_routes.route('/<int:post_id>', methods=["POST"])
-def make_comment(post_id):
-    current_user_info = User.query.get(current_user.id).to_dict()
-    current_user_id = current_user_info["id"]
-
-    form = CommentForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-
-    if form.validate():
-        try:
-            new_comment = Comment(
-                body=form.data['body'],
-                user_id=current_user_id,
-                post_id=post_id
-            )
-            db.session.add(new_comment)
-            db.session.commit()
-            return new_comment.to_dict(), 201
-        except Exception:
-            return {"error": "cannot submit at this time, try again later"}
-    if form.errors:
-        return {"error": form.errors}
-
 
 # edit comments
 @comment_routes.route('/<int:comment_id>', methods=["PUT"])
@@ -69,7 +46,7 @@ def update_comment(comment_id):
 
 
 # delete comment
-@comment_routes.route('/<int:comment_id>', methods=["DELETE"])
+@comment_routes.route('/<int:comment_id>/', methods=["DELETE"])
 def delete_comment(comment_id):
     current_user_info = User.query.get(current_user.id).to_dict()
     current_user_id = current_user_info['id']
@@ -86,7 +63,7 @@ def delete_comment(comment_id):
                 'message': 'Forbidden',
                 'statusCode': 403
             }}, 403
-            
+
     else:
         return {'error': {
             'message': 'Cannot find comment you were looking for',

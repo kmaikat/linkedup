@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, Post, User
-from app.forms import PostForm
+from app.models import db, Post, User, Comment
+from app.forms import PostForm, CommentForm
 post_routes = Blueprint('posts', __name__)
 
 
@@ -51,6 +51,38 @@ def make_post():
 # update a post
 
 
+@post_routes.route('/<int:post_id>/comments/', methods=["POST"])
+def make_comment(post_id):
+    current_user_info = User.query.get(current_user.id).to_dict()
+    current_user_id = current_user_info["id"]
+
+    print("\n")
+    print("\n")
+    print("\n")
+    print((request.get_json()))
+    print("\n")
+    print("\n")
+    print("\n")
+
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate():
+        try:
+            new_comment = Comment(
+                body=form.data['body'],
+                user_id=current_user_id,
+                post_id=post_id
+            )
+            db.session.add(new_comment)
+            db.session.commit()
+            return new_comment.to_dict(), 201
+        except Exception:
+            return {"error": "cannot submit at this time, try again later"}
+    if form.errors:
+        return {"error": form.errors}
+
+
 @post_routes.route("/<int:postId>", methods=["PUT"])
 def update_post(postId):
     current_user_info = User.query.get(current_user.id).to_dict()
@@ -65,7 +97,7 @@ def update_post(postId):
             existing_post_data = request.get_json()
             update_this_post.body = existing_post_data["body"]
             db.session.commit()
-            return update_this_post.to_dict(), 200
+            return update_this_post.to_dict_with_user(), 200
         else:
             return {'error': {
                 'message': 'Forbidden',

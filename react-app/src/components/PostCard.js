@@ -7,13 +7,17 @@ import noPP from "../assets/no-pp.png";
 import { deletePostThunk, editPostThunk } from "../store/posts"
 import "../stylesheets/AppHome.css"
 import { useState } from "react";
-import CommentCard from "./CommentCard";
+import Comments from "./Comments";
+import CreatePostModal from "./CreatePostsComponents/CreatePostModal";
+import CreatePost from "./CreatePostsComponents/CreatePost";
+import { Modal } from "./context/Modal";
 
 TimeAgo.addDefaultLocale(en)
 
 function PostCard({ post }) {
     const [showPostOptions, setShowPostOptions] = useState(false)
     const [showCommentSection, setShowCommentSection] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     const dispatch = useDispatch();
 
@@ -29,9 +33,13 @@ function PostCard({ post }) {
         const errors = dispatch(deletePostThunk(post))
     }
 
-
     return (
         <li className="app-home-post">
+            {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <CreatePost post={post} setShowModal={setShowModal} />
+                </Modal>
+            )}
             <div id="app-home-post-heading-container">
                 <div id="app-home-heading-left-container">
                     <div id="create-post-user-info-icon">
@@ -45,7 +53,7 @@ function PostCard({ post }) {
                             {post.user.title}
                         </div>
                         <div className="app-home-post-user-subheading">
-                            <ReactTimeAgo date={post.created_at} timeStyle="twitter"/> • <i class="fa-solid fa-earth-americas"></i>
+                            <ReactTimeAgo date={post.created_at} timeStyle="twitter" /> • <i class="fa-solid fa-earth-americas"></i>
                         </div>
                     </div>
                 </div>
@@ -53,7 +61,7 @@ function PostCard({ post }) {
                     <img id="three-dots" src={threeDots} />
                     {showPostOptions &&
                         <ul id="app-home-heading-right-container-options-list">
-                            <li>
+                            <li onClick={() => setShowModal(true)}>
                                 Edit
                             </li>
                             <li onClick={() => handleDeleteToggle(post)}>Delete</li>
@@ -74,7 +82,7 @@ function PostCard({ post }) {
             <div id="comment-container">
                 {showCommentSection &&
                     <div>
-                        <CommentCard />
+                        <Comments post={post} />
                     </div>
                 }
             </div>

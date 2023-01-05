@@ -12,6 +12,7 @@
     align-items: center;
     justify-items: spa;
     margin: .8rem;
+    width: 100%;
 }
 
 #create-post-button:hover {
@@ -21,7 +22,7 @@
 #create-post-button {
     border-radius: 5rem;
     border: 1px solid rgba(0, 0, 0, 0.3);
-    width: 37rem;
+    width: 88%;
     height: min-content;
     padding: 1.7rem 2.2rem;
     font-size: 1.5rem;
@@ -54,6 +55,7 @@
     border-bottom: .1rem solid rgba(0, 0, 0, 0.08);
 }
 
+
 #create-post-heading-exit-content {
     display: flex;
     justify-content: space-between;
@@ -69,6 +71,12 @@
 #create-post-exit-button {
     color: rgba(0, 0, 0, 0.6);
     font-weight: 100;
+    padding: .5rem 1rem;
+    border-radius: .8rem;
+}
+#create-post-exit-button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.06);
 }
 
 #create-post-user-info-container {
@@ -109,6 +117,7 @@
     width: 100%;
     font-size: 16px;
     resize: none;
+    min-height: 9rem;
 }
 
 #body-form {

@@ -13,6 +13,7 @@
     /* background-color: rgba(89, 89, 207, 0.454); */
     display: flex;
     margin-top: 2.4rem;
+    margin-bottom: 5rem;
 }
 
 .app-home-profile-section {
@@ -20,7 +21,7 @@
 }
 
 .app-home-feed {
-    width: 40%;
+    width: 55%;
 }
 
 .app-home-right {
@@ -124,7 +125,7 @@
 
 #comment-interaction {
     display: flex;
-    width: 12rem;
+    width: 50%;
     justify-content: center;
     align-items: center;
     font-size: 1.4rem;

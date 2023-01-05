@@ -1,46 +1,121 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import TimeAgo from "javascript-time-ago"
+import en from "javascript-time-ago/locale/en.json"
+import ReactTimeAgo from "react-time-ago"
+import threeDots from "../assets/three-dots.svg"
 import noPP from "../assets/no-pp.png";
+import "../stylesheets/Comments.css"
+import "../stylesheets/Comments.css"
+import { deleteCommentThunk, editCommentThunk } from "../store/comment";
 
-const CommentCard = () => {
-    const [body, setBody] = useState('')
-    const user = useSelector(state => state.session.user);
-    // const post = useSelector(state => state.session.post);
+function CommentCard({ comment, user }) {
+    const [showCommentOptions, setShowCommentOptions] = useState(false);
+    const [body, setBody] = useState("")
+    const [showEdit, setShowEdit] = useState(false)
+    const [firstLoad, setFirstLoad] = useState(true)
     const dispatch = useDispatch()
+    const postContent = useRef(null)
+
+    const onDelete = async (event) => {
+        event.stopPropagation()
+        event.preventDefault()
+        console.log("Deleting...")
+        const errors = await dispatch(deleteCommentThunk(comment.id))
+
+        if (errors) {
+            console.log(errors)
+        } else {
+
+        }
+    }
 
     const updateBody = (e) => {
-        setBody(e.target.value)
-    }
+        setBody(e.target.textContent);
+    };
 
-    const submitPost = async (event) => {
+    const submitComment = async (event) => {
         event.preventDefault();
-        // const submission = {
-        //     "body"
-        // }
+        const submission = {
+            body
+        }
 
+        const errors = await dispatch(editCommentThunk(submission, comment.id))
+
+        if (errors) {
+
+        } else {
+            postContent.current.textContent = ""
+            setBody("")
+            setShowEdit(false);
+        }
     }
 
-    // div for comment text area
-    // div for all comments
+    useEffect(() => {
+        if (!showEdit) return
+        postContent.current.textContent = comment.body;
+        postContent.current.focus()
+
+        const selection = window.getSelection()
+        selection.removeAllRanges()
+        const range = document.createRange()
+        range.selectNodeContents(postContent.current)
+        range.collapse(false)
+
+        selection.addRange(range)
+    }, [showEdit])
+
     return (
-        <div id="comment-section-container">
-            <div id="comment-input-section-container">
-                {/* "THIS IS WHERE THE INPUT IS GOING" */}
-                <div id="create-post-user-info-icon">
-                    <img id='no-pp' src={noPP} />
-                </div>
-                <div id="comment-form-container">
-                    <form id="comment-body-form">
-                        <div id="comment-input-text-area"></div>
-                        <textarea name="body" placeholder="Add a comment..." value={body} onChange={updateBody}/>
-                    </form>
-                </div>
+        <li key={comment.id} className="all-comment-section-comment-container">
+            <div id="create-comment-user-info-icon">
+                <img src={comment.user.profile_picture || noPP} alt="Commentor Profile Image" />
             </div>
-            <div id="all-comment-section-container">
-                "THIS IS WHERE ALL THE COMMENTS ARE GOING"
+            <div className="all-comment-section-comment-content">
+                <p className="all-comment-section-user-name">{comment.user.first_name} {comment.user.last_name}</p>
+                <p className="all-comment-section-user-title">{comment.user.title}</p>
+                {showEdit === false ?
+                    <p className="all-comment-section-comment-body">{comment.body}</p> :
+                    <div className="all-comment-section-edit-comment">
+                        <p contentEditable={true} name="body" placeholder="Add a comment..." onInput={updateBody} ref={postContent} onKeyDown={(event) => {
+                            if (event.key === "Enter") {
+                                event.preventDefault();
+
+                                if (event.target.textContent.length > 0) {
+                                    submitComment(event)
+                                }
+                            }
+                        }} />
+                        <div className="all-comment-section-edit-comment-buttons">
+                            <button onClick={submitComment} disabled={body.length < 1}>Save Change</button>
+                            <button onClick={() => setShowEdit(false)}>Cancel</button>
+                        </div>
+                    </div>
+
+                }
             </div>
 
-        </div>
+            <div className="all-comment-section-top-right">
+                {user?.id === comment.user_id &&
+                    <div style={{ backgroundColor: "transparent" }} id="app-home-heading-right-container-options" onClick={() => setShowCommentOptions(true)} tabIndex={showCommentOptions ? 1 : -1} onBlur={() => setShowCommentOptions(false)}>
+                        <img src={threeDots} id="three-dots" />
+                        {showCommentOptions &&
+                            <ul className="all-comments-sections-comment-options">
+                                <li onClick={(event) => {
+                                    event.stopPropagation()
+                                    event.preventDefault()
+                                    setShowCommentOptions(false)
+                                    setShowEdit(true)
+                                }} id="comment-edit-button">Edit</li>
+                                <li onClick={onDelete}
+                                >Delete</li>
+                            </ul>
+                        }
+                    </div>}
+                <div className="all-comment-section-top-right-time">
+                    <ReactTimeAgo date={comment.created_at} timeStyle={"twitter"} />
+                </div>
+            </div>
+        </li>
     )
 }
 
