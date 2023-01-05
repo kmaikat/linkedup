@@ -37,8 +37,8 @@ function CreatePost({ setShowModal }) {
                     <div id="create-post-subtitle">
                         Create a post
                     </div>
-                    <div id='create-post-exit-button'>
-                        <i onClick={() => setShowModal(false)} className="fa-solid fa-x"></i>
+                    <div onClick={() => setShowModal(false)} id='create-post-exit-button'>
+                        <i className="fa-solid fa-x"></i>
                     </div>
                 </div>
             </div>

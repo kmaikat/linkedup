@@ -9,6 +9,8 @@ import "../stylesheets/AppHome.css"
 import { useState } from "react";
 import Comments from "./Comments";
 
+TimeAgo.addDefaultLocale(en)
+
 function PostCard({ post }) {
     const [showPostOptions, setShowPostOptions] = useState(false)
     const [showCommentSection, setShowCommentSection] = useState(false)
@@ -43,7 +45,7 @@ function PostCard({ post }) {
                             {post.user.title}
                         </div>
                         <div className="app-home-post-user-subheading">
-                            <ReactTimeAgo date={post.created_at} timeStyle="twitter"/> • <i class="fa-solid fa-earth-americas"></i>
+                            <ReactTimeAgo date={post.created_at} timeStyle="twitter" /> • <i class="fa-solid fa-earth-americas"></i>
                         </div>
                     </div>
                 </div>
@@ -70,11 +72,11 @@ function PostCard({ post }) {
                 </div>
             </div>
             <div id="comment-container">
-                    {showCommentSection &&
-                        <div>
-                            <Comments/>
-                        </div>
-                    }
+                {showCommentSection &&
+                    <div>
+                        <Comments post={post} />
+                    </div>
+                }
             </div>
         </li>
     )
