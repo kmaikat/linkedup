@@ -26,6 +26,39 @@ export const createCommentThunk = (comment, postId) => async dispatch => {
     }
 }
 
+export const deleteCommentThunk = (commentId) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${commentId}/`, {
+        method: "DELETE"
+    })
+
+    console.log(response)
+
+    if (response.ok) {
+        dispatch(getPostsThunk());
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+}
+
+export const editCommentThunk = (comment, commentId) => async dispatch => {
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(comment)
+    })
+
+
+    if (response.ok) {
+        dispatch(getPostsThunk());
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+}
+
+
+
 
 const initialState = {};
 

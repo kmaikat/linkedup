@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import "../../stylesheets/CreatePost.css";
 import noPP from "../../assets/no-pp.png";
-import { createPostThunk } from "../../store/posts";
+import { createPostThunk, editPostThunk } from "../../store/posts";
 
-function CreatePost({ setShowModal }) {
-    const [body, setBody] = useState("");
+function CreatePost({ setShowModal, post }) {
+    const [body, setBody] = useState(post?.body || "");
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
@@ -20,8 +20,7 @@ function CreatePost({ setShowModal }) {
             "body": body,
             "user": user.id
         }
-
-        const reponseErrors = await dispatch(createPostThunk(submission))
+        const reponseErrors = post ? await dispatch(editPostThunk(submission, post.id)) : await dispatch(createPostThunk(submission))
         if (reponseErrors) {
             return;
         } else {
@@ -35,7 +34,7 @@ function CreatePost({ setShowModal }) {
                 <div id="create-post-heading-exit-content">
 
                     <div id="create-post-subtitle">
-                        Create a post
+                        {`${post ? "Edit" : "Create a"} post`}
                     </div>
                     <div onClick={() => setShowModal(false)} id='create-post-exit-button'>
                         <i className="fa-solid fa-x"></i>
@@ -61,7 +60,7 @@ function CreatePost({ setShowModal }) {
                 <div id="empty-div">
                 </div>
                 <div id="post-container">
-                    <button id="create-post-form-can-submit" form="body-form" type="submit" disabled={body.length < 1}>Post</button>
+                    <button id="create-post-form-can-submit" form="body-form" type="submit" disabled={body.length < 1}>{`${post ? "Save Changes" : "Post"}`}</button>
                 </div>
             </div>
         </div>

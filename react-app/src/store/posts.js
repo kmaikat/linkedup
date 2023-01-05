@@ -94,8 +94,8 @@ export const deletePostThunk = (post) => async dispatch => {
     };
 }
 
-export const editPostThunk = (post) => async dispatch => {
-    const response = await fetch(`/api/posts/${post.id}`, {
+export const editPostThunk = (post, postId) => async dispatch => {
+    const response = await fetch(`/api/posts/${postId}`, {
         method: "PUT",
         headers: {
             "content-type": "application/json"
@@ -135,7 +135,8 @@ export default function reducer(state = initialState, action) {
         case EDIT_POST: {
             const newState = { ...state }
             const editedPost = action.post
-            newState.posts[action.post.id] = editedPost
+            console.log(newState, editedPost)
+            newState[action.post.id] = editedPost
             return newState
         }
 
