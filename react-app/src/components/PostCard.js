@@ -4,9 +4,11 @@ import noPP from "../assets/no-pp.png";
 import { deletePostThunk, editPostThunk } from "../store/posts"
 import "../stylesheets/AppHome.css"
 import { useState } from "react";
+import CommentCard from "./CommentCard";
 
 function PostCard({ post }) {
     const [showPostOptions, setShowPostOptions] = useState(false)
+    const [showCommentSection, setShowCommentSection] = useState(false)
 
     const dispatch = useDispatch();
 
@@ -59,10 +61,17 @@ function PostCard({ post }) {
             </div>
             <div id="post-spacer"></div>
             <div id="interaction-container">
-                <div id="comment-interaction">
+                <div id="comment-interaction" onClick={() => setShowCommentSection(true)}>
                     <i id="comment-icon" className="fa-regular fa-comment-dots"></i>
                     <div className="comment-text">Comment</div>
                 </div>
+            </div>
+            <div id="comment-container">
+                    {showCommentSection &&
+                        <div>
+                            <CommentCard/>
+                        </div>
+                    }
             </div>
         </li>
     )
