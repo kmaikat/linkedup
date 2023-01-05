@@ -1,3 +1,5 @@
+import { getPostsThunk } from "./posts"
+
 // action
 const CREATE_COMMENT = 'comments/CREATE_COMMENT'
 // thunks
@@ -8,8 +10,20 @@ export function createCommentAction(comment) {
     }
 }
 
-export const createPostThunk = (post) => async dispatch => {
-    const response = "hello, I left off here"
+export const createCommentThunk = (comment, postId) => async dispatch => {
+    const response = await fetch(`/api/posts/${postId}/comments/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(comment)
+    })
+
+
+    if (response.ok) {
+        dispatch(getPostsThunk());
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
 }
 
 

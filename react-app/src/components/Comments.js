@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TimeAgo from "javascript-time-ago"
 import en from "javascript-time-ago/locale/en.json"
@@ -7,6 +7,7 @@ import threeDots from "../assets/three-dots.svg"
 import noPP from "../assets/no-pp.png";
 import "../stylesheets/Comments.css"
 import CommentCard from "./CommentCard";
+import { createCommentThunk } from "../store/comment";
 
 TimeAgo.addDefaultLocale(en)
 
@@ -15,21 +16,29 @@ const Comments = ({ post }) => {
     const user = useSelector(state => state.session.user);
     // const post = useSelector(state => state.session.post);
     const dispatch = useDispatch()
+    const postContent = useRef(null)
 
     // div for comment text area
     // div for all comments
 
     const updateBody = (e) => {
-        console.log(e)
         setBody(e.target.textContent);
     };
 
     const submitComment = async (event) => {
         event.preventDefault();
-        // const submission = {
-        //     "body"
-        // }
+        const submission = {
+            body
+        }
 
+        const errors = await dispatch(createCommentThunk(submission, post.id))
+
+        if (errors) {
+
+        } else {
+            postContent.current.textContent = ""
+            setBody("")
+        }
     }
 
     const comments = Object.values(post.comments)
@@ -43,15 +52,15 @@ const Comments = ({ post }) => {
                         <img id='no-pp' src={noPP} />
                     </div>
                     <div id="comment-input-and-submit">
-                        <p contentEditable={true} name="body" placeholder="Add a comment..." onInput={updateBody} />
-                        {body && <button>Post</button>}
+                        <p contentEditable={true} name="body" placeholder="Add a comment..." onInput={updateBody} ref={postContent} onKeyDown={(event) => event.key === "Enter" ? submitComment(event) : undefined} />
+                        {body && <button onClick={submitComment}>Post</button>}
                     </div>
                 </form>
             </div>
             <ul id="all-comment-section-container">
                 {comments.map(comment => (
                     <CommentCard key={comment.id} comment={comment} user={user} />
-                ))}
+                )).reverse()}
             </ul>
         </div>
     )
