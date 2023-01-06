@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <nav id='app-feed-nav-bar'>
       <div id='app-feed-nav-bar-inner-container'>
-        <div id="landing-page-nav-bar-main-left">
+        <div className="app-home-navbar-logo" id="landing-page-nav-bar-main-left">
           <img id="app-nav-bar-logo" src={up}></img>
         </div>
         <ul id='app-feed-nav-bar-actions'>
