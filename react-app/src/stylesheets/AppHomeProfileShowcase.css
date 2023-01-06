@@ -4,6 +4,7 @@
     border-radius: .8rem;
     border: 1px solid rgba(226, 225, 223, 1);
     overflow: hidden;
+    position: relative;
 }
 
 #app-home-profile-showcase-banner-container {
@@ -20,8 +21,8 @@
     height: min-content;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    top: 10rem;
-    left:19rem;
+    left:50%;
+    transform: translate(-50%, -50%);
     position: absolute;
     border: white 3px solid;
 }
