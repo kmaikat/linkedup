@@ -49,7 +49,7 @@ const Comments = ({ post }) => {
                 {/* "THIS IS WHERE THE INPUT IS GOING" */}
                 <form id="comment-body-form" onSubmit={submitComment}>
                     <div id="create-comment-user-info-icon">
-                        <img id='no-pp' src={noPP} />
+                        <img id='no-pp' src={user.profile_picture || noPP} />
                     </div>
                     <div id="comment-input-and-submit">
                         <p contentEditable={true} name="body" placeholder="Add a comment..." onInput={updateBody} ref={postContent} onKeyDown={(event) => event.key === "Enter" ? submitComment(event) : undefined} />

@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <nav id='app-feed-nav-bar'>
       <div id='app-feed-nav-bar-inner-container'>
-        <div id="landing-page-nav-bar-main-left">
+        <div className="app-home-navbar-logo" id="landing-page-nav-bar-main-left">
           <img id="app-nav-bar-logo" src={up}></img>
         </div>
         <ul id='app-feed-nav-bar-actions'>
@@ -37,7 +37,7 @@ const NavBar = () => {
           </li>
           <li className='app-feed-nav-bar-icon' onClick={() => setShowNavbarOptions(true)} tabIndex={showNavbarOptions ? 1 : -1} onBlur={() => setShowNavbarOptions(false)}>
             <div id="navbar-user-icon">
-              <img id='no-pp' src={noPP} />
+              <img id='no-pp' src={user.profile_picture || noPP} />
             </div>
             <div className='navbar-action-labels'>
               Me <img id="caret-down" src={caratDown} />

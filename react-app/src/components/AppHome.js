@@ -14,13 +14,11 @@ import AppHomeAboutShowcase from "./AppHomeAboutShowcase"
 
 const AppHome = () => {
     const posts = useSelector(state => Object.values(state.posts));
-    const dispatch = useDispatch()
 
 
     // const handleEditToggle = async (post) => {
     //     const errors = dispatch(editPostThunk(post))
     // }
-
     return (
         <div className="app-home-outer-container">
             <NavBar />

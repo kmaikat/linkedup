@@ -16,10 +16,11 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String, nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    title = db.Column(db.String)
-    bio = db.Column(db.String)
-    city = db.Column(db.String)
-    state = db.Column(db.String)
+    profile_picture = db.Column(db.String)
+    title = db.Column(db.String, nullable=False)
+    bio = db.Column(db.String, nullable=False)
+    city = db.Column(db.String, nullable=False)
+    state = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     posts = db.relationship("Post", back_populates="user", cascade="all, delete-orphan")
@@ -43,6 +44,7 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'email': self.email,
+            'profile_picture': self.profile_picture,
             'title': self.title,
             'bio': self.bio,
             'city': self.city,
