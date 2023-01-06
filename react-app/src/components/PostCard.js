@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TimeAgo from "javascript-time-ago"
 import en from "javascript-time-ago/locale/en.json"
 import ReactTimeAgo from "react-time-ago"
@@ -18,6 +18,7 @@ function PostCard({ post }) {
     const [showPostOptions, setShowPostOptions] = useState(false)
     const [showCommentSection, setShowCommentSection] = useState(false)
     const [showModal, setShowModal] = useState(false)
+    const user = useSelector(state => state.session.user)
 
     const dispatch = useDispatch();
 
@@ -57,6 +58,7 @@ function PostCard({ post }) {
                         </div>
                     </div>
                 </div>
+                {user?.id === post.user_id &&
                 <div id="app-home-heading-right-container-options" onClick={() => setShowPostOptions(true)} tabIndex={showPostOptions ? 1 : -1} onBlur={() => setShowPostOptions(false)}>
                     <img id="three-dots" src={threeDots} />
                     {showPostOptions &&
@@ -68,6 +70,7 @@ function PostCard({ post }) {
                         </ul>
                     }
                 </div>
+}
             </div>
             <div id="post-body-container">
                 {post.body}
