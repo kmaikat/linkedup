@@ -4,15 +4,18 @@ from app.models import db, User, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', first_name='Demo', last_name='User', email='demo@aa.io', password='password', title='Aspiring Software Engineer', bio="Hi everyone! This is my wonderful bio.", city="Austin", state="Texas")
-    marnie = User(
-        username='marnie', first_name="Marnie", last_name="Barney", email='marnie@aa.io', password='password', title='Aspiring Dancer', bio="Hi everyone! I'm open to network.", city="Austin", state="Texas")
-    bobbie = User(
-        username='bobbie', first_name="Bob", last_name="Bobbie", email='bobbie@aa.io', password='password', title='Aspiring Comedian', bio="Hi everyone! You like my bio?", city="Austin", state="Texas")
+        username='Demo', first_name='Demo', last_name='User', email='demo@aa.io', password='password', profile_picture='https://www.meme-arsenal.com/memes/49237d810a6fceec65734ec1c346f6ef.jpg', title='Aspiring Software Engineer', bio="Hi everyone! This is my wonderful bio.", city="Austin", state="Texas")
+    kelly = User(
+        username='kkapoor', first_name="Kelly", last_name="Kapoor", email='kelly@aa.io', password='password', profile_picture='https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/2-0-design/the-office/cast-the-office-kelly-kapoor.jpg/_jcr_content/renditions/original.JPEG?downsize=1200:*&output-quality=70', title='Customer Service @ Dunder Mifflin"s regional branch', bio='Who says exactly what they"re thinking? What kind of game is that?', city="Scranton", state="Pennsylvania")
+    michael = User(
+        username='mscott', first_name="Michael", last_name="Scott", email='michael@aa.io', password='password', profile_picture='https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/2-0-design/the-office/cast-the-office-michael-scott.jpg/_jcr_content/renditions/original.JPEG', title='Regional Manager at Dunder Mifflin Scranton', bio="As the regional manager, I'm responsible for executing sales strategies and marketing as well as logistics and order coordination for all of Northeastern Pennsylvania. Sometimes, I do improv for fun.", city="Scranton", state="Pennsylvania")
+    jim = User(
+        username='jhalpert', first_name="Jim", last_name="Halpert", email='jim@aa.io', password='password', profile_picture='https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/2-0-design/the-office/cast-the-office-jim-halpert.jpg/_jcr_content/renditions/original.JPEG?downsize=1200:*&output-quality=70', title='Founder at Athlead', bio="I love to play pranks, so you better watch out.", city="Scranton", state="Pennsylvania")
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(kelly)
+    db.session.add(michael)
+    db.session.add(jim)
     db.session.commit()
 
 
