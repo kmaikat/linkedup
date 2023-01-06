@@ -43,7 +43,7 @@ function PostCard({ post }) {
             <div id="app-home-post-heading-container">
                 <div id="app-home-heading-left-container">
                     <div id="create-post-user-info-icon">
-                        <img id='no-pp' src={noPP} />
+                        <img id='no-pp' src={post.user.profile_picture || noPP} />
                     </div>
                     <div id="app-home-post-heading-name">
                         <div className="app-home-post-user-heading">

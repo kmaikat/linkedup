@@ -4,7 +4,6 @@ import { useSelector } from "react-redux"
 
 const AppHomeProfileShowcase = () => {
     const user = useSelector(state => state.session.user)
-    console.log(user)
 
     return (
         <div id="app-home-profile-showcase-outer-container">
@@ -13,7 +12,7 @@ const AppHomeProfileShowcase = () => {
                     <img src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2021/03/LinkedIn-Default-Background-2020-.jpg"/>
                 </div>
                 <div id="app-home-profile-showcase-icon-container">
-                    <img id='noPP'src={noPP}/>
+                    <img id='noPP'src={user.profile_picture || noPP}/>
                 </div>
                 <div id="app-home-profile-showcase-user-info-container">
                     <p id="app-home-profile-showcase-user-name">{user.first_name} {user.last_name}</p>

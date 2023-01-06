@@ -37,7 +37,7 @@ const NavBar = () => {
           </li>
           <li className='app-feed-nav-bar-icon' onClick={() => setShowNavbarOptions(true)} tabIndex={showNavbarOptions ? 1 : -1} onBlur={() => setShowNavbarOptions(false)}>
             <div id="navbar-user-icon">
-              <img id='no-pp' src={noPP} />
+              <img id='no-pp' src={user.profile_picture || noPP} />
             </div>
             <div className='navbar-action-labels'>
               Me <img id="caret-down" src={caratDown} />

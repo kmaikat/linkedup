@@ -43,7 +43,7 @@ function CreatePost({ setShowModal, post }) {
             </div>
             <div id="create-post-user-info-container">
                 <div id="create-post-user-info-icon">
-                    <img id='no-pp' src={noPP} />
+                    <img id='no-pp' src={user.profile_picture || noPP} />
                 </div>
                 <div id="create-post-user-info-name">
                     {user.first_name} {user.last_name}
