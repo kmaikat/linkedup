@@ -20,9 +20,9 @@
     height: min-content;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    position: absolute;
     top: 10rem;
-    left: 41rem;
+    left:19rem;
+    position: absolute;
     border: white 3px solid;
 }
 

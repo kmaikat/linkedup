@@ -9,6 +9,7 @@ import { deletePostThunk, editPostThunk } from "../store/posts"
 import PostCard from "./PostCard"
 import AppHomeProfileShowcase from "./AppHomeProfileShowcase"
 import AppHomeLinksShowcase from "./AppHomeLinksShowcase"
+import AppHomeAboutShowcase from "./AppHomeAboutShowcase"
 
 
 const AppHome = () => {
@@ -38,6 +39,7 @@ const AppHome = () => {
                     </ul>
                 </div>
                 <div className="app-home-right">
+                    <AppHomeAboutShowcase/>
                 </div>
             </div>
         </div>
