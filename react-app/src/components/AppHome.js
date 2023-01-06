@@ -7,12 +7,14 @@ import noPP from "../assets/no-pp.png";
 import "../stylesheets/AppHome.css"
 import { deletePostThunk, editPostThunk } from "../store/posts"
 import PostCard from "./PostCard"
+import AppHomeProfileShowcase from "./AppHomeProfileShowcase"
+import AppHomeLinksShowcase from "./AppHomeLinksShowcase"
 
 
 const AppHome = () => {
     const posts = useSelector(state => Object.values(state.posts));
     const dispatch = useDispatch()
-    
+
 
     // const handleEditToggle = async (post) => {
     //     const errors = dispatch(editPostThunk(post))
@@ -23,7 +25,8 @@ const AppHome = () => {
             <NavBar />
             <div className="app-home-main-container" >
                 <div className="app-home-profile-section">
-                    "PROFILE SECTION WILL GO HERE"
+                    <AppHomeProfileShowcase/>
+                    <AppHomeLinksShowcase/>
                 </div>
                 <div className="app-home-feed">
                     <CreatePostModal />

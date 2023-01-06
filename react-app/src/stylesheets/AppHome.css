@@ -12,20 +12,21 @@
     width: 100%;
     /* background-color: rgba(89, 89, 207, 0.454); */
     display: flex;
-    margin-top: 2.4rem;
+    margin-top: 2.8rem;
     margin-bottom: 5rem;
+    justify-content: space-between;
 }
 
 .app-home-profile-section {
-    width: 30%;
+    width: 20%;
 }
 
 .app-home-feed {
-    width: 55%;
+    width: 48%;
 }
 
 .app-home-right {
-    width: 30%;
+    width: 28%;
 }
 
 #app-home-post-heading-container {
