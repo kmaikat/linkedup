@@ -17,7 +17,7 @@
 #app-home-profile-showcase-icon-container {
     border-radius: 50%;
     width: 7rem;
-    height:min-content;
+    height: min-content;
     aspect-ratio: 1 / 1;
     overflow: hidden;
     position: absolute;
@@ -41,7 +41,7 @@
     padding: 0 1.2rem;
 }
 
-#app-home-profile-showcase-user-name{
+#app-home-profile-showcase-user-name {
     font-size: 1.6rem;
 }
 
@@ -49,10 +49,42 @@
     color: rgba(0, 0, 0, 0.6);
     font-size: 1.4rem;
 }
+
 #app-home-profile-showcase-user-bio {
     font-size: 1.4rem;
     height: fit-content;
     text-align: center;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     padding: 1.5rem 0;
+}
+
+#app-home-link-showcase-outer-container {
+    background-color: white;
+    height: fit-content;
+    position: sticky;
+    padding: 1.5rem 1.2rem;
+    margin-top: .8rem;
+    border-radius: .8rem;
+    border: 1px solid rgba(226, 225, 223, 1);
+    top: 8rem;
+}
+
+.app-home-links {
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: rgb(10, 102, 194);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.app-home-links>li:hover {
+    text-decoration: underline solid 1.4px rgb(10, 102, 194);
+}
+
+.app-home-links>p {
+    color: black;
+    cursor:auto;
 }
