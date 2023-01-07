@@ -1,6 +1,6 @@
 #app-home-profile-showcase-outer-container {
     background-color: white;
-    height: 25rem;
+    height: fit-content;
     border-radius: .8rem;
     border: 1px solid rgba(226, 225, 223, 1);
     overflow: hidden;
@@ -49,6 +49,7 @@
 #app-home-profile-showcase-user-title {
     color: rgba(0, 0, 0, 0.6);
     font-size: 1.4rem;
+    text-align: center;
 }
 
 #app-home-profile-showcase-user-bio {

@@ -9,3 +9,16 @@ body {
     display: block;
     /* For Firefox */
 }
+
+.input-error-text {
+    color: #d11124;
+}
+
+.input-error {
+    border-color: #d11124;
+}
+
+.input-error:focus-within {
+    box-shadow: 0 0 0 0px #d11124;
+    border-color: #d11124;
+}
