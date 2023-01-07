@@ -11,12 +11,13 @@ body {
 }
 
 .input-error-text {
-    color: red;
+    color: #d11124;
 }
 
 .input-error {
-    border: 2px solid #d11124;
+    border-color: #d11124;
 }
+
 .input-error:focus-within {
     box-shadow: 0 0 0 0px #d11124;
     border-color: #d11124;

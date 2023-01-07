@@ -58,10 +58,6 @@ const LandingPageLoginForm = () => {
     setPassword(e.target.value);
   };
 
-  useEffect(() => {
-    if (hasSubmitted === false) return
-  }, [email, password])
-
   if (user) {
     return <Redirect to='/feed' />;
   }

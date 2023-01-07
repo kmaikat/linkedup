@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -13,9 +13,14 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [profilePicture, setProfilePicture] = useState('')
+  const [title, setTitle] = useState('')
+  const [bio, setBio] = useState('')
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [signupStage, setSignupStage] = useState(1)
+
+  const [hasSubmitted, setHasSubmited] = useState(false);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -23,23 +28,41 @@ const SignUpForm = () => {
     /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
   );
 
-  const onSignUp = async (e) => {
-    e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
-      }
-    }
-  };
+  // const onSignUp = async (e) => {
+  //   e.preventDefault();
+  //   const submission = {
+  //     "username": username,
+  //     "email": email,
+  //     "password": password,
+  //     "repeat_password": repeatPassword,
+  //     "first_name": firstName,
+  //     "last_name": lastName,
+  //     "profile_picture": profilePicture,
+  //     "title": title,
+  //     "bio": bio,
+  //     "city": city,
+  //     "state": state
+  //   }
+
+  //   const data = await dispatch(signUp(submission));
+  //   // if (data) {
+  //   //   setErrors(data)
+  //   // }
+
+  // };
 
   const phase1Check = async (e) => {
     const errors = {};
     e.preventDefault();
 
+    if (!username) errors.username = "Please enter a username"
+
     if (email.length > 0 === false) errors.email = "Please enter your email"
     else if (!email.trim().match(regex)) {
       errors.email = "Please provide a valid email"
+    } else if (email) {
+      const response = await fetch(`/api/users/email-check/${email}`)
+      if (!response.ok) errors.email = "An account with this email already exists"
     }
 
     if (password.length >= 6 === false) errors.password = "Password must be 6 or more characters long"
@@ -68,6 +91,51 @@ const SignUpForm = () => {
 
     setSignupStage(3)
   }
+
+  const phase3Check = async (e) => {
+    const errors = {};
+    e.preventDefault()
+
+    if (city.length > 0 === false) errors.city = "Please enter a city";
+    if (state.length > 0 === false) errors.state = "Please enter a state";
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
+
+    setSignupStage(4)
+  }
+
+  const phase4Check = async (e) => {
+    const errors = {}
+    e.preventDefault()
+
+    if (title.length > 0 === false) errors.title = "Please enter a title."
+    if (bio.length > 0 === false) errors.bio = "Please enter a bio."
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
+
+    const submission = {
+      "username": username,
+      "email": email,
+      "password": password,
+      "first_name": firstName,
+      "last_name": lastName,
+      "profile_picture": profilePicture,
+      "title": title,
+      "bio": bio,
+      "city": city,
+      "state": state
+    }
+    console.log(submission)
+
+    await dispatch(signUp(submission));
+  }
+
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -98,6 +166,15 @@ const SignUpForm = () => {
   const updateState = (e) => {
     setState(e.target.value);
   };
+  const updateTitle = (e) => {
+    setTitle(e.target.value);
+  };
+  const updateBio = (e) => {
+    setBio(e.target.value);
+  };
+  const updateProfilePicture = (e) => {
+    setProfilePicture(e.target.value);
+  };
 
   if (user) {
     return <Redirect to='/' />;
@@ -114,104 +191,153 @@ const SignUpForm = () => {
             Make the most of your professional life
           </div>
         </div>
-        <div id='signup-bottom-container'>
-          {signupStage === 1 &&
-            <form id='signup-form' onSubmit={phase1Check}>
-              <div>
-                {errors.map((error, ind) => (
-                  <div key={ind}>{error}</div>
-                ))}
-              </div>
-              <div>
-                <label>User Name</label>
-                <input
-                  className='input'
-                  type='text'
-                  name='username'
-                  onChange={updateUsername}
-                  value={username}
-                ></input>
-              </div>
-              <div>
-                <label>Email</label>
-                <input
-                  className='input'
-                  type='text'
-                  name='email'
-                  onChange={updateEmail}
-                  value={email}
-                ></input>
-              </div>
-              <div>
-                <label>Password</label>
-                <input
-                  className='input'
-                  type='password'
-                  name='password'
-                  onChange={updatePassword}
-                  value={password}
-                ></input>
-              </div>
-              <div>
-                <label>Repeat Password</label>
-                <input
-                  className='input'
-                  type='password'
-                  name='repeat_password'
-                  onChange={updateRepeatPassword}
-                  value={repeatPassword}
-                // required={true}
-                ></input>
-              </div>
-              {/* <div>
-                <label>City</label>
-                <input
-                  type='text'
-                  name='city'
-                  onChange={updateCity}
-                  value={city}
-                  required={true}
-                ></input>
-              </div>
-              <div>
-                <label>State</label>
-                <input
-                  type='text'
-                  name='state'
-                  onChange={updateState}
-                  value={state}
-                  required={true}
-                ></input>
-              </div> */}
-            </form>}
-          {signupStage === 2 &&
-            <form id='signup-form' onSubmit={phase2Check}>
-              <div>
-                <label>First Name</label>
-                <input
-                  type='text'
-                  name='first_name'
-                  onChange={updateFirstName}
-                  value={firstName}
-                  required={true}
-                ></input>
-              </div>
-              <div>
-                <label>Last Name</label>
-                <input
-                  type='text'
-                  name='last_name'
-                  onChange={updateLastName}
-                  value={lastName}
-                  required={true}
-                ></input>
-              </div>
-            </form>
-          }
-          <div id='signup-button-container'>
-            <div id='signup-button'>
-              {signupStage === 1 && <button form='signup-form' type='submit'>Next</button>}
-              {signupStage === 2 && <button form='signup-form' type='submit'>Next</button>}
+        <div id="signup-form-outer-container">
+
+          <div id='signup-bottom-container'>
+            {signupStage === 1 &&
+              <form className='signup-form' id="signup-phase-1" onSubmit={phase1Check}>
+                <div>
+                  <label>User Name</label>
+                  <input
+                    className={errors.username ? "input input-error" : "input"}
+                    type='text'
+                    name='username'
+                    onChange={updateUsername}
+                    value={username}
+                  ></input>
+                  <p className="input-error-text">{errors.username}</p>
+                </div>
+                <div>
+                  <label>Email</label>
+                  <input
+                    className={errors.email ? "input input-error" : "input"}
+                    type='text'
+                    name='email'
+                    onChange={updateEmail}
+                    value={email}
+                  ></input>
+                  <p className="input-error-text">{errors.email}</p>
+                </div>
+                <div>
+                  <label>Password (6 or more characters)</label>
+                  <input
+                    className={errors.password ? "input input-error" : "input"}
+                    type='password'
+                    name='password'
+                    onChange={updatePassword}
+                    value={password}
+                  ></input>
+                  <p className="input-error-text">{errors.password}</p>
+                </div>
+                <div>
+                  <label>Repeat Password</label>
+                  <input
+                    className={errors.repeatPassword ? "input input-error" : "input"}
+                    type='password'
+                    name='repeat_password'
+                    onChange={updateRepeatPassword}
+                    value={repeatPassword}
+                  // required={true}
+                  ></input>
+                  <p className="input-error-text">{errors.repeatPassword}</p>
+                </div>
+              </form>}
+            {signupStage === 2 &&
+              <form className='signup-form' id="signup-phase-2" onSubmit={phase2Check}>
+                <div>
+                  <label>First Name</label>
+                  <input
+                    type='text'
+                    name='first_name'
+                    onChange={updateFirstName}
+                    value={firstName}
+                    className={errors.firstName ? "input input-error" : "input"}
+                  ></input>
+                  <p className="input-error-text">{errors.firstName}</p>
+                </div>
+                <div>
+                  <label>Last Name</label>
+                  <input
+                    type='text'
+                    name='last_name'
+                    onChange={updateLastName}
+                    value={lastName}
+                    className={errors.lastName ? "input input-error" : "input"}
+                  ></input>
+                  <p className="input-error-text">{errors.lastName}</p>
+                </div>
+              </form>
+            }
+            {signupStage == 3 &&
+              <form className='signup-form' id="signup-phase-3" onSubmit={phase3Check}>
+                <div>
+                  <label>City</label>
+                  <input
+                    type='text'
+                    name='city'
+                    onChange={updateCity}
+                    value={city}
+                    className={errors.city ? "input input-error" : "input"}
+                  ></input>
+                  <p className='input-error-text'>{errors.city}</p>
+                </div>
+                <div>
+                  <label>State</label>
+                  <input
+                    type='text'
+                    name='state'
+                    onChange={updateState}
+                    value={state}
+                    className={errors.state ? "input input-error" : "input"}
+                  ></input>
+                  <p className='input-error-text'>{errors.state}</p>
+                </div>
+              </form>
+            }
+            {signupStage == 4 &&
+              <form className='signup-form' id="signup-phase-4" onSubmit={phase4Check}>
+                <div>
+                  <label>Title</label>
+                  <input
+                    type='text'
+                    name='title'
+                    onChange={updateTitle}
+                    value={title}
+                    className={errors.title ? "input input-error" : "input"}
+                  ></input>
+                  <p className='input-error-text'>{errors.title}</p>
+                </div>
+                <div>
+                  <label>Bio</label>
+                  <input
+                    type='text'
+                    name='bio'
+                    onChange={updateBio}
+                    value={bio}
+                    className={errors.bio ? "input input-error" : "input"}
+                  ></input>
+                  <p className='input-error-text'>{errors.bio}</p>
+                </div>
+                <div>
+                  <label>Profile Picture</label>
+                  <input
+                    type='text'
+                    name='profile_picture'
+                    onChange={updateProfilePicture}
+                    value={profilePicture}
+                    className={errors.state ? "input input-error" : "input"}
+                  ></input>
+                  {/* <p className='input-error-text'>{errors.profilePicture}</p> */}
+                </div>
+              </form>
+
+            }
+
+            <div className='signup-button-container'>
+              {signupStage === 1 && <button form='signup-phase-1' type='submit' className='signup-submit-button'>Next</button>}
+              {signupStage === 2 && <button form='signup-phase-2' type='submit' className='signup-submit-button'>Next</button>}
+              {signupStage === 3 && <button form='signup-phase-3' type='submit' className='signup-submit-button'>Next</button>}
+              {signupStage === 4 && <button form='signup-phase-4' type='submit' className='signup-submit-button'>Finish</button>}
             </div>
           </div>
         </div>

@@ -1,10 +1,11 @@
-#signup-outer-container{
+#signup-outer-container {
     background-color: #f3f2ef;
     display: flex;
     justify-content: center;
+    font-size: 1.4rem;
 }
 
-#signup-inner-container{
+#signup-inner-container {
     padding: 2.5rem 0rem;
     max-width: 1128px;
     width: 100%;
@@ -15,7 +16,7 @@
     width: 12%;
 }
 
-#heading-subtitle-content{
+#heading-subtitle-content {
     display: flex;
     justify-content: center;
     font-size: 3.2rem;
@@ -24,19 +25,75 @@
 
 #signup-bottom-container {
     display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+#signup-form-outer-container {
+    display: flex;
     justify-content: center;
 }
 
-#signup-form {
-    background-color: white;
+.signup-form {
     padding: 2.4rem;
-    border-radius: 8px;
-    width: 36rem;
 }
 
-.input {
-    border: 1px solid rgba(0,0,0,0.6);
+#signup-outer-container div>label {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.4rem;
+    margin: .5rem 0;
+}
+
+#signup-outer-container .input {
+    border: 1px solid rgba(0, 0, 0, 0.6);
     width: 35rem;
-    height: 3rem;
+    height: 3.4rem;
     border-radius: 4px;
+    padding: 0 1rem;
+}
+
+#signup-outer-container .input:focus {
+    border-width: 2px;
+}
+
+#signup-outer-container .input-error {
+    border-color: #d11124;
+}
+
+#signup-outer-container form>div {
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+    margin-bottom: 1rem;
+}
+
+#signup-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.signup-submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 2.4rem;
+    height: 4.8rem;
+    background-color: #0a66c2;
+    color: white;
+}
+
+.signup-submit-button:hover{
+    background-color: #006097;
+}
+
+.signup-button-container {
+    padding: 2.4rem;
+    padding-top: 0;
+    width: 100%;
 }

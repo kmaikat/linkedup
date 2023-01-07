@@ -15,6 +15,16 @@ def users():
     return {'users': [user.to_dict() for user in users]}
 
 
+@user_routes.route("/email-check/<string:email>")
+def email_check(email):
+    user = User.query.filter(User.email.ilike(email)).one_or_none();
+
+    if user:
+        return jsonify({"error": "An account with this email already exists"}), 400
+    else:
+        return jsonify({"message": "Good to go!"}), 200
+
+
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
