@@ -7,6 +7,7 @@ import { createPostThunk, editPostThunk } from "../../store/posts";
 function CreatePost({ setShowModal, post }) {
     const [body, setBody] = useState(post?.body || "");
     const [picture, setPicture] = useState(post?.picture || "")
+    const [errors, setErrors] = useState({})
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
@@ -49,6 +50,13 @@ function CreatePost({ setShowModal, post }) {
         }
     };
 
+    useEffect(() => {
+        const errors = {}
+        if (body.length < 1 || body.length > 3000) errors.body = true;
+
+        setErrors(errors)
+    }, [body])
+
     return (
         <div id="create-post-modal-container">
             <div id="create-post-heading-exit-container">
@@ -84,11 +92,11 @@ function CreatePost({ setShowModal, post }) {
                     <label id="postImageContainer">
                         <i className="fa-regular fa-image" />
                         <p>Image</p>
-                      {picture && <div id="postImage">
+                        {picture && <div id="postImage">
                             <img src={picture} alt="preview" />
                         </div>}
                         <input style={{ visibility: "hidden", width: "0" }} type="file" accept='image/png, image/jpg, image/jpeg, image/gif' onChange={updateProfilePicture} /></label>
-                    <button id="create-post-form-can-submit" form="body-form" type="submit" disabled={body.length < 1}>{`${post ? "Save Changes" : "Post"}`}</button>
+                    <button id="create-post-form-can-submit" form="body-form" type="submit" disabled={errors.body}>{`${post ? "Save Changes" : "Post"}`}</button>
                 </div>
             </div>
         </div>

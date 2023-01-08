@@ -119,6 +119,8 @@
 
 #post-body-container {
     padding: 0 1.4rem;
+    word-break: break-word;
+    word-wrap: break-word;
 }
 
 #post-spacer {
@@ -127,7 +129,6 @@
     justify-content: flex-end;
     color: rgba(0, 0, 0, 0.6);
     font-size: 1.3rem;
-    border-bottom: 1px solid rgba(226, 225, 223, 1);
 }
 
 #comment-number-button:hover {
@@ -140,6 +141,8 @@
     display: flex;
     justify-content: flex-end;
     color: rgba(0, 0, 0, 0.6);
+    border-top: 1px solid rgba(226, 225, 223, 1);
+    margin: 0 1.4rem;
 }
 
 #comment-interaction {
