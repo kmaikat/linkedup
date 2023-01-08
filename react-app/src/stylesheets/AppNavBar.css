@@ -51,6 +51,8 @@
     height: 100%;
     padding: .6rem 0;
     color: black;
+    cursor: pointer;
+    position: relative;
 }
 
 #app-navbar-home-container {
