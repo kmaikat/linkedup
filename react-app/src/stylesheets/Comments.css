@@ -31,25 +31,21 @@
 }
 
 #comment-input-and-submit {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
 }
 
 #comment-input-and-submit p {
-    resize: none;
     width: 100%;
     padding: .95rem;
     min-height: 4rem;
     overflow-y: hidden;
     border: 1px solid lightgray;
-    display: flex;
-    align-items: center;
     line-height: normal;
     border-radius: 24px;
     overflow-x: hidden;
-    word-break: break-word;
 }
 
 #comment-input-and-submit button {
@@ -61,6 +57,7 @@
     padding: .2rem 1.2rem;
     border-radius: 25px;
     line-height: 2rem;
+    margin-right: 1.4rem;
 }
 
 #comment-input-and-submit button:hover {
@@ -165,7 +162,8 @@
     transition: background-color 167ms cubic-bezier(.4, 0, .2, 1)
 }
 
-#comment-section-save-changes-button:disabled {
+#comment-section-save-changes-button:disabled,
+#comment-input-and-submit button:disabled {
     background-color: rgba(0, 0, 0, 0.08);
     color: rgba(0, 0, 0, 0.3);
     cursor: not-allowed;

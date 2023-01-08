@@ -84,6 +84,7 @@ function CreatePost({ setShowModal, post }) {
                         <textarea name='body' placeholder='What do you want to talk about?' value={body} onChange={updateBody} />
                     </div>
                 </form>
+                {body.length > 3000 && <p>{body.length}/3000</p>}
             </div>
             <div id="create-post-footer-container">
                 <div id="empty-div">

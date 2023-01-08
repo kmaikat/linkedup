@@ -14,6 +14,7 @@ function CommentCard({ comment, user }) {
     const [body, setBody] = useState("")
     const [showEdit, setShowEdit] = useState(false)
     const [firstLoad, setFirstLoad] = useState(true)
+    const [errors, setErrors] = useState({})
     const dispatch = useDispatch()
     const postContent = useRef(null)
 
@@ -64,6 +65,13 @@ function CommentCard({ comment, user }) {
         selection.addRange(range)
     }, [showEdit])
 
+    useEffect(() => {
+        const errors = {}
+        if (body.length < 1 || body.length > 1500) errors.body = true;
+
+        setErrors(errors)
+    }, [body])
+
     return (
         <li key={comment.id} className="all-comment-section-comment-container">
             <div id="create-comment-user-info-icon">
@@ -75,18 +83,11 @@ function CommentCard({ comment, user }) {
                 {showEdit === false ?
                     <p className="all-comment-section-comment-body">{comment.body}</p> :
                     <div className="all-comment-section-edit-comment">
-                        <p contentEditable={true} name="body" placeholder="Add a comment..." onInput={updateBody} ref={postContent} onKeyDown={(event) => {
-                            if (event.key === "Enter") {
-                                event.preventDefault();
-
-                                if (event.target.textContent.length > 0) {
-                                    submitComment(event)
-                                }
-                            }
-                        }} />
+                        <p contentEditable={true} name="body" placeholder="Add a comment..." onInput={updateBody} ref={postContent} />
                         <div className="all-comment-section-edit-comment-buttons">
-                            <button id="comment-section-save-changes-button" onClick={submitComment} disabled={body.length < 1}>Save Changes</button>
+                            <button id="comment-section-save-changes-button" onClick={submitComment} disabled={errors.body}>Save Changes</button>
                             <button id="comment-section-cancel-button" onClick={() => setShowEdit(false)}>Cancel</button>
+                            {body && errors.body && <label style={{ marginLeft: "1.4rem", color: "#d11124" }}>{body.length}/1500</label>}
                         </div>
                     </div>
 

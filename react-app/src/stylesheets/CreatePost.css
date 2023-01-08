@@ -112,8 +112,14 @@
 
 #form-container {
     display: flex;
-    justify-content: center;
-    padding: 12px 0;
+    flex-direction: column;
+    padding: 12px 2.4rem;
+    ;
+}
+
+#form-container>p {
+    font-size: 1.2rem;
+    color: #d11124;
 }
 
 #body-form textarea {
