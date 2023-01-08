@@ -10,7 +10,6 @@ const LogoutButton = () => {
   const onLogout = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(e)
     await dispatch(logout());
   };
 

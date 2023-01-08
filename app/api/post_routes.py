@@ -38,7 +38,8 @@ def make_post():
         try:
             new_post = Post(
                 body=form.data['body'],
-                user_id=current_user_id
+                user_id=current_user_id,
+                picture=form.data["picture"],
             )
             db.session.add(new_post)
             db.session.commit()
@@ -55,14 +56,6 @@ def make_post():
 def make_comment(post_id):
     current_user_info = User.query.get(current_user.id).to_dict()
     current_user_id = current_user_info["id"]
-
-    print("\n")
-    print("\n")
-    print("\n")
-    print((request.get_json()))
-    print("\n")
-    print("\n")
-    print("\n")
 
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -96,6 +89,7 @@ def update_post(postId):
             #  i left off here
             existing_post_data = request.get_json()
             update_this_post.body = existing_post_data["body"]
+            update_this_post.picture = existing_post_data["picture"]
             db.session.commit()
             return update_this_post.to_dict_with_user(), 200
         else:

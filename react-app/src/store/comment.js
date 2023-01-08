@@ -31,7 +31,6 @@ export const deleteCommentThunk = (commentId) => async (dispatch) => {
         method: "DELETE"
     })
 
-    console.log(response)
 
     if (response.ok) {
         dispatch(getPostsThunk());

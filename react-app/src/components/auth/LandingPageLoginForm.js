@@ -62,7 +62,6 @@ const LandingPageLoginForm = () => {
     return <Redirect to='/feed' />;
   }
 
-  console.log(errors)
   return (
     <>
       <h2 className="input-error-test-landing-page-error-title">{errors.both ? errors.both : errors.email || errors.password}</h2>

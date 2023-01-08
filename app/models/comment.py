@@ -13,7 +13,7 @@ class Comment(db.Model):
         add_prefix_for_prod("users.id")), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("posts.id")), nullable=False)
-    body = db.Column(db.String, nullable=False)
+    body = db.Column(db.String(1500), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 

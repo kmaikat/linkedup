@@ -13,6 +13,7 @@ TimeAgo.addDefaultLocale(en)
 
 const Comments = ({ post }) => {
     const [body, setBody] = useState('')
+    const [errors, setErrors] = useState({})
     const user = useSelector(state => state.session.user);
     // const post = useSelector(state => state.session.post);
     const dispatch = useDispatch()
@@ -43,6 +44,14 @@ const Comments = ({ post }) => {
 
     const comments = Object.values(post.comments)
 
+    useEffect(() => {
+        const errors = {}
+        if (body.length < 1 || body.length > 1500) errors.body = true;
+
+        setErrors(errors)
+    }, [body])
+
+    console.log("BODY:", body.length, errors)
     return (
         <div id="comment-section-container">
             <div id="comment-input-section-container">
@@ -52,8 +61,11 @@ const Comments = ({ post }) => {
                         <img id='no-pp' src={user.profile_picture || noPP} />
                     </div>
                     <div id="comment-input-and-submit">
-                        <p contentEditable={true} name="body" placeholder="Add a comment..." onInput={updateBody} ref={postContent} onKeyDown={(event) => event.key === "Enter" ? submitComment(event) : undefined} />
-                        {body && <button onClick={submitComment}>Post</button>}
+                        <p contentEditable={true} name="body" placeholder="Add a comment..." onInput={updateBody} ref={postContent} />
+                        <div>
+                            {body && <button onClick={submitComment} disabled={errors.body}>Post</button>}
+                            {body && errors.body && <label style={{color: "#d11124"}}>{body.length}/1500</label>}
+                        </div>
                     </div>
                 </form>
             </div>

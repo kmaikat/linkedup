@@ -131,7 +131,6 @@ const SignUpForm = () => {
       "city": city,
       "state": state
     }
-    console.log(submission)
 
     await dispatch(signUp(submission));
   }
@@ -172,13 +171,30 @@ const SignUpForm = () => {
   const updateBio = (e) => {
     setBio(e.target.value);
   };
-  const updateProfilePicture = (e) => {
-    setProfilePicture(e.target.value);
+  const updateProfilePicture = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", e.target.files[0]);
+
+    const res = await fetch("/api/images/", {
+      method: "POST",
+      body: formData
+    })
+
+    if (res.ok) {
+      const data = await res.json();
+      setProfilePicture(data.url);
+    } else {
+      const errors = await res.json();
+      console.log(errors)
+      errors.image = "Image failed to upload;"
+    }
   };
 
   if (user) {
     return <Redirect to='/' />;
   }
+
 
   return (
     <div id='signup-outer-container'>
@@ -321,10 +337,10 @@ const SignUpForm = () => {
                 <div>
                   <label>Profile Picture</label>
                   <input
-                    type='text'
+                    type='file'
+                    accept='image/png, image/jpg, image/jpeg, image/gif'
                     name='profile_picture'
                     onChange={updateProfilePicture}
-                    value={profilePicture}
                     className={errors.state ? "input input-error" : "input"}
                   ></input>
                   {/* <p className='input-error-text'>{errors.profilePicture}</p> */}
