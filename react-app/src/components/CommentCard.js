@@ -20,7 +20,6 @@ function CommentCard({ comment, user }) {
     const onDelete = async (event) => {
         event.stopPropagation()
         event.preventDefault()
-        console.log("Deleting...")
         const errors = await dispatch(deleteCommentThunk(comment.id))
 
         if (errors) {

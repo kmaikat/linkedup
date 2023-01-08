@@ -131,7 +131,6 @@ const SignUpForm = () => {
       "city": city,
       "state": state
     }
-    console.log(submission)
 
     await dispatch(signUp(submission));
   }
@@ -196,7 +195,6 @@ const SignUpForm = () => {
     return <Redirect to='/' />;
   }
 
-  console.log(profilePicture);
 
   return (
     <div id='signup-outer-container'>

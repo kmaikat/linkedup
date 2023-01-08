@@ -12,7 +12,6 @@ function CreatePost({ setShowModal, post }) {
 
     const updateBody = (e) => {
         setBody(e.target.value);
-        if (e.target.style.height.slice(0, -2) <= 216) e.target.style.height = e.target.scrollHeight + "px"
     };
 
     const submitPost = async (event) => {
@@ -29,6 +28,26 @@ function CreatePost({ setShowModal, post }) {
             setShowModal(false)
         }
     }
+
+    const updateProfilePicture = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", e.target.files[0]);
+
+        const res = await fetch("/api/images/", {
+            method: "POST",
+            body: formData
+        })
+
+        if (res.ok) {
+            const data = await res.json();
+            setPicture(data.url);
+        } else {
+            const errors = await res.json();
+            console.log(errors)
+            errors.image = "Image failed to upload;"
+        }
+    };
 
     return (
         <div id="create-post-modal-container">
@@ -62,6 +81,13 @@ function CreatePost({ setShowModal, post }) {
                 <div id="empty-div">
                 </div>
                 <div id="post-container">
+                    <label id="postImageContainer">
+                        <i className="fa-regular fa-image" />
+                        <p>Image</p>
+                      {picture && <div id="postImage">
+                            <img src={picture} alt="preview" />
+                        </div>}
+                        <input style={{ visibility: "hidden", width: "0" }} type="file" accept='image/png, image/jpg, image/jpeg, image/gif' onChange={updateProfilePicture} /></label>
                     <button id="create-post-form-can-submit" form="body-form" type="submit" disabled={body.length < 1}>{`${post ? "Save Changes" : "Post"}`}</button>
                 </div>
             </div>

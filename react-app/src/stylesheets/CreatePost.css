@@ -74,6 +74,7 @@
     padding: .5rem 1rem;
     border-radius: 50%;
 }
+
 #create-post-exit-button:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.06);
@@ -117,7 +118,8 @@
     width: 100%;
     font-size: 16px;
     resize: none;
-    min-height: 9rem;
+    height: 19rem;
+    overflow-y: auto;
 }
 
 #body-form {
@@ -126,19 +128,15 @@
     min-height: 96px;
 }
 
-#create-post-footer-container {
-    min-height: 120px;
-}
-
-#empty-div {
+/* #empty-div {
     height: 56px;
-}
+} */
 
 #post-container {
     padding: 12px 24px;
     height: 6.4rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 #create-post-form-can-submit {
@@ -170,4 +168,36 @@
 
 #create-post-form-can-submit:enabled:not(disabled):hover {
     background-color: #004182;
+}
+
+#postImageContainer {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: .6rem 1.2rem;
+    font-weight: 600;
+    font-size: 16px;
+    color: #0A66C2;
+    border-radius: .6rem;
+}
+
+#postImageContainer:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+}
+
+#postImage {
+    height: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: .6rem;
+}
+
+#postImage img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }

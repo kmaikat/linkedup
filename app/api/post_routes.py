@@ -38,7 +38,8 @@ def make_post():
         try:
             new_post = Post(
                 body=form.data['body'],
-                user_id=current_user_id
+                user_id=current_user_id,
+                picture=form.data["picture"],
             )
             db.session.add(new_post)
             db.session.commit()
@@ -63,7 +64,6 @@ def make_comment(post_id):
         try:
             new_comment = Comment(
                 body=form.data['body'],
-                picture=form.data["picture"],
                 user_id=current_user_id,
                 post_id=post_id
             )

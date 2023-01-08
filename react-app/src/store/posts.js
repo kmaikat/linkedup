@@ -135,7 +135,6 @@ export default function reducer(state = initialState, action) {
         case EDIT_POST: {
             const newState = { ...state }
             const editedPost = action.post
-            console.log(newState, editedPost)
             newState[action.post.id] = editedPost
             return newState
         }

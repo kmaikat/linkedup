@@ -29,7 +29,6 @@ const LoginForm = () => {
     e.preventDefault();
     setHasSubmitted(true);
     const data = await dispatch(login(email, password));
-    console.log(data)
 
     const errorObj = {};
     if (!email) errorObj.email = "Please enter your email adress."

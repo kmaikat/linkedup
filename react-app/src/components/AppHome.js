@@ -30,7 +30,6 @@ const AppHome = () => {
                 <div className="app-home-feed">
                     <CreatePostModal />
                     <ul>
-                        {console.log(posts)}
                         {posts.length > 0 && posts.map((post) => {
                             return (<PostCard post={post} />)
                         }).reverse()}
