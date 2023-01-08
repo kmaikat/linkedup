@@ -96,7 +96,8 @@
     line-height: 1.4rem;
     font-weight: 600;
     height: fit-content;
-    margin-bottom: .35rem
+    margin-bottom: .35rem;
+    width: calc(100% - 57px);
 }
 
 .all-comment-section-user-title {
@@ -104,6 +105,7 @@
     line-height: 1.2rem;
     color: rgba(0, 0, 0, 0.6);
     margin-bottom: 2rem;
+    width: calc(100% - 57px);
 }
 
 .all-comment-section-comment-body {
@@ -114,8 +116,8 @@
 
 .all-comment-section-top-right {
     position: absolute;
-    top: 5%;
-    right: 4%;
+    top: 0;
+    right: 1.4rem;
     display: flex;
     gap: .5rem;
     align-items: center;

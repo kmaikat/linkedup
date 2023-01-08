@@ -83,8 +83,10 @@
 }
 
 #create-post-user-info-container {
-    display: flex;
-    height: 78px;
+    display: grid;
+    grid-template-columns: 4.8rem auto;
+    word-break: break-word;
+    min-height: 78px;
     padding: 12px 24px;
 }
 
