@@ -40,6 +40,7 @@
     align-items: center;
     gap: 2rem;
     padding: 0 1.2rem;
+    word-break: break-word;
 }
 
 #app-home-profile-showcase-user-name {

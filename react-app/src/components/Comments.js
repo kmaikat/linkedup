@@ -51,7 +51,7 @@ const Comments = ({ post }) => {
         setErrors(errors)
     }, [body])
 
-    console.log("BODY:", body.length, errors)
+
     return (
         <div id="comment-section-container">
             <div id="comment-input-section-container">
