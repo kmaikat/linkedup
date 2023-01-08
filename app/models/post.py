@@ -14,7 +14,7 @@ class Post(db.Model):
     body = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
-
+    picture = db.Column(db.String)
     user = db.relationship("User", back_populates="posts")
     comments = db.relationship(
         "Comment", back_populates="post", cascade="all, delete-orphan")

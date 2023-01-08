@@ -3,5 +3,8 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 from app.models import Post
 
+
 class PostForm(FlaskForm):
-    body = StringField('Body', validators=[DataRequired("There's nothing to post here..")])
+    body = StringField('Body', validators=[
+                       DataRequired("There's nothing to post here..")])
+    picture = StringField(('Profile Picture'))
