@@ -5,6 +5,8 @@
     display: flex;
     border-radius: .8rem;
     border: 1px solid rgba(226, 225, 223, 1);
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 #create-post-content {

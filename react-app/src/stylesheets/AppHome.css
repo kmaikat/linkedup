@@ -35,6 +35,8 @@
     height: fit-content;
     line-height: 1.8rem;
     margin-bottom: .8rem;
+    padding: 1.4rem;
+    padding-bottom: 0;
 }
 
 #app-home-heading-left-container {
@@ -111,14 +113,27 @@
     position: relative;
 }
 
-.app-home-post>*:not(#post-body-image):not(#interaction-container):not(#post-spacer):not(#comment-container):not(#comment-interaction) {
+.app-home-post>*:not(#post-body-image):not(#interaction-container):not(#post-spacer):not(#comment-container):not(#comment-interaction):not(#post-body-container):not(#app-home-post-heading-container) {
     padding: 1.4rem;
 }
 
+#post-body-container {
+    padding: 0 1.4rem;
+}
+
 #post-spacer {
+    padding: .8rem 1.6rem;
+    display: flex;
+    justify-content: flex-end;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.3rem;
     border-bottom: 1px solid rgba(226, 225, 223, 1);
-    height: 1.6rem;
-    padding: .8rem 0;
+}
+
+#comment-number-button:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0073b1;
 }
 
 #interaction-container {

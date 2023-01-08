@@ -1,12 +1,12 @@
 #comment-section-container {
     margin-top: .8rem;
     word-break: break-word;
+    word-wrap: break-word;
 }
 
 
 #comment-body-form {
     display: flex;
-    gap: 1rem;
     margin-bottom: 2rem;
     padding: 0 1.6rem;
 }
@@ -16,10 +16,12 @@
 }
 
 #create-comment-user-info-icon {
-    width: 4rem;
+    min-width: 4rem;
+    min-height: 4rem;
     height: 4rem;
     border-radius: 100%;
     overflow: hidden;
+    margin-right: 1rem;
 }
 
 #create-comment-user-info-icon img {
@@ -29,7 +31,7 @@
 }
 
 #comment-input-and-submit {
-    width: 88%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
@@ -75,7 +77,6 @@
 
 .all-comment-section-comment-container {
     display: flex;
-    gap: 1rem;
     position: relative;
 }
 
@@ -86,7 +87,7 @@
     border-radius: 1rem;
     border-top-left-radius: 0;
     padding: .8rem 1.2rem;
-    width: 88%;
+    width: 90%;
 }
 
 .all-comment-section-comment-content>p {

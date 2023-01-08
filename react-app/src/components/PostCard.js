@@ -78,7 +78,7 @@ function PostCard({ post }) {
             <div id="post-body-image">
                 <img src={post.picture} />
             </div>
-            <div id="post-spacer">{post.comments ? `${Object.keys(post.comments).length}` : ''}</div>
+            <div id="post-spacer">{Object.keys(post.comments).length ? (<div id="comment-number-button" onClick={() => setShowCommentSection(true)}>{Object.keys(post.comments).length} comments </div>) : ''}</div>
             <div id="interaction-container">
                 <div id="comment-interaction" onClick={() => setShowCommentSection(true)}>
                     <i id="comment-icon" className="fa-regular fa-comment-dots"></i>
