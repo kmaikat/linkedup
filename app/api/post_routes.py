@@ -56,14 +56,6 @@ def make_comment(post_id):
     current_user_info = User.query.get(current_user.id).to_dict()
     current_user_id = current_user_info["id"]
 
-    print("\n")
-    print("\n")
-    print("\n")
-    print((request.get_json()))
-    print("\n")
-    print("\n")
-    print("\n")
-
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -71,6 +63,7 @@ def make_comment(post_id):
         try:
             new_comment = Comment(
                 body=form.data['body'],
+                picture=form.data["picture"],
                 user_id=current_user_id,
                 post_id=post_id
             )

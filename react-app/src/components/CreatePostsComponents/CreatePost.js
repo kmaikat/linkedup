@@ -6,6 +6,7 @@ import { createPostThunk, editPostThunk } from "../../store/posts";
 
 function CreatePost({ setShowModal, post }) {
     const [body, setBody] = useState(post?.body || "");
+    const [picture, setPicture] = useState(post?.picture || "")
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
@@ -18,7 +19,8 @@ function CreatePost({ setShowModal, post }) {
         event.preventDefault();
         const submission = {
             "body": body,
-            "user": user.id
+            "user": user.id,
+            "picture": picture,
         }
         const reponseErrors = post ? await dispatch(editPostThunk(submission, post.id)) : await dispatch(createPostThunk(submission))
         if (reponseErrors) {
