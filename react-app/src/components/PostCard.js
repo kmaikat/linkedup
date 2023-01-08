@@ -59,23 +59,26 @@ function PostCard({ post }) {
                     </div>
                 </div>
                 {user?.id === post.user_id &&
-                <div id="app-home-heading-right-container-options" onClick={() => setShowPostOptions(true)} tabIndex={showPostOptions ? 1 : -1} onBlur={() => setShowPostOptions(false)}>
-                    <img id="three-dots" src={threeDots} />
-                    {showPostOptions &&
-                        <ul id="app-home-heading-right-container-options-list">
-                            <li onClick={() => setShowModal(true)}>
-                                Edit
-                            </li>
-                            <li onClick={() => handleDeleteToggle(post)}>Delete</li>
-                        </ul>
-                    }
-                </div>
-}
+                    <div id="app-home-heading-right-container-options" onClick={() => setShowPostOptions(true)} tabIndex={showPostOptions ? 1 : -1} onBlur={() => setShowPostOptions(false)}>
+                        <img id="three-dots" src={threeDots} />
+                        {showPostOptions &&
+                            <ul id="app-home-heading-right-container-options-list">
+                                <li onClick={() => setShowModal(true)}>
+                                    Edit
+                                </li>
+                                <li onClick={() => handleDeleteToggle(post)}>Delete</li>
+                            </ul>
+                        }
+                    </div>
+                }
             </div>
             <div id="post-body-container">
                 {post.body}
             </div>
-            <div id="post-spacer"></div>
+            <div id="post-body-image">
+                <img src={post.picture} />
+            </div>
+            <div id="post-spacer">{post.comments ? `${Object.keys(post.comments).length}` : ''}</div>
             <div id="interaction-container">
                 <div id="comment-interaction" onClick={() => setShowCommentSection(true)}>
                     <i id="comment-icon" className="fa-regular fa-comment-dots"></i>

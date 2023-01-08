@@ -24,6 +24,7 @@ class Post(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'body': self.body,
+            'picture': self.picture,
             'created_at': self.created_at,
             'updated_at': self.created_at
         }
@@ -33,6 +34,7 @@ class Post(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'body': self.body,
+            'picture': self.picture,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'user': self.user.to_dict(),

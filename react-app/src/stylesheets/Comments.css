@@ -8,6 +8,7 @@
     display: flex;
     gap: 1rem;
     margin-bottom: 2rem;
+    padding: 0 1.6rem;
 }
 
 #comment-input-section-container {
@@ -69,6 +70,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding: 0 1.6rem 1.6rem;
 }
 
 .all-comment-section-comment-container {
@@ -128,7 +130,7 @@
     line-height: 1.2rem;
 }
 
-.all-comments-sections-comment-options{
+.all-comments-sections-comment-options {
     position: absolute;
     min-width: 21rem;
     background-color: white;
@@ -139,11 +141,11 @@
     z-index: 2;
 }
 
-.all-comments-sections-comment-options li{
+.all-comments-sections-comment-options li {
     padding: .8rem 1.6rem;
 }
 
-.all-comments-sections-comment-options li:hover{
+.all-comments-sections-comment-options li:hover {
     background-color: rgba(0, 0, 0, 0.06);
 }
 
@@ -152,15 +154,16 @@
 }
 
 #comment-section-save-changes-button {
-    background-color:#0a66c2;
+    background-color: #0a66c2;
     border-radius: 3rem;
     color: white;
     font-size: 1.6rem;
     font-weight: 500;
-    padding: .1rem 1.2rem ;
+    padding: .1rem 1.2rem;
     margin-right: .5rem;
     transition: background-color 167ms cubic-bezier(.4, 0, .2, 1)
 }
+
 #comment-section-save-changes-button:disabled {
     background-color: rgba(0, 0, 0, 0.08);
     color: rgba(0, 0, 0, 0.3);
@@ -168,7 +171,7 @@
 }
 
 #comment-section-save-changes-button:enabled:not(disabled):hover {
-    background-color:#004182;
+    background-color: #004182;
 }
 
 #comment-section-cancel-button {
@@ -177,11 +180,12 @@
     border-radius: 3rem;
     font-size: 1.6rem;
     font-weight: 500;
-    padding: .1rem 1.2rem ;
+    padding: .1rem 1.2rem;
     transition: background-color 167ms cubic-bezier(.4, 0, .2, 1)
 }
+
 #comment-section-cancel-button:hover {
     color: rgba(0, 0, 0, 0.6);
-    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.6) ;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.6);
     background-color: rgba(0, 0, 0, 0.08);
 }

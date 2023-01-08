@@ -89,6 +89,7 @@ def update_post(postId):
             #  i left off here
             existing_post_data = request.get_json()
             update_this_post.body = existing_post_data["body"]
+            update_this_post.picture = existing_post_data["picture"]
             db.session.commit()
             return update_this_post.to_dict_with_user(), 200
         else:
