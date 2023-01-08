@@ -7,7 +7,7 @@ from app.s3_help import upload_file_to_s3, allowed_file, get_unique_filename
 image_routes = Blueprint('images', __name__)
 
 
-@image_routes.route("/upload", method=["POST"])
+@image_routes.route("/", methods=["POST"])
 @login_required
 def upload_image():
     if "image" not in request.files:
