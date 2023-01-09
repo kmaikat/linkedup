@@ -69,12 +69,12 @@ const Comments = ({ post }) => {
                     </div>
                 </form>
             </div>
-            <ul id="all-comment-section-container">
+            {comments.length > 0 && < ul id="all-comment-section-container">
                 {comments.map(comment => (
                     <CommentCard key={comment.id} comment={comment} user={user} />
                 )).reverse()}
-            </ul>
-        </div>
+            </ul>}
+        </div >
     )
 }
 
