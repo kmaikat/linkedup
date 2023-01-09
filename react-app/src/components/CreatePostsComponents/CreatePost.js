@@ -17,6 +17,7 @@ function CreatePost({ setShowModal, post }) {
 
     const submitPost = async (event) => {
         event.preventDefault();
+        event.stopPropagation();
         const submission = {
             "body": body,
             "user": user.id,
@@ -32,6 +33,7 @@ function CreatePost({ setShowModal, post }) {
 
     const updateProfilePicture = async (e) => {
         e.preventDefault();
+        e.stopPropagation();
         const formData = new FormData();
         formData.append("image", e.target.files[0]);
 
@@ -52,7 +54,7 @@ function CreatePost({ setShowModal, post }) {
 
     useEffect(() => {
         const errors = {}
-        if (body.length < 1 || body.length > 3000) errors.body = true;
+        if (body.trim().length < 1 || body.length > 3000) errors.body = true;
 
         setErrors(errors)
     }, [body])

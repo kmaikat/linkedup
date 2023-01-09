@@ -19,6 +19,7 @@
     min-width: 4rem;
     min-height: 4rem;
     height: 4rem;
+    width: 4rem;
     border-radius: 100%;
     overflow: hidden;
     margin-right: 1rem;
@@ -143,6 +144,13 @@
 
 .all-comments-sections-comment-options li {
     padding: .8rem 1.6rem;
+}
+
+.all-comments-sections-comment-options>li>i {
+    color: rgba(0, 0, 0, 0.6);
+    ;
+    font-size: 1.8rem;
+    margin-right: 2rem;
 }
 
 .all-comments-sections-comment-options li:hover {

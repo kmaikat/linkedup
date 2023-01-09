@@ -21,10 +21,16 @@
     height: min-content;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    left:50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
     border: white 3px solid;
+}
+
+#app-home-profile-showcase-icon-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 #no-pp {
@@ -89,5 +95,5 @@
 
 .app-home-links>p {
     color: black;
-    cursor:auto;
+    cursor: auto;
 }

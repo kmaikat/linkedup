@@ -67,7 +67,7 @@ function CommentCard({ comment, user }) {
 
     useEffect(() => {
         const errors = {}
-        if (body.length < 1 || body.length > 1500) errors.body = true;
+        if (body.trim().length < 1 || body.length > 1500) errors.body = true;
 
         setErrors(errors)
     }, [body])
@@ -87,7 +87,7 @@ function CommentCard({ comment, user }) {
                         <div className="all-comment-section-edit-comment-buttons">
                             <button id="comment-section-save-changes-button" onClick={submitComment} disabled={errors.body}>Save Changes</button>
                             <button id="comment-section-cancel-button" onClick={() => setShowEdit(false)}>Cancel</button>
-                            {body && errors.body && <label style={{ marginLeft: "1.4rem", color: "#d11124" }}>{body.length}/1500</label>}
+                            {body.trim().length > 0 && errors.body && <label style={{ marginLeft: "1.4rem", color: "#d11124" }}>{body.length}/1500</label>}
                         </div>
                     </div>
 
@@ -105,9 +105,10 @@ function CommentCard({ comment, user }) {
                                     event.preventDefault()
                                     setShowCommentOptions(false)
                                     setShowEdit(true)
-                                }} id="comment-edit-button">Edit</li>
+                                }} id="comment-edit-button">
+                                    <i class="fa-solid fa-pencil"></i>Edit</li>
                                 <li onClick={onDelete}
-                                >Delete</li>
+                                ><i class="fa-solid fa-trash"></i>Delete</li>
                             </ul>
                         }
                     </div>}
