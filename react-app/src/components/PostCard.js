@@ -32,6 +32,8 @@ function PostCard({ post }) {
 
     const handleDeleteToggle = async (post) => {
         const errors = dispatch(deletePostThunk(post))
+        setShowCommentSection(false)
+        setShowPostOptions(false)
     }
 
     return (
@@ -64,7 +66,7 @@ function PostCard({ post }) {
                         {showPostOptions &&
                             <ul id="app-home-heading-right-container-options-list">
                                 <li onClick={() => setShowModal(true)}>
-                                <i class="fa-solid fa-pencil" id="post-edit-icon"></i>Edit
+                                    <i class="fa-solid fa-pencil" id="post-edit-icon"></i>Edit
                                 </li>
                                 <li onClick={() => handleDeleteToggle(post)}><i class="fa-solid fa-trash-can" id="post-delete-icon"></i>Delete</li>
                             </ul>
