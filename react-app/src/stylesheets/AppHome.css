@@ -123,7 +123,9 @@
     word-break: break-word;
     word-wrap: break-word;
 }
-
+#post-body-image{
+        margin-top: 1.2rem;
+}
 #post-spacer {
     padding: .8rem 1.6rem;
     display: flex;
