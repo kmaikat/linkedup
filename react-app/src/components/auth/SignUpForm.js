@@ -199,7 +199,7 @@ const SignUpForm = () => {
       <div id='signup-inner-container'>
         <div id='heading-container'>
           <div id='heading-logo-container'>
-            <img src={logo} alt='logo' />
+            <a href='/'><img src={logo} alt='logo' /></a>
           </div>
           <div id='heading-subtitle-content'>
             Make the most of your professional life
