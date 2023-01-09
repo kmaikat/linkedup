@@ -2,13 +2,35 @@
     height: 100%;
 }
 
-#right-home-about-outer-container{
+#right-home-about-container{
     background-color: white;
     height: fit-content;
     border-radius: .8rem;
     border: 1px solid rgba(226, 225, 223, 1);
     width: 100%;
+    padding: 1.4rem;
+    font-size: 1.4rem;
 }
+
+#right-home-about-container>p:first-child, #right-home-about-container>p:nth-child(3), #right-home-about-container>p:nth-child(5) {
+    font-size: 1.6rem;
+    margin-bottom:  1rem;
+    font-weight: 500;
+}
+#right-home-about-container>ul>li{
+    list-style: inside;
+    line-height: 2rem;
+}
+#right-home-about-container>ul>p{
+    padding-left: 1.9rem;
+    color: rgba(0,0,0,0.6);
+}
+
+.about-title {
+    padding-bottom: 1.6rem;
+}
+
+
 
 #right-home-footer-outer-container{
     height: min-content;

@@ -3,22 +3,23 @@ import linkedUp from "../assets/linkedup.svg"
 const AppHomeAboutShowcase = () => {
     return (
         <div id="app-home-about-showcase">
-            <div id="right-home-about-outer-container">
-                <div id="right-home-about-inner-container">
-                    <div>About Linkedup</div>
-                    <p>LinkedUp is a clone of LinkedIn where users can network professionally. Feel free to look around.</p>
-                    <p>Features</p>
-                    <ul>
-                        <li>Posts</li>
-                        <li>Comments</li>
-                    </ul>
-                    <p>Coming Soon</p>
-                    <ul>
-                        <li>Connections</li>
-                        <li>User Profile</li>
-                    </ul>
-                </div>
+            <div id="right-home-about-container">
+                <p>About Linkedup</p>
+                <p className="about-title">LinkedUp is a clone of LinkedIn where users can network professionally. Feel free to look around.</p>
+                <p >Features</p>
+                <ul className="about-title">
+                    <li>Posts</li>
+                    <p>Create a post about your insight, read others ideas, edit your post, and delete posts</p>
+                    <li>Comments</li>
+                    <p>Comment on posts, read each others input, update your comments, and delete your comments</p>
+                </ul>
+                {/* <p>Coming Soon</p>
+                <ul>
+                    <li>Connections</li>
+                    <li>User Profile</li>
+                </ul> */}
             </div>
+            {/* this is the footer */}
             <div id="right-home-footer-outer-container">
                 <div id="right-home-footer-inner-container">
                     <p className="app-home-footer">Made with</p>
@@ -37,7 +38,7 @@ const AppHomeAboutShowcase = () => {
                     <p className="app-home-footer">hosted by<a href="https://render.com/" target="_blank" rel="noopener noreferrer">Render</a></p>
                     <p className="app-home-footer"><a href="https://tinyurl.com/linkedup-surprise" target="_blank" rel="noopener noreferrer">click here for a surprise</a></p>
                     <div id="copyright-footer-container">
-                        <img id="copyright-footer-logo"src={linkedUp}></img>
+                        <img id="copyright-footer-logo" src={linkedUp}></img>
                         LinkedUp Corporation © 2023
                     </div>
                 </div>
