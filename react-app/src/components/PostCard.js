@@ -64,9 +64,9 @@ function PostCard({ post }) {
                         {showPostOptions &&
                             <ul id="app-home-heading-right-container-options-list">
                                 <li onClick={() => setShowModal(true)}>
-                                    Edit
+                                <i class="fa-solid fa-pencil" id="post-edit-icon"></i>Edit
                                 </li>
-                                <li onClick={() => handleDeleteToggle(post)}>Delete</li>
+                                <li onClick={() => handleDeleteToggle(post)}><i class="fa-solid fa-trash-can" id="post-delete-icon"></i>Delete</li>
                             </ul>
                         }
                     </div>

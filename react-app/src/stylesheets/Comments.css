@@ -145,6 +145,11 @@
     padding: .8rem 1.6rem;
 }
 
+.all-comments-sections-comment-options>li>i{
+color: rgba(0, 0, 0, 0.6);;
+font-size: 1.8rem;
+margin-right: 2rem;
+}
 .all-comments-sections-comment-options li:hover {
     background-color: rgba(0, 0, 0, 0.06);
 }

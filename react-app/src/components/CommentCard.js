@@ -105,9 +105,10 @@ function CommentCard({ comment, user }) {
                                     event.preventDefault()
                                     setShowCommentOptions(false)
                                     setShowEdit(true)
-                                }} id="comment-edit-button">Edit</li>
+                                }} id="comment-edit-button">
+                                    <i class="fa-solid fa-pencil"></i>Edit</li>
                                 <li onClick={onDelete}
-                                >Delete</li>
+                                ><i class="fa-solid fa-trash"></i>Delete</li>
                             </ul>
                         }
                     </div>}
