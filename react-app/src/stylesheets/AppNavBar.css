@@ -118,6 +118,7 @@
     height: 5.6rem;
     border-radius: 50%;
     overflow: hidden;
+    min-width: 5.6rem;
 }
 
 #navbar-user-profile-picture img {
@@ -133,7 +134,7 @@
     font-size: 1.2rem;
 }
 
-#navbar-user-profile-information :first-child{
+#navbar-user-profile-information :first-child {
     font-size: 1.4rem;
     line-height: 2rem;
     font-weight: 700;

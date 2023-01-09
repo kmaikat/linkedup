@@ -46,7 +46,7 @@ const Comments = ({ post }) => {
 
     useEffect(() => {
         const errors = {}
-        if (body.length < 1 || body.length > 1500) errors.body = true;
+        if (body.trim().length < 1 || body.length > 1500) errors.body = true;
 
         setErrors(errors)
     }, [body])
@@ -64,7 +64,7 @@ const Comments = ({ post }) => {
                         <p contentEditable={true} name="body" placeholder="Add a comment..." onInput={updateBody} ref={postContent} />
                         <div>
                             {body && <button onClick={submitComment} disabled={errors.body}>Post</button>}
-                            {body && errors.body && <label style={{color: "#d11124"}}>{body.length}/1500</label>}
+                            {body.trim().length > 0 && errors.body && <label style={{ color: "#d11124" }}>{body.length}/1500</label>}
                         </div>
                     </div>
                 </form>

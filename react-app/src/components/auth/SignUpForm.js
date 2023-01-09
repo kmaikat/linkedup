@@ -30,11 +30,15 @@ const SignUpForm = () => {
 
   useEffect(() => {
     const errors = {}
-    if (title.length < 1 || title.length > 100) errors.title = true;
-    if (bio.length < 1 || bio.length > 300) errors.bio = true;
+    if (title.length > 0 === false) errors.title = "Please enter a title."
+    else if (title.length > 100) errors.title = "Exceeded maximum character length of 100"
+    else errors.title = ""
+    if (bio.length > 0 === false) errors.bio = "Please enter a bio."
+    else if (bio.length > 300) errors.bio = "Exceeded maximum character length of 300"
+    else errors.bio = ""
 
     setErrors(errors)
-}, [title, bio])
+  }, [title, bio])
 
   const phase1Check = async (e) => {
     const errors = {};
@@ -339,6 +343,7 @@ const SignUpForm = () => {
                     accept='image/png, image/jpg, image/jpeg, image/gif'
                     name='profile_picture'
                     onChange={updateProfilePicture}
+                    id="signup-form-image-input"
                     className={errors.state ? "input input-error" : "input"}
                   ></input>
                   {/* <p className='input-error-text'>{errors.profilePicture}</p> */}

@@ -89,7 +89,7 @@
 
 }
 
-.signup-submit-button:hover{
+.signup-submit-button:hover {
     background-color: #006097;
 }
 
@@ -109,4 +109,12 @@
 
 #signup-can-submit:enabled:not(disabled):hover {
     background-color: #004182;
+}
+
+
+#signup-outer-container #signup-form-image-input {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 0;
 }

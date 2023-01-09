@@ -39,9 +39,9 @@ const LandingPageLoginForm = () => {
       return;
     }
 
-    // if (data) {
-    //   setErrors(data);
-    // }
+    if (data) {
+      setErrors(data);
+    }
   };
 
   const demoLogin = async (e) => {
