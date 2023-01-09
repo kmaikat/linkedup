@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, Email, ValidationError, Length
 from app.models import User
 
 
@@ -22,13 +22,13 @@ def username_exists(form, field):
 
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists])
+        'username', validators=[DataRequired(), username_exists, Length(max=29, message="Username must be less than 29 characters")])
+    email = StringField('email', validators=[DataRequired(), user_exists, Length(max=128, message="Email must be between 3 to 128 characters")])
     password = StringField('password', validators=[DataRequired()])
-    first_name = StringField('first_name', validators=[DataRequired()])
-    last_name = StringField('last_name', validators=[DataRequired()])
+    first_name = StringField('first_name', validators=[DataRequired(), Length(max=50, message="First name can not exceed 50 characters.")])
+    last_name = StringField('last_name', validators=[DataRequired(), Length(max=50, message="Last name can not exceed 50 characters.")])
     profile_picture = StringField('profile_picture')
-    title = StringField('title', validators=[DataRequired()])
-    bio = StringField('bio', validators=[DataRequired()])
-    city = StringField('city', validators=[DataRequired()])
-    state = StringField('state', validators=[DataRequired()])
+    title = StringField('title', validators=[DataRequired(), Length(max=100, message="Title cannot exceed 100 characters")])
+    bio = StringField('bio', validators=[DataRequired(), Length(max=100, message="Exceeded maximum character length of 100")])
+    city = StringField('city', validators=[DataRequired(), Length(max=60, message="City must be less than 60 characters")])
+    state = StringField('state', validators=[DataRequired(), Length(max=60, message="State must be less than 60 characters")])
