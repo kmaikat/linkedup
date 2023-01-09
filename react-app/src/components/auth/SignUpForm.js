@@ -31,7 +31,7 @@ const SignUpForm = () => {
   useEffect(() => {
     const errors = {}
     if (title.length < 1 || title.length > 100) errors.title = true;
-    if (bio.length < 1 || bio.length > 100) errors.bio = true;
+    if (bio.length < 1 || bio.length > 300) errors.bio = true;
 
     setErrors(errors)
 }, [title, bio])
@@ -106,7 +106,7 @@ const SignUpForm = () => {
     if (title.length > 0 === false) errors.title = "Please enter a title."
     if (title.length > 100) errors.title = "Exceeded maximum character length of 100"
     if (bio.length > 0 === false) errors.bio = "Please enter a bio."
-    if (bio.length > 100) errors.bio = "Exceeded maximum character length of 100"
+    if (bio.length > 300) errors.bio = "Exceeded maximum character length of 300"
 
     if (Object.keys(errors).length > 0) {
       setErrors(errors);

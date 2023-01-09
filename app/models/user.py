@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_picture = db.Column(db.String)
     title = db.Column(db.String(100), nullable=False)
-    bio = db.Column(db.String(100), nullable=False)
+    bio = db.Column(db.String(300), nullable=False)
     city = db.Column(db.String(60), nullable=False)
     state = db.Column(db.String(60), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
