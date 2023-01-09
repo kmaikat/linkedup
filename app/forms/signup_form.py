@@ -29,6 +29,6 @@ class SignUpForm(FlaskForm):
     last_name = StringField('last_name', validators=[DataRequired(), Length(max=50, message="Last name can not exceed 50 characters.")])
     profile_picture = StringField('profile_picture')
     title = StringField('title', validators=[DataRequired(), Length(max=100, message="Title cannot exceed 100 characters")])
-    bio = StringField('bio', validators=[DataRequired(), Length(max=100, message="Exceeded maximum character length of 100")])
+    bio = StringField('bio', validators=[DataRequired(), Length(max=300, message="Exceeded maximum character length of 300")])
     city = StringField('city', validators=[DataRequired(), Length(max=60, message="City must be less than 60 characters")])
     state = StringField('state', validators=[DataRequired(), Length(max=60, message="State must be less than 60 characters")])
