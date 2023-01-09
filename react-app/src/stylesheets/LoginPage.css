@@ -1,3 +1,57 @@
+#login-form-page-outer-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#login-form-page-inner-container {
+    max-width: 1385px;
+    width: 100%;
+}
+#login-form-page-inner-container>nav {
+    padding-top: 2rem;
+    height: fit-content;
+}
+#login-form-page-inner-container>nav>a {
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    width: fit-content;
+    margin-top: 1.2rem;
+}
+
+#login-page-logo-icon {
+    width: 12rem;
+}
+
+#body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#login-page-body-container {
+    margin: 0 27.8rem;
+    padding: 2.4rem;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+    max-width: 35.3rem;
+    width: 100%;
+    border-radius: .8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+#form-body-header>div:first-child {
+    font-weight: 500;
+    font-size: 3rem;
+    line-height: 1.43;
+}
+#form-body-header>div:last-child {
+    font-size: 1.4rem;
+    /* margin-bottom: 2.3rem; */
+}
+
+/* input here */
 #login-page-input {
     border-radius: .4rem;
 }
@@ -16,11 +70,11 @@
     border-radius: 5rem;
     font-weight: 500;
     border: 1px solid rgba(0, 0, 0, 0.6);
-    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 60%), inset 0 0 0 2px rgb(0 0 0 / 0%), inset 0 0 0 1px rgb(0 0 0 / 0%)
 }
 
 #login-page-login-sign-in:hover {
-    background-color: #006097;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 60%), inset 0 0 0 2px rgb(0 0 0 / 0%), inset 0 0 0 1px rgb(0 0 0 / 0%);
+    background-color: rgba(0, 0, 0, 0.06);
 }
 
 .fa-solid fa-user {
@@ -52,4 +106,30 @@
 
 .login-page-form .landing-page-login-input {
     margin-bottom: 0;
+}
+
+#or-separator {
+    margin: 0 1.5rem;
+}
+
+#direct-to-sign-up-container {
+    display: flex;
+    gap: .3rem;
+    margin-top: 3rem;
+    font-size: 1.6rem;
+    color:rgba(0, 0, 0, 0.8);
+    line-height: 3.2rem;
+}
+
+#direct-to-sign-up-container>a {
+    font-weight: 500;
+    padding: 0 .8rem;
+}
+
+#direct-to-sign-up-container>a:hover {
+    cursor: pointer;
+    color: #0a66c2;
+    text-decoration: underline;
+    background-color: #d0e8ff;
+    border-radius: 2rem;
 }

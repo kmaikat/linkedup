@@ -28,36 +28,23 @@ const SignUpForm = () => {
     /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
   );
 
-  // const onSignUp = async (e) => {
-  //   e.preventDefault();
-  //   const submission = {
-  //     "username": username,
-  //     "email": email,
-  //     "password": password,
-  //     "repeat_password": repeatPassword,
-  //     "first_name": firstName,
-  //     "last_name": lastName,
-  //     "profile_picture": profilePicture,
-  //     "title": title,
-  //     "bio": bio,
-  //     "city": city,
-  //     "state": state
-  //   }
+  useEffect(() => {
+    const errors = {}
+    if (title.length < 1 || title.length > 100) errors.title = true;
+    if (bio.length < 1 || bio.length > 100) errors.bio = true;
 
-  //   const data = await dispatch(signUp(submission));
-  //   // if (data) {
-  //   //   setErrors(data)
-  //   // }
-
-  // };
+    setErrors(errors)
+}, [title, bio])
 
   const phase1Check = async (e) => {
     const errors = {};
     e.preventDefault();
 
     if (!username) errors.username = "Please enter a username"
+    if (username.length > 29) errors.username = "Username must be less than 29 characters long"
 
     if (email.length > 0 === false) errors.email = "Please enter your email"
+    if (email.length < 4 || email.length > 128) errors.email = "Email must be between 3 to 128 characters"
     else if (!email.trim().match(regex)) {
       errors.email = "Please provide a valid email"
     } else if (email) {
@@ -82,7 +69,9 @@ const SignUpForm = () => {
     e.preventDefault()
 
     if (firstName.length > 0 === false) errors.firstName = "Please enter your first name";
+    if (firstName.length > 50) errors.firstName = "First name can not exceed 50 characters.";
     if (lastName.length > 0 === false) errors.lastName = "Please enter your last name";
+    if (lastName.length > 50) errors.lastName = "Last name can not exceed 50 characters.";
 
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
@@ -97,7 +86,10 @@ const SignUpForm = () => {
     e.preventDefault()
 
     if (city.length > 0 === false) errors.city = "Please enter a city";
+    if (city.length > 60) errors.city = "City can not exceed 60 characters.";
+
     if (state.length > 0 === false) errors.state = "Please enter a state";
+    if (state.length > 60) errors.state = "State can not exceed 60 characters.";
 
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
@@ -112,12 +104,16 @@ const SignUpForm = () => {
     e.preventDefault()
 
     if (title.length > 0 === false) errors.title = "Please enter a title."
+    if (title.length > 100) errors.title = "Exceeded maximum character length of 100"
     if (bio.length > 0 === false) errors.bio = "Please enter a bio."
+    if (bio.length > 100) errors.bio = "Exceeded maximum character length of 100"
 
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
       return;
     }
+
+
 
     const submission = {
       "username": username,
@@ -194,6 +190,8 @@ const SignUpForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
+
+
 
 
   return (
@@ -353,7 +351,7 @@ const SignUpForm = () => {
               {signupStage === 1 && <button form='signup-phase-1' type='submit' className='signup-submit-button'>Next</button>}
               {signupStage === 2 && <button form='signup-phase-2' type='submit' className='signup-submit-button'>Next</button>}
               {signupStage === 3 && <button form='signup-phase-3' type='submit' className='signup-submit-button'>Next</button>}
-              {signupStage === 4 && <button form='signup-phase-4' type='submit' className='signup-submit-button'>Finish</button>}
+              {signupStage === 4 && <button form='signup-phase-4' type='submit' className='signup-submit-button' id='signup-can-submit' disabled={errors.bio || errors.title}>Finish</button>}
             </div>
           </div>
         </div>
