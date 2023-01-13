@@ -65,3 +65,9 @@ LinkedUp is a clone of LinkedIn. With LinkedUp, users can widen their profession
    ```
 
 7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+
+## Images
+<img width="1512" alt="Screen Shot 2023-01-12 at 8 30 08 AM" src="https://user-images.githubusercontent.com/44792993/212429114-47258d66-f67d-4031-b144-b5982e091c0f.png">
+<img width="1510" alt="Screen Shot 2023-01-12 at 8 31 01 AM" src="https://user-images.githubusercontent.com/44792993/212429121-548be3f5-6680-4ddb-b632-86691c2c7171.png">
+<img width="1499" alt="Screen Shot 2023-01-12 at 8 31 42 AM" src="https://user-images.githubusercontent.com/44792993/212429131-670e073d-6a28-47ae-a523-3629ebef2fb1.png">
+
