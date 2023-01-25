@@ -4,9 +4,9 @@ from flask_login import UserMixin
 from datetime import datetime
 
 followers = db.Table("followers",
-    db.Column("following_user_id", db.Integer, db.ForeignKey(
+    db.Column("follower_id", db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id"), ondelete="CASCADE")),
-    db.Column("followed_user", db.Integer, db.ForeignKey(
+    db.Column("followed_id", db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id"), ondelete="CASCADE")),
     schema=SCHEMA if environment == "production" else "")
 
@@ -36,7 +36,7 @@ class User(db.Model, UserMixin):
         "Comment", back_populates="user", cascade="all, delete-orphan")
 
     followers= db.db.relationship(
-        "User", secondary=followers, back_populates="user"
+        "User", secondary=followers, back_populates="users"
     )
 
     @property
