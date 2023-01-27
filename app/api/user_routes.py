@@ -29,7 +29,11 @@ def user_followers(id):
     user = User.query.get(id).to_dict()
     # need to turn follower list item into an obj
     # return followers object
-    return "stink butt"
+
+    print(user["followers"])
+    followers = user["followers"]
+
+    return {'followers': [follower.to_dict() for follower in followers]}
 
 # @user_routes.route('/<int:id>/following')
 # def user_following(id):
