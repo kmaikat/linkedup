@@ -63,5 +63,6 @@ class User(db.Model, UserMixin):
             'title': self.title,
             'bio': self.bio,
             'city': self.city,
-            'state': self.state
+            'state': self.state,
+            'followers': self.followers
         }
