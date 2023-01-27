@@ -4,7 +4,7 @@ from flask_login import UserMixin
 from datetime import datetime
 
 followers = db.Table("followers",
-    db.Column("follower_id", db.Integer, db.ForeignKey(
+    db.Column("following_id", db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id"), ondelete="CASCADE")),
     db.Column("followed_id", db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id"), ondelete="CASCADE")),
