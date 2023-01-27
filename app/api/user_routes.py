@@ -24,10 +24,10 @@ def email_check(email):
     else:
         return jsonify({"message": "Good to go!"}), 200
 
-@user_routes.route('/<int:id>/followers')
-def user_followers(id):
-    user = User.query.get(id)
-    print(user.to_dict())
+# @user_routes.route('/<int:id>/followers')
+# def user_followers(id):
+#     user = User.query.get(id)
+#     print(user.to_dict())
 
 @user_routes.route('/<int:id>')
 @login_required

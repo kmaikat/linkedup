@@ -4,11 +4,13 @@ from flask_login import UserMixin
 from datetime import datetime
 
 followers = db.Table("followers",
-    db.Column("following_id", db.Integer, db.ForeignKey(
-        add_prefix_for_prod("users.id"), ondelete="CASCADE")),
-    db.Column("followed_id", db.Integer, db.ForeignKey(
-        add_prefix_for_prod("users.id"), ondelete="CASCADE")),
-    schema=SCHEMA if environment == "production" else "")
+                     db.Column("following_id", db.Integer, db.ForeignKey(
+                         add_prefix_for_prod("users.id"), ondelete="CASCADE")),
+                     db.Column("followed_id", db.Integer, db.ForeignKey(
+                         add_prefix_for_prod("users.id"), ondelete="CASCADE")),
+                     db.Column("created_at", db.DateTime,
+                               default=datetime.utcnow),
+                     schema=SCHEMA if environment == "production" else "")
 
 
 class User(db.Model, UserMixin):
@@ -36,9 +38,8 @@ class User(db.Model, UserMixin):
         "Comment", back_populates="user", cascade="all, delete-orphan")
 
     followers = db.relationship(
-        "User", secondary=followers, back_populates="users"
+        "User", secondary=followers, primaryjoin=id == followers.c.followed_id, secondaryjoin=id == followers.c.following_id
     )
-
 
     @property
     def password(self):
