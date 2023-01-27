@@ -12,6 +12,9 @@ def seed_users():
     jim = User(
         username='jhalpert', first_name="Jim", last_name="Halpert", email='jim@aa.io', password='password', profile_picture='https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/2-0-design/the-office/cast-the-office-jim-halpert.jpg/_jcr_content/renditions/original.JPEG?downsize=1200:*&output-quality=70', title='Founder at Athlead', bio="I love to play pranks, so you better watch out.", city="Scranton", state="Pennsylvania")
 
+    demo.followers = [kelly, michael]
+    demo.following = [kelly, jim]
+
     db.session.add(demo)
     db.session.add(kelly)
     db.session.add(michael)
