@@ -32,11 +32,12 @@ def user_followers(id):
     # return followers object
     return jsonify({follower.id: follower.to_dict_no_followers() for follower in user.followers}), 200
 
-# @user_routes.route('/<int:id>/following')
-# def user_following(id):
-#     # query where the following id is == to the user id
-#     user = followers.query.get(id).filter(followers)
-#     return "stink butt"
+
+@user_routes.route('/<int:id>/following')
+def user_following(id):
+    # query where the following id is == to the user id
+    user = User.query.get(id)
+    return jsonify({follower.id: follower.to_dict_no_followers() for follower in user.following}), 200
 
 
 @user_routes.route('/<int:id>')

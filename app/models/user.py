@@ -37,8 +37,12 @@ class User(db.Model, UserMixin):
     comments = db.relationship(
         "Comment", back_populates="user", cascade="all, delete-orphan")
 
-    followers = db.relationship(
-        "User", secondary=followers, primaryjoin=id == followers.c.followed_id, secondaryjoin=id == followers.c.following_id
+    followed_by = db.relationship(
+        "User", secondary=followers, primaryjoin=id == followers.c.followed_id, secondaryjoin=id == followers.c.following_id, backref="followers"
+    )
+
+    following = db.relationship(
+        "User", secondary=followers, secondaryjoin=id == followers.c.followed_id, primaryjoin=id == followers.c.following_id, overlaps="followers"
     )
 
     @property
@@ -64,7 +68,8 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'city': self.city,
             'state': self.state,
-            'followers': {follower.id: follower.to_dict_no_followers() for follower in self.followers}
+            'followers': {follower.id: follower.to_dict_no_followers() for follower in self.followers},
+            'following': {follower.id: follower.to_dict_no_followers() for follower in self.following}
         }
 
     def to_dict_no_followers(self):
