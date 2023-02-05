@@ -64,5 +64,19 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'city': self.city,
             'state': self.state,
-            'followers': self.followers
+            'followers': {follower.id: follower.to_dict_no_followers() for follower in self.followers}
+        }
+
+    def to_dict_no_followers(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+            'profile_picture': self.profile_picture,
+            'title': self.title,
+            'bio': self.bio,
+            'city': self.city,
+            'state': self.state,
         }

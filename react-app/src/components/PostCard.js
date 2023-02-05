@@ -11,6 +11,7 @@ import Comments from "./Comments";
 import CreatePostModal from "./CreatePostsComponents/CreatePostModal";
 import CreatePost from "./CreatePostsComponents/CreatePost";
 import { Modal } from "./context/Modal";
+import FollowButton from "./Followers/FollowButton";
 
 TimeAgo.addDefaultLocale(en)
 
@@ -60,6 +61,9 @@ function PostCard({ post }) {
                         </div>
                     </div>
                 </div>
+                {user?.id !== post.user_id &&
+                    <div><FollowButton/></div>
+                }
                 {user?.id === post.user_id &&
                     <div id="app-home-heading-right-container-options" onClick={() => setShowPostOptions(true)} tabIndex={showPostOptions ? 1 : -1} onBlur={() => setShowPostOptions(false)}>
                         <img id="three-dots" src={threeDots} />
