@@ -8,6 +8,8 @@ const FollowButton = ({ post }) => {
     // if the post's user id is not in the following list, then it should say
     // "follow". otherwise, it will have a check and "following"
 
+    
+
     return (
         <>
             { post.user_id in following ? "" : <div className="not-followed">
