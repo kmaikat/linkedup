@@ -20,6 +20,7 @@ function PostCard({ post }) {
     const [showCommentSection, setShowCommentSection] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const user = useSelector(state => state.session.user)
+    const following = useSelector(state => state.session.user.following)
 
     const dispatch = useDispatch();
 
@@ -51,18 +52,18 @@ function PostCard({ post }) {
                     </div>
                     <div id="app-home-post-heading-name">
                         <div className="app-home-post-user-heading">
-                            {post.user.first_name} {post.user.last_name}
+                            {post.user.first_name} {post.user.last_name} {post.user_id in following ? <div className="following-tag"> • Following </div> : ""}
                         </div>
                         <div className="app-home-post-user-subheading">
                             {post.user.title}
                         </div>
                         <div className="app-home-post-user-subheading">
-                            <ReactTimeAgo date={post.created_at} timeStyle="twitter" /> • <i class="fa-solid fa-earth-americas"></i>
+                            <ReactTimeAgo date={post.created_at} timeStyle="twitter" /> • <i className="fa-solid fa-earth-americas"></i>
                         </div>
                     </div>
                 </div>
                 {user?.id !== post.user_id &&
-                    <div><FollowButton/></div>
+                    <div><FollowButton post={post}/></div>
                 }
                 {user?.id === post.user_id &&
                     <div id="app-home-heading-right-container-options" onClick={() => setShowPostOptions(true)} tabIndex={showPostOptions ? 1 : -1} onBlur={() => setShowPostOptions(false)}>
