@@ -29,6 +29,11 @@ export const authenticate = () => async (dispatch) => {
   }
 }
 
+// make a thunk to update the user
+export const updateUser = (user) => async (dispatch) => {
+  dispatch(setUser(user))
+}
+
 export const login = (email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/login', {
     method: 'POST',
