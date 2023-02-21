@@ -35,6 +35,13 @@ const NavBar = () => {
               </div>
             </NavLink>
           </li>
+          <li>
+            <NavLink className='app-feed-nav-icon' to={`${user.id}/messages`} exact={true}>
+              <div>
+                Messages
+              </div>
+            </NavLink>
+          </li>
           <li className='app-feed-nav-bar-icon' onClick={() => setShowNavbarOptions(true)} tabIndex={showNavbarOptions ? 1 : -1} onBlur={() => setShowNavbarOptions(false)}>
             <div id="navbar-user-icon">
               <img id='no-pp' src={user.profile_picture || noPP} />

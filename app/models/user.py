@@ -12,7 +12,7 @@ followers = db.Table("followers",
                                default=datetime.utcnow),
                      schema=SCHEMA if environment == "production" else "")
 
-conversations_table = db.Table("conversations",
+conversations_table = db.Table("conversations_table",
                          db.Column("conversation_id", db.Integer, db.ForeignKey(
                              add_prefix_for_prod("conversations.id"), ondelete="CASCADE")),
                          db.Column("sender_id", db.Integer, db.ForeignKey(
