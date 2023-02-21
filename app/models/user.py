@@ -12,6 +12,14 @@ followers = db.Table("followers",
                                default=datetime.utcnow),
                      schema=SCHEMA if environment == "production" else "")
 
+conversations_table = db.Table("conversations",
+                         db.Column("conversation_id", db.Integer, db.ForeignKey(
+                             add_prefix_for_prod("conversations.id"), ondelete="CASCADE")),
+                         db.Column("sender_id", db.Integer, db.ForeignKey(
+                             add_prefix_for_prod("users.id"), ondelete="CASCADE"
+                         )),
+                         schema=SCHEMA if environment == "production" else "")
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -39,6 +47,10 @@ class User(db.Model, UserMixin):
 
     followers = db.relationship(
         "User", secondary=followers, primaryjoin=id == followers.c.followed_id, secondaryjoin=id == followers.c.following_id
+    )
+
+    conversations = db.relationship(
+        "Conversation", primaryjoin=id == conversations_table.c.conversation_id, secondaryjoin=id == conversations_table.c.sender_id, secondary=conversations_table
     )
 
     @property
