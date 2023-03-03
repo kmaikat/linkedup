@@ -2,6 +2,7 @@ import Footer from "../Footer"
 import NavBar from "../NavBar"
 import "../../stylesheets/AppMessagesIndex.css"
 import MessagesPreviews from "./MessagesPreviews"
+import MessageRoom from "./MessageRoom"
 
 const AppMessagesIndex = () => {
     return (
@@ -14,7 +15,7 @@ const AppMessagesIndex = () => {
                         <MessagesPreviews/>
                     </div>
                     <div className="app-messages-chat-section">
-                        convo here
+                        <MessageRoom/>
                     </div>
                 </div>
                 <div className="app-home-right">
