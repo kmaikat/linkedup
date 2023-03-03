@@ -1,3 +1,33 @@
 .hello-test{
     background-color: red;
-}   
+}
+
+.messages-preview-heading-outer{
+    border:.1rem solid rgba(226, 225, 223, 1);
+}
+.messages-preview-heading{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    font-weight: 500;
+    height: 4.4rem;
+    align-items: center;
+}
+.messages-preview-heading>div{
+    margin-left: 1.6rem;
+
+}
+
+
+
+.messages-preview-heading>p{
+    font-size: 2rem;
+    color: rgba(0,0,0,0.6);
+    padding: .8rem;
+    margin-right: .8rem;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.messages-preview-heading>p:hover{
+    background-color: rgba(0,0,0,0.12);
+}
