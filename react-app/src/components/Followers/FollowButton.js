@@ -26,7 +26,7 @@ const FollowButton = ({ post }) => {
         <div onClick={addUserToFollowing}>
             {post.user_id in following ? "" : <div className="not-followed">
                 <i id="follow-plus-icon" className="fa-regular fa-plus"></i>
-                Followw
+                Follow
             </div>
             }
 
