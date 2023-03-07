@@ -3,4 +3,5 @@ from .user import User
 from .post import Post
 from .comment import Comment
 from .conversation import Conversation
+from .message import Message
 from .db import environment, SCHEMA

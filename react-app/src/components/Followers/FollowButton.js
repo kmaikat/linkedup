@@ -16,19 +16,14 @@ const FollowButton = ({ post }) => {
     // 2. bring that information back and store it in our state
     // 3. let the user know whether they are following or not (button)
 
-    const addUserToFollowing = async (event) => {
-        // const errors = await dispatch(updateUser(user))
-
-        // setIsFollowed((isFollowed) => !isFollowed)
-    }
 
     return (
-        <div onClick={addUserToFollowing}>
-            {post.user_id in following ? "" : <div className="not-followed">
+        <div>
+            {/* {post.user_id in following ? "" : <div className="not-followed">
                 <i id="follow-plus-icon" className="fa-regular fa-plus"></i>
                 Follow
             </div>
-            }
+            } */}
 
         </div>
     )
