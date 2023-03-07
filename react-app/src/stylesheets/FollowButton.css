@@ -12,6 +12,20 @@
     cursor:pointer;
 }
 
+.followed{
+    color: rgba(0, 0, 0, .6);
+    padding: .6rem .8rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    transition: background-color 167ms cubic-bezier(.4, 0, .2, 1)
+}
+
+.followed:hover{
+    background-color:rgba(0, 0, 0, .08);
+    border-radius: .4rem;
+    cursor:pointer;
+}
+
 #follow-plus-icon {
     margin-right: .5rem;
     font-weight: 800;
