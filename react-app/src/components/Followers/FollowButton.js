@@ -15,7 +15,7 @@ const FollowButton = ({ post }) => {
     // 1. send the post's user information to the following route with a fetch request
     // 2. bring that information back and store it in our state
     // 3. let the user know whether they are following or not (button)
-    
+
     const addUserToFollowing = async (event) => {
         // const errors = await dispatch(updateUser(user))
 
@@ -26,7 +26,7 @@ const FollowButton = ({ post }) => {
         <div onClick={addUserToFollowing}>
             {post.user_id in following ? "" : <div className="not-followed">
                 <i id="follow-plus-icon" className="fa-regular fa-plus"></i>
-                Follow
+                Followw
             </div>
             }
 
