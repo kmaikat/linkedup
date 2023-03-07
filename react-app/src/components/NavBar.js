@@ -20,6 +20,7 @@ const NavBar = () => {
     dispatch(getPostsThunk())
   }, [history.location.pathname])
 
+
   return (
     <nav id='app-feed-nav-bar'>
       <div id='app-feed-nav-bar-inner-container'>
@@ -32,6 +33,14 @@ const NavBar = () => {
               <i className="fa-solid fa-house-chimney"></i>
               <div className='navbar-action-labels'>
                 Home
+              </div>
+            </NavLink>
+          </li>
+          <li className='app-feed-nav-bar-icon'>
+            <NavLink className='app-feed-nav-bar-icon' to='/messaging' exact={true}>
+              <i className="fa-solid fa-message"></i>
+              <div className='navbar-action-labels'>
+                Messages
               </div>
             </NavLink>
           </li>

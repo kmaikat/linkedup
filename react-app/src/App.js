@@ -13,6 +13,7 @@ import { authenticate } from './store/session';
 import "./stylesheets/reset.css";
 import "./stylesheets/global.css";
 import AppHome from './components/AppHome';
+import AppMessagesIndex from './components/Messages/AppMessagesIndex';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,6 +51,9 @@ function App() {
         </Route>
         <ProtectedRoute path="/feed" exact>
           <AppHome />
+        </ProtectedRoute>
+        <ProtectedRoute path="/messaging" exact>
+          <AppMessagesIndex />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
