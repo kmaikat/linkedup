@@ -17,17 +17,28 @@ def users():
 
 @user_routes.route("/email-check/<string:email>")
 def email_check(email):
-    user = User.query.filter(User.email.ilike(email)).one_or_none();
+    user = User.query.filter(User.email.ilike(email)).one_or_none()
 
     if user:
         return jsonify({"error": "An account with this email already exists"}), 400
     else:
         return jsonify({"message": "Good to go!"}), 200
 
-# @user_routes.route('/<int:id>/followers')
-# def user_followers(id):
-#     user = User.query.get(id)
-#     print(user.to_dict())
+
+@user_routes.route('/<int:id>/followers')
+def user_followers(id):
+    user = User.query.get(id)
+    # need to turn follower list item into an obj
+    # return followers object
+    return jsonify({follower.id: follower.to_dict_no_followers() for follower in user.followers}), 200
+
+
+@user_routes.route('/<int:id>/following')
+def user_following(id):
+    # query where the following id is == to the user id
+    user = User.query.get(id)
+    return jsonify({follower.id: follower.to_dict_no_followers() for follower in user.following}), 200
+
 
 @user_routes.route('/<int:id>')
 @login_required
