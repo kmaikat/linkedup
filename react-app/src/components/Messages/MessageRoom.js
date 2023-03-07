@@ -1,6 +1,37 @@
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { io } from 'socket.io-client';
 import "../../stylesheets/MessageRoom.css"
 
+let socket;
+
 const MessageRoom = () => {
+    const [chatInput, setChatInput] = useState("");
+    const [messages, setMessages] = useState([]);
+    const user = useSelector(state => state.session.user)
+
+    useEffect(() => {
+        socket = io();
+
+        socket.on("chat", (chat) => {
+            setMessages(messages => [...messages, chat])
+        })
+        
+        return (() => {
+            socket.disconnect()
+        })
+    }, [])
+
+    const updateChatInput = (e) => {
+        setChatInput(e.target.value)
+    };
+
+    const sendChat = (e) => {
+        e.preventDefault()
+        socket.emit("chat", { user: user.username, msg: chatInput });
+        setChatInput("")
+    }
+
     return (
         <div>
             <div className="heading-container">
@@ -12,16 +43,33 @@ const MessageRoom = () => {
                 </p>
             </div>
             <div className="chat-container">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <div>
+                    {messages.map((message, ind) => (
+                        <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+                    ))}
+                </div>
             </div>
             <div className="messaging-form-container">
-                <form id="message-form">
-                    <p contentEditable={true} name="body" placeholder="Write a message..."></p>
+                <form onSubmit={sendChat} id="message-form">
+                    {/* <p contentEditable={true} name="messages" onInput={updateChatInput} placeholder="Write a message..." value={chatInput}></p> */}
+                    <textarea
+                        name='chatInput'
+                        placeholder="Write a message .."
+                        value={chatInput}
+                        onChange={updateChatInput}
+                    />
                 </form>
                 <div className="send-message-container">
-                    <button id="send-message">Send</button>
-                    <i  id="app-home-heading-right-container-options" class="fa-solid fa-ellipsis"></i>
+                    <button form="message-form" id="send-message" type="submit">Send</button>
+                    <i id="app-home-heading-right-container-options" class="fa-solid fa-ellipsis"></i>
                 </div>
+                {/* <form onSubmit={sendChat}>
+                    <input
+                        value={chatInput}
+                        onChange={updateChatInput}
+                    />
+                    <button type="submit">Send</button>
+                </form> */}
 
             </div>
         </div>
