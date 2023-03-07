@@ -16,14 +16,17 @@ const FollowButton = ({ post }) => {
     // 2. bring that information back and store it in our state
     // 3. let the user know whether they are following or not (button)
     const handleFollow =() => {
-        setIsFollowed(!isFollowed)
+        console.log("following... ")
+    }
+    const handleUnfollow =() => {
+        console.log("unfollowing...")
     }
 
     return (
         <div>
             {/* {post.user_id in following ? "" : */}
-            {isFollowed ?
-            <div className="followed" onClick={handleFollow}>
+            {post.user_id in following ?
+            <div className="followed" onClick={handleUnfollow}>
                 <i id="follow-plus-icon" className="fa-solid fa-check"></i>
                 Following
             </div> :
