@@ -39,7 +39,7 @@ app.register_blueprint(comment_routes, url_prefix="/api/comments")
 app.register_blueprint(image_routes, url_prefix="/api/images")
 db.init_app(app)
 Migrate(app, db)
-socketio.init_app(app)
+# socketio.init_app(app)
 
 # Application Security
 CORS(app)

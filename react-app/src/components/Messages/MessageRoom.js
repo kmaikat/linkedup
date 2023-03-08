@@ -10,17 +10,17 @@ const MessageRoom = () => {
     const [messages, setMessages] = useState([]);
     const user = useSelector(state => state.session.user)
 
-    useEffect(() => {
-        socket = io();
+    // useEffect(() => {
+    //     socket = io();
 
-        socket.on("chat", (chat) => {
-            setMessages(messages => [...messages, chat])
-        })
-        
-        return (() => {
-            socket.disconnect()
-        })
-    }, [])
+    //     socket.on("chat", (chat) => {
+    //         setMessages(messages => [...messages, chat])
+    //     })
+
+    //     return (() => {
+    //         socket.disconnect()
+    //     })
+    // }, [])
 
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
