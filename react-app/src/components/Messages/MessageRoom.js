@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { io } from 'socket.io-client';
+// import { io } from 'socket.io-client';
 import "../../stylesheets/MessageRoom.css"
 
-let socket;
+// let socket;
 
 const MessageRoom = () => {
     const [chatInput, setChatInput] = useState("");
@@ -28,7 +28,7 @@ const MessageRoom = () => {
 
     const sendChat = (e) => {
         e.preventDefault()
-        socket.emit("chat", { user: user.username, msg: chatInput });
+        // socket.emit("chat", { user: user.username, msg: chatInput });
         setChatInput("")
     }
 

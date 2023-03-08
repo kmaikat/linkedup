@@ -99,26 +99,26 @@ export const signUp = (submission) => async (dispatch) => {
 }
 
 export const followNewUser = userId => async dispatch => {
-  const response = await fetch(`/api/users/${userId}/following`, {
+  const response = await fetch(`/api/users/${userId}/following/`, {
     method: "post",
     headers: { "Content-Type": "application/json" },
   })
 
   if (response.ok) {
     const user = await response.json();
-    updateUserThunk(user)
+    dispatch(updateUserThunk(user))
   }
 }
 
 export const unfollowUser = userId => async dispatch => {
-  const response = await fetch(`/api/users/${userId}/following`, {
+  const response = await fetch(`/api/users/${userId}/following/`, {
     method: "delete",
     headers: { "Content-Type": "application/json" },
   })
 
   if (response.ok) {
     const user = await response.json();
-    updateUserThunk(user)
+    dispatch(updateUserThunk(user))
   }
 }
 
