@@ -20,7 +20,7 @@ function PostCard({ post }) {
     const [showCommentSection, setShowCommentSection] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const user = useSelector(state => state.session.user)
-    const following = useSelector(state => state.session.user.following)
+    const following = user.following;
 
     const dispatch = useDispatch();
 
@@ -53,7 +53,7 @@ function PostCard({ post }) {
                     <div id="app-home-post-heading-name">
                         <div className="app-home-post-user-heading">
                             {post.user.first_name} {post.user.last_name}
-                            {post.user_id in following ? <div className="following-tag"> • Following </div> : ""}
+                            {following && post.user_id in following ? <div className="following-tag"> • Following </div> : ""}
                         </div>
                         <div className="app-home-post-user-subheading">
                             {post.user.title}

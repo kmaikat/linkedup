@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { io } from 'socket.io-client';
+// import { io } from 'socket.io-client';
 import "../../stylesheets/MessageRoom.css"
 
-let socket;
+// let socket;
 
 const MessageRoom = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     const user = useSelector(state => state.session.user)
 
-    useEffect(() => {
-        socket = io();
+    // useEffect(() => {
+    //     socket = io();
 
-        socket.on("chat", (chat) => {
-            setMessages(messages => [...messages, chat])
-        })
-        
-        return (() => {
-            socket.disconnect()
-        })
-    }, [])
+    //     socket.on("chat", (chat) => {
+    //         setMessages(messages => [...messages, chat])
+    //     })
+
+    //     return (() => {
+    //         socket.disconnect()
+    //     })
+    // }, [])
 
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
@@ -28,7 +28,7 @@ const MessageRoom = () => {
 
     const sendChat = (e) => {
         e.preventDefault()
-        socket.emit("chat", { user: user.username, msg: chatInput });
+        // socket.emit("chat", { user: user.username, msg: chatInput });
         setChatInput("")
     }
 

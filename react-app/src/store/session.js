@@ -30,9 +30,9 @@ export const authenticate = () => async (dispatch) => {
 }
 
 // make a thunk to update the user
-// export const updateUser = (user) => async (dispatch) => {
-//   dispatch(setUser(user))
-// }
+export const updateUserThunk = (user) => async (dispatch) => {
+  dispatch(setUser(user))
+}
 
 export const login = (email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/login', {
@@ -95,6 +95,30 @@ export const signUp = (submission) => async (dispatch) => {
     }
   } else {
     return ['An error occurred. Please try again.']
+  }
+}
+
+export const followNewUser = userId => async dispatch => {
+  const response = await fetch(`/api/users/${userId}/following/`, {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+  })
+
+  if (response.ok) {
+    const user = await response.json();
+    dispatch(updateUserThunk(user))
+  }
+}
+
+export const unfollowUser = userId => async dispatch => {
+  const response = await fetch(`/api/users/${userId}/following/`, {
+    method: "delete",
+    headers: { "Content-Type": "application/json" },
+  })
+
+  if (response.ok) {
+    const user = await response.json();
+    dispatch(updateUserThunk(user))
   }
 }
 
