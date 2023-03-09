@@ -1,5 +1,5 @@
 from flask_socketio import SocketIO, emit, join_room, leave_room
-from .models.message import Message
+from .models.message import Message, db
 import os
 
 if os.environ.get("FLASK_ENV") == "production":
@@ -14,21 +14,19 @@ else:
 socketio = SocketIO(cors_allowed_origins=origins)
 
 # handle chat messages
-# @socketio.on("chat")
-# def handle_chat(data):
-#     message = Message(
-#         id=data['id'],
-#         sender_id=data['sender_id'],
-#         reciever_id=data['reciever_id'],
-#         room_id=data['room_id'],
-#         body=data['message']
-#     )
-#     db.session.add(message)
-#     db.session.commit()
+@socketio.on("chat")
+def handle_chat(data):
+    message = Message(
+        sender_id=data['sender_id'],
+        room_id=data['room_id'],
+        body=data['message']
+    )
+    db.session.add(message)
+    db.session.commit()
 
-#     if data['room_id']:
-#         room = data['room_id']
-#         emit("chat", data, broadcast=True, to=room)
+    if data['room_id']:
+        room = data['room_id']
+        emit("chat", data, broadcast=True, to=room)
 
 
 # join a room

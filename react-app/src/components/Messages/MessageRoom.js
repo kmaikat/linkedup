@@ -31,13 +31,13 @@ const MessageRoom = () => {
         setChatInput(e.target.value)
     };
 
-    // const sendChat = (e) => {
-    //     e.preventDefault()
-    //     // emit a message
-    //     socket.emit("chat", { sender_id: user.username, room_id: 1, message: chatInput });
-    //     // clear the input field after the message is sent
-    //     setChatInput("")
-    // }
+    const sendChat = (e) => {
+        e.preventDefault()
+        // emit a message
+        socket.emit("chat", { sender_id: user.id, room_id: 1, message: chatInput });
+        // clear the input field after the message is sent
+        setChatInput("")
+    }
 
     return (
         <div>
