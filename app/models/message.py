@@ -10,8 +10,10 @@ class Message(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(200), nullable=False)
-    sender_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
-    room_id = db.Column(db.Integer)
+    sender_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    room_id = db.Column(db.Integer, db.ForeignKey("rooms.id"), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
-    
+
+    room = db.relationship("Room", back_populates="messages")
+    user = db.relationship("User", back_populates="messages")
