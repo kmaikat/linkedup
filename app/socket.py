@@ -33,9 +33,9 @@ def handle_chat(data):
 @socketio.on("join")
 def on_join(data):
     username = data['username']
-    room = data['room']
+    room_id = data['room_id']
 
-    join_room(room)
+    join_room(room_id)
 
     send(username + "has entered the room")
 
