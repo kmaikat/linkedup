@@ -8,6 +8,7 @@ let socket;
 const MessageRoom = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
+    const [room, setRoom] = useState(null);
     const user = useSelector(state => state.session.user)
 
     useEffect(() => {
@@ -16,9 +17,9 @@ const MessageRoom = () => {
         socket = io();
 
         // listen for chat events
-        socket.on("chat", (chat) => {
+        socket.on("chat", (message) => {
             // when we recieve a chat, add it into our messages array in state
-            setMessages(messages => [...messages, chat])
+            setMessages(messages => [...messages, message])
         })
 
         // when component unmounts, disconnect
@@ -37,6 +38,10 @@ const MessageRoom = () => {
         socket.emit("chat", { sender_id: user.id, room_id: 1, message: chatInput });
         // clear the input field after the message is sent
         setChatInput("")
+    }
+
+    const joinRoom = (e) => {
+
     }
 
     return (
