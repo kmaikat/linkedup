@@ -12,10 +12,10 @@ followers = db.Table("followers",
                                default=datetime.utcnow),
                      schema=SCHEMA if environment == "production" else "")
 
-conversations_table = db.Table("conversations_table",
-                         db.Column("conversation_id", db.Integer, db.ForeignKey(
-                             add_prefix_for_prod("conversations.id"), ondelete="CASCADE")),
-                         db.Column("sender_id", db.Integer, db.ForeignKey(
+user_rooms = db.Table("user_rooms",
+                         db.Column("room_id", db.Integer, db.ForeignKey(
+                             add_prefix_for_prod("rooms.id"), ondelete="CASCADE")),
+                         db.Column("user_id", db.Integer, db.ForeignKey(
                              add_prefix_for_prod("users.id"), ondelete="CASCADE"
                          )),
                          schema=SCHEMA if environment == "production" else "")
@@ -53,9 +53,15 @@ class User(db.Model, UserMixin):
         "User", secondary=followers, secondaryjoin=id == followers.c.followed_id, primaryjoin=id == followers.c.following_id, overlaps="followers"
     )
 
-    conversations = db.relationship(
-        "Conversation", primaryjoin=id == conversations_table.c.conversation_id, secondaryjoin=id == conversations_table.c.sender_id, secondary=conversations_table
+    rooms = db.relationship(
+        "Room", back_populates="user", secondary=user_rooms, lazy="joined"
     )
+
+    messages = db.relationship(
+        "Message", back_populates="user", cascade="all, delete"
+    )
+
+
 
     @property
     def password(self):

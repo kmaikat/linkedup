@@ -1,16 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { io } from 'socket.io-client';
+import "../../stylesheets/MessageRoom.css";
 
-import "../../stylesheets/MessageRoom.css"
-
-
+let socket;
 
 const MessageRoom = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
+    const [room, setRoom] = useState(null);
     const user = useSelector(state => state.session.user)
 
+    useEffect(() => {
 
+        // create websocket
+        socket = io();
+
+        // listen for chat events
+        socket.on("chat", (message) => {
+            // when we recieve a chat, add it into our messages array in state
+            setMessages(messages => [...messages, message])
+        })
+
+        // when component unmounts, disconnect
+        return (() => {
+            socket.disconnect()
+        })
+    }, [])
 
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
@@ -18,9 +34,12 @@ const MessageRoom = () => {
 
     const sendChat = (e) => {
         e.preventDefault()
-
+        // emit a message
+        socket.emit("chat", { sender_id: user.id, room_id: 1, message: chatInput });
+        // clear the input field after the message is sent
         setChatInput("")
     }
+
 
     return (
         <div>
