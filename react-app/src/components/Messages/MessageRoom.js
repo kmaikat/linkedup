@@ -40,9 +40,6 @@ const MessageRoom = () => {
         setChatInput("")
     }
 
-    const joinRoom = (e) => {
-
-    }
 
     return (
         <div>
