@@ -3,16 +3,25 @@ import NavBar from "../NavBar"
 import "../../stylesheets/AppMessagesIndex.css"
 import MessagesPreviews from "./MessagesPreviews"
 import MessageRoom from "./MessageRoom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const AppMessagesIndex = () => {
     const [newRoom, setNewRoom] = useState(false);
+    const [searchInput, setSearchInput] = useState("")
+
+    const searchUser = (e) => {
+        setSearchInput(e.target.value)
+        console.log(searchInput)
+    }
+
+    // query for users using iilike 
+
 
     const createNewRoom = () => {
-        console.log("hello this is patrick")
         setNewRoom(true)
         console.log("new room being created.. ")
     }
+
     return (
         <div className='app-home-outer-container'>
             <NavBar />
@@ -32,9 +41,19 @@ const AppMessagesIndex = () => {
                             {/* message rooms/card will go here */}
                         </div>
                     </div>
-                    <div className="app-messages-chat-section">
-                        <MessageRoom />
-                    </div>
+                    {newRoom ?
+                        <div className="app-messages-chat-section">
+                           <div className="heading-container">
+                                New Message
+                           </div>
+                           <div>
+                                <input type="text" onChange={searchUser} placeholder="Type a name or multiple names"></input>
+                           </div>
+                        </div> :
+                        <div className="app-messages-chat-section">
+                            <MessageRoom />
+                        </div>
+                    }
                 </div>
                 <div className="app-home-right">
                     <Footer />
