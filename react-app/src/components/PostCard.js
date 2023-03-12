@@ -11,7 +11,7 @@ import Comments from "./Comments";
 import CreatePostModal from "./CreatePostsComponents/CreatePostModal";
 import CreatePost from "./CreatePostsComponents/CreatePost";
 import { Modal } from "./context/Modal";
-import FollowButton from "./Followers/FollowButton";
+import FollowButton from "./Network/FollowButton";
 
 TimeAgo.addDefaultLocale(en)
 

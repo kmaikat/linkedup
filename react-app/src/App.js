@@ -14,6 +14,7 @@ import "./stylesheets/reset.css";
 import "./stylesheets/global.css";
 import AppHome from './components/AppHome';
 import AppMessagesIndex from './components/Messages/AppMessagesIndex';
+import NetworkPage from './components/Network/NetworkPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,7 +51,10 @@ function App() {
           <LandingPageHome />
         </Route>
         <ProtectedRoute path="/feed" exact>
-          <AppHome />
+          <AppHome/>
+        </ProtectedRoute>
+        <ProtectedRoute path="/mynetwork" exact>
+          <NetworkPage />
         </ProtectedRoute>
         <ProtectedRoute path="/messaging" exact>
           <AppMessagesIndex />

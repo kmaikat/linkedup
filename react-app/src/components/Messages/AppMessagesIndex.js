@@ -14,7 +14,8 @@ const AppMessagesIndex = () => {
         console.log(searchInput)
     }
 
-    // query for users using iilike 
+    // query for users
+
 
 
     const createNewRoom = () => {
@@ -33,9 +34,9 @@ const AppMessagesIndex = () => {
                             <div className="messages-preview-heading-outer">
                                 <div className="messages-preview-heading">
                                     <div>Messaging</div>
-                                    <p onClick={createNewRoom}>
+                                    {/* <p onClick={createNewRoom}>
                                         <i class="fa-regular fa-pen-to-square"></i>
-                                    </p>
+                                    </p> */}
                                 </div>
                             </div>
                             {/* message rooms/card will go here */}

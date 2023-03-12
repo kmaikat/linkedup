@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
@@ -24,15 +23,23 @@ const NavBar = () => {
   return (
     <nav id='app-feed-nav-bar'>
       <div id='app-feed-nav-bar-inner-container'>
-        <div className="app-home-navbar-logo" id="landing-page-nav-bar-main-left">
+        <NavLink className="app-home-navbar-logo" id="landing-page-nav-bar-main-left" to='/feed'>
           <img id="app-nav-bar-logo" src={up}></img>
-        </div>
+        </NavLink>
         <ul id='app-feed-nav-bar-actions'>
           <li className='app-feed-nav-bar-icon' id='app-navbar-home-container'>
             <NavLink className='app-feed-nav-bar-icon' to='/' exact={true} activeClassName='active'>
               <i className="fa-solid fa-house-chimney"></i>
               <div className='navbar-action-labels'>
                 Home
+              </div>
+            </NavLink>
+          </li>
+          <li className='app-feed-nav-bar-icon'>
+            <NavLink className='app-feed-nav-bar-icon' to='/mynetwork' exact={true}>
+              <i class="fa-solid fa-user-group"></i>
+              <div className='navbar-action-labels'>
+                My Network
               </div>
             </NavLink>
           </li>
