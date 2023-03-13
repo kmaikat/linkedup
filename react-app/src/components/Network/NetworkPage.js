@@ -3,10 +3,11 @@ import "../../stylesheets/NetworkPage.css"
 import Footer from "../Footer"
 import { useSelector } from "react-redux"
 import { useState } from "react"
+import SimpleUserCard from "./SimpleUserCard"
 
 const NetworkPage = () => {
-    const followers = useSelector(state => state.session.user.followers)
-    const following = useSelector(state => state.session.user.following)
+    const followers = useSelector(state => Object.values(state.session.user.followers))
+    const followings = useSelector(state => Object.values(state.session.user.following))
     const [selected, setSelected] = useState("")
 
     const selectFollowing= () => {
@@ -16,7 +17,6 @@ const NetworkPage = () => {
         setSelected("followers")
     }
 
-    console.log(Object.keys(followers).length)
     return (
         <div className="app-home-outer-container">
             <NavBar />
@@ -29,14 +29,14 @@ const NetworkPage = () => {
                                 <i class="fa-solid fa-user"></i>
                                 Following
                             </div>
-                            {Object.keys(following).length}
+                            {followings.length}
                         </li>
                         <li className="manage-network-links" onClick={selectFollowers}>
                             <div>
                             <i class="fa-solid fa-user"></i>
                                 Followers
                             </div>
-                            {Object.keys(followers).length}
+                            {followers.length}
                         </li>
                     </ul>
                     <div className="network-footer-separator"></div>
@@ -44,9 +44,18 @@ const NetworkPage = () => {
                 </div>
                 <div className="network-right-view">
                     {selected == "following" &&
-                    <div>heeeeee</div>}
+                    <ul>
+                        {followings.length > 0 && followings.map(following => {
+                            return (<SimpleUserCard following={following}/>)
+                        })}
+                    </ul>
+                    }
+
+
                     {selected == "followers" &&
-                    <div>hi</div>}
+                    <div>hi
+                    </div>
+                    }
                 </div>
             </div>
         </div>
