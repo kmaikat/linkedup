@@ -1,9 +1,13 @@
 import NavBar from "../NavBar"
 import "../../stylesheets/NetworkPage.css"
 import Footer from "../Footer"
+import { useSelector } from "react-redux"
 
 const NetworkPage = () => {
+    const followers = useSelector(state => state.session.user.followers)
+    const following = useSelector(state => state.session.user.following)
 
+    console.log(Object.keys(followers).length)
     return (
         <div className="app-home-outer-container">
             <NavBar />
@@ -17,7 +21,7 @@ const NetworkPage = () => {
                                 Following
                             </div>
                             {/* add amount here */}
-                            12
+                            {Object.keys(following).length}
                         </li>
                         <li className="manage-network-links">
                             <div>
@@ -25,7 +29,7 @@ const NetworkPage = () => {
                                 Followers
                             </div>
                             {/* add amount here */}
-                            12
+                            {Object.keys(followers).length}
                         </li>
                     </ul>
                     <div className="network-footer-separator"></div>
