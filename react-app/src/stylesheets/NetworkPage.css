@@ -35,6 +35,7 @@
     padding: .8rem 2.0rem;
     font-size: 1.6rem;
     color: rgba(0, 0, 0, 0.6);
+    cursor:pointer;
 }
 
 .manage-network-links>div>i{
