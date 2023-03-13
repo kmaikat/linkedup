@@ -1,11 +1,13 @@
+import noPP from "../../assets/no-pp.png";
 const SimpleUserCard = ({following}) => {
+    console.log(following.first_name)
     return (
         <div>
             <div className="simple-user-card-left-container">
-                <div>PP here</div>
-                <div>name here
-                    <div>name</div>
-                    <div>title</div>
+                <img src={following.profile_picture || noPP}/>
+                <div>
+                    <div>{following.first_name} {following.last_name}</div>
+                    <div>{following.title}</div>
                 </div>
             </div>
             <div className="simple-user-card-right-container">

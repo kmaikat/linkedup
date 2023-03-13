@@ -13,6 +13,7 @@ const NetworkPage = () => {
     const selectFollowing= () => {
         setSelected("following")
     }
+    
     const selectFollowers= () => {
         setSelected("followers")
     }
