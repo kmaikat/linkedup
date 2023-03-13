@@ -4,17 +4,18 @@ import Footer from "../Footer"
 import { useSelector } from "react-redux"
 import { useState } from "react"
 import SimpleUserCard from "./SimpleUserCard"
+import SimpleFollowerCard from "./SimpleFollowerCard"
 
 const NetworkPage = () => {
     const followers = useSelector(state => Object.values(state.session.user.followers))
     const followings = useSelector(state => Object.values(state.session.user.following))
     const [selected, setSelected] = useState("")
 
-    const selectFollowing= () => {
+    const selectFollowing = () => {
         setSelected("following")
     }
-    
-    const selectFollowers= () => {
+
+    const selectFollowers = () => {
         setSelected("followers")
     }
 
@@ -34,7 +35,7 @@ const NetworkPage = () => {
                         </li>
                         <li className="manage-network-links" onClick={selectFollowers}>
                             <div>
-                            <i class="fa-solid fa-user"></i>
+                                <i class="fa-solid fa-user"></i>
                                 Followers
                             </div>
                             {followers.length}
@@ -45,17 +46,20 @@ const NetworkPage = () => {
                 </div>
                 <div className="network-right-view">
                     {selected == "following" &&
-                    <ul>
-                        {followings.length > 0 && followings.map(following => {
-                            return (<SimpleUserCard following={following}/>)
-                        })}
-                    </ul>
+                        <ul>
+                            {followings.length > 0 && followings.map(following => {
+                                return (<SimpleUserCard following={following} />)
+                            })}
+                        </ul>
                     }
 
 
                     {selected == "followers" &&
-                    <div>hi
-                    </div>
+                        <ul>
+                            {followers.length > 0 && followers.map(follower => {
+                                return (<SimpleFollowerCard follower={follower} />)
+                            })}
+                        </ul>
                     }
                 </div>
             </div>
