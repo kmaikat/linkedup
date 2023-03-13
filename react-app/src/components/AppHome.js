@@ -1,11 +1,7 @@
-import { useEffect, useRef, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import CreatePostModal from "./CreatePostsComponents/CreatePostModal"
 import NavBar from "./NavBar"
-import threeDots from "../assets/three-dots.svg"
-import noPP from "../assets/no-pp.png";
 import "../stylesheets/AppHome.css"
-import { deletePostThunk, editPostThunk } from "../store/posts"
 import PostCard from "./PostCard"
 import AppHomeProfileShowcase from "./AppHomeProfileShowcase"
 import AppHomeLinksShowcase from "./AppHomeLinksShowcase"

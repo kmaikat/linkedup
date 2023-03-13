@@ -9,7 +9,7 @@ import SimpleFollowerCard from "./SimpleFollowerCard"
 const NetworkPage = () => {
     const followers = useSelector(state => Object.values(state.session.user.followers))
     const followings = useSelector(state => Object.values(state.session.user.following))
-    const [selected, setSelected] = useState("")
+    const [selected, setSelected] = useState("following")
 
     const selectFollowing = () => {
         setSelected("following")

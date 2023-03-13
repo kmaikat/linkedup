@@ -4,11 +4,10 @@ import en from "javascript-time-ago/locale/en.json"
 import ReactTimeAgo from "react-time-ago"
 import threeDots from "../assets/three-dots.svg"
 import noPP from "../assets/no-pp.png";
-import { deletePostThunk, editPostThunk } from "../store/posts"
+import { deletePostThunk } from "../store/posts"
 import "../stylesheets/AppHome.css"
 import { useState } from "react";
 import Comments from "./Comments";
-import CreatePostModal from "./CreatePostsComponents/CreatePostModal";
 import CreatePost from "./CreatePostsComponents/CreatePost";
 import { Modal } from "./context/Modal";
 import FollowButton from "./Network/FollowButton";

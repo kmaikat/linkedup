@@ -1,9 +1,8 @@
 import Footer from "../Footer"
 import NavBar from "../NavBar"
 import "../../stylesheets/AppMessagesIndex.css"
-import MessagesPreviews from "./MessagesPreviews"
 import MessageRoom from "./MessageRoom"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 const AppMessagesIndex = () => {
     const [newRoom, setNewRoom] = useState(false);
