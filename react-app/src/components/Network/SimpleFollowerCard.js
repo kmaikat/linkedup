@@ -1,9 +1,11 @@
 import noPP from "../../assets/no-pp.png";
-const SimpleFollowerCard = ({follower}) => {
+const SimpleFollowerCard = ({ follower }) => {
     return (
         <div>
             <div className="simple-user-card-left-container">
-                <img src={follower.profile_picture || noPP}/>
+                <div id="create-post-user-info-icon">
+                    <img src={follower.profile_picture || noPP} />
+                </div>
                 <div>
                     <div>{follower.first_name} {follower.last_name}</div>
                     <div>{follower.title}</div>

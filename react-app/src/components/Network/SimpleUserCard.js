@@ -4,7 +4,9 @@ const SimpleUserCard = ({following}) => {
     return (
         <div>
             <div className="simple-user-card-left-container">
-                <img src={following.profile_picture || noPP}/>
+            <div id="create-post-user-info-icon">
+                    <img src={following.profile_picture || noPP} />
+                </div>
                 <div>
                     <div>{following.first_name} {following.last_name}</div>
                     <div>{following.title}</div>
