@@ -24,6 +24,7 @@ def handle_chat(data):
     db.session.add(message)
     db.session.commit()
 
+
     if data['room_id']:
         room = data['room_id']
         emit("chat", data, broadcast=True, to=room)
@@ -49,3 +50,15 @@ def on_leave(data):
     leave_room(room)
 
     send(username + "has left the room", to=room)
+
+#private message
+# @socketio.on("private message", ({content, to}) => {
+#     socket.to(to).emit("private message", {
+#         content,
+#         from:socket.id,
+#     });
+# });
+
+# connect the socket instance
+# on connect, create a private session id
+# store the session id in storage
