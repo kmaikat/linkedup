@@ -51,14 +51,6 @@ def on_leave(data):
 
     send(username + "has left the room", to=room)
 
-#private message
-@socketio.on("private message", ({content, to}) => {
-    socket.to(to).emit("private message", {
-        content,
-        from:socket.id,
-    });
-});
-
 # connect the socket instance
 # on connect, create a private session id
 # store the session id in storage

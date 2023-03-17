@@ -1,19 +1,8 @@
 import noPP from "../../assets/no-pp.png";
 const SimpleFollowerCard = ({ follower }) => {
-
-    onMessage(content) {
-        if (this.selectedUser) {
-          socket.emit("private message", {
-            content,
-            to: this.selectedUser.userID,
-          });
-          this.selectedUser.messages.push({
-            content,
-            fromSelf: true,
-          });
-        }
-      }
-      
+    const createRoom = () => {
+        console.log("make a room")
+    }
     return (
         <div>
             <div className="simple-user-card-left-container">
@@ -26,7 +15,7 @@ const SimpleFollowerCard = ({ follower }) => {
                 </div>
             </div>
             <div className="simple-user-card-right-container">
-                <div id="sign-out-button" onClick={onMessage}>Message</div>
+                <div id="sign-out-button" onClick={createRoom}>Message</div>
             </div>
         </div>
     )
