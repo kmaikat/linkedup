@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TimeAgo from "javascript-time-ago"
 import en from "javascript-time-ago/locale/en.json"
-import ReactTimeAgo from "react-time-ago"
-import threeDots from "../assets/three-dots.svg"
 import noPP from "../assets/no-pp.png";
 import "../stylesheets/Comments.css"
 import CommentCard from "./CommentCard";

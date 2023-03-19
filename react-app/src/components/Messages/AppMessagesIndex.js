@@ -1,9 +1,8 @@
 import Footer from "../Footer"
 import NavBar from "../NavBar"
 import "../../stylesheets/AppMessagesIndex.css"
-import MessagesPreviews from "./MessagesPreviews"
 import MessageRoom from "./MessageRoom"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 const AppMessagesIndex = () => {
     const [newRoom, setNewRoom] = useState(false);
@@ -14,7 +13,8 @@ const AppMessagesIndex = () => {
         console.log(searchInput)
     }
 
-    // query for users using iilike 
+    // query for users
+
 
 
     const createNewRoom = () => {
@@ -33,9 +33,9 @@ const AppMessagesIndex = () => {
                             <div className="messages-preview-heading-outer">
                                 <div className="messages-preview-heading">
                                     <div>Messaging</div>
-                                    <p onClick={createNewRoom}>
+                                    {/* <p onClick={createNewRoom}>
                                         <i class="fa-regular fa-pen-to-square"></i>
-                                    </p>
+                                    </p> */}
                                 </div>
                             </div>
                             {/* message rooms/card will go here */}
