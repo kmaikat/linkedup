@@ -5,6 +5,7 @@
     width: 100%;
     background-color: rgba(243, 242, 239, 1);
     position: relative;
+    min-height: 100dvh;
 }
 
 .app-home-main-container {
