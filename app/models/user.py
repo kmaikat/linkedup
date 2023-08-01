@@ -86,7 +86,7 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'city': self.city,
             'state': self.state,
-            'followers': {follower.id: follower.to_dict_no_followers() for follower in self.followers},
+            'followers': {follower.id: follower.to_dict_no_followers() for follower in self.followed_by},
             'following': {follower.id: follower.to_dict_no_followers() for follower in self.following}
         }
 
