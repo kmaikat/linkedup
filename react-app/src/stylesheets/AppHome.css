@@ -156,6 +156,7 @@
     border-top: 1px solid rgba(226, 225, 223, 1);
     padding: .7rem 0;
     margin: 0 1.4rem;
+    gap:.5rem;
 }
 
 #comment-interaction {
@@ -163,16 +164,17 @@
     width: 50%;
     justify-content: center;
     align-items: center;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     padding: .8rem;
     border-radius: .35rem;
     transition-property: background-color;
-    transition-duration: 0.167s;
+    transition-duration: 0.100s;
     transition-timing-function: ease-in;
     cursor: pointer;
     user-select: none;
     min-height: 4.8rem;
     padding: .8rem;
+
     /* transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
@@ -180,9 +182,19 @@
     background-color: rgba(0, 0, 0, 0.06);
 }
 
-#comment-icon {
+#comment-interaction>i, #comment-interaction>svg {
     font-size: 2.4rem;
-    margin-right: .4rem;
+    margin-right: .5rem;
+}
+
+.like-text{
+    padding-top:.5rem;
+    font-weight: 500;
+}
+
+.comment-text{
+    padding-top: .2rem;
+    font-weight: 500;
 }
 
 #app-home-heading-right-container-options-list>li>i {
