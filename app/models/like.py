@@ -7,5 +7,6 @@ likes = db.Table(
     )),
     db.Column("post_id", db.Integer, db.ForeignKey(
         add_prefix_for_prod("posts.id")
-    ))
+    )),
+    schema=SCHEMA if environment == "production" else ""
 )
