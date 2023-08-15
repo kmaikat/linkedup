@@ -91,7 +91,7 @@ class User(db.Model, UserMixin):
             'state': self.state,
             'followers': {follower.id: follower.to_dict_no_followers() for follower in self.followed_by},
             'following': {follower.id: follower.to_dict_no_followers() for follower in self.following},
-            'user_likes': {like.id: like.to_dict_no_followers() for like in self.user_likes}
+            'user_likes': {like.id: like.to_dict() for like in self.user_likes}
         }
 
     def to_dict_no_followers(self):
