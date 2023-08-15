@@ -6,12 +6,13 @@ import threeDots from "../assets/three-dots.svg"
 import noPP from "../assets/no-pp.png";
 import { deletePostThunk } from "../store/posts"
 import "../stylesheets/AppHome.css"
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Comments from "./Comments";
 import CreatePost from "./CreatePostsComponents/CreatePost";
 import { Modal } from "./context/Modal";
 import FollowButton from "./Network/FollowButton";
 import { likePostThunk, unlikePostThunk } from "../store/likes";
+import LikesModal from "./LikesModal";
 
 TimeAgo.addDefaultLocale(en)
 
@@ -19,6 +20,7 @@ function PostCard({ post }) {
     const [showPostOptions, setShowPostOptions] = useState(false)
     const [showCommentSection, setShowCommentSection] = useState(false)
     const [showModal, setShowModal] = useState(false)
+    const [showLikes, setShowLikes] = useState(false)
     const user = useSelector(state => state.session.user)
     const following = user.following;
 
@@ -96,7 +98,7 @@ function PostCard({ post }) {
                 <img src={post.picture} />
             </div>
             <div id="post-spacer">
-                {Object.keys(post.post_likes).length ? (<div id="comment-number-button">
+                {Object.keys(post.post_likes).length ? (<div id="comment-number-button" onClick={() => setShowLikes(true)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="like-consumption-medium" data-supported-dps="24x24">
                         <g>
                             <path d="M12 0a12 12 0 0112 12 12 12 0 01-12 12A12 12 0 010 12 12 12 0 0112 0z" fill="none" />
@@ -132,6 +134,10 @@ function PostCard({ post }) {
                     </div>
                 }
             </div>
+            {setShowLikes &&
+                <Modal>
+                    <LikesModal/>
+                </Modal>}
         </li>
     )
 }
