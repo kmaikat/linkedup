@@ -138,9 +138,14 @@
 #post-spacer {
     padding: .8rem 1.6rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     color: rgba(0, 0, 0, 0.6);
     font-size: 1.3rem;
+    width: 100%
+}
+
+#post-spacer>div:first-child {
+    display: flex;
 }
 
 #comment-number-button:hover {

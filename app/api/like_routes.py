@@ -9,7 +9,7 @@ like_routes = Blueprint("likes", __name__)
 def like_post(post_id):
     user = User.query.get(current_user.get_id())
     post = Post.query.get(post_id)
-
+    print(post.liked_users)
     post.liked_users.append(user)
     db.session.commit()
 
@@ -20,8 +20,32 @@ def like_post(post_id):
 def unlike_post(post_id):
     user = User.query.get(current_user.get_id())
     post = Post.query.get(post_id)
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("TESTING")
+    print(user.id, post.liked_users)
+    print([user.id for user in post.liked_users])
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
 
-    post.liked_users.remove(user)
+    if (user.id in [user.id for user in post.liked_users]):
+        post.liked_users.remove(user)
     db.session.commit()
 
     return post.to_dict()
