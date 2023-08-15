@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .like import likes
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
@@ -45,6 +46,8 @@ class User(db.Model, UserMixin):
     comments = db.relationship(
         "Comment", back_populates="user", cascade="all, delete-orphan")
 
+    user_likes = db.relationship("Post", back_populates="liked_users", secondary=likes)
+
     followed_by = db.relationship(
         "User", secondary=followers, primaryjoin=id == followers.c.followed_id, secondaryjoin=id == followers.c.following_id, backref="followers"
     )
@@ -87,7 +90,8 @@ class User(db.Model, UserMixin):
             'city': self.city,
             'state': self.state,
             'followers': {follower.id: follower.to_dict_no_followers() for follower in self.followed_by},
-            'following': {follower.id: follower.to_dict_no_followers() for follower in self.following}
+            'following': {follower.id: follower.to_dict_no_followers() for follower in self.following},
+            'user_likes': {like.id: like.to_dict() for like in self.user_likes}
         }
 
     def to_dict_no_followers(self):
