@@ -134,9 +134,9 @@ function PostCard({ post }) {
                     </div>
                 }
             </div>
-            {setShowLikes &&
+            {showLikes &&
                 <Modal>
-                    <LikesModal/>
+                    <LikesModal postLikes={post.post_likes}/>
                 </Modal>}
         </li>
     )
