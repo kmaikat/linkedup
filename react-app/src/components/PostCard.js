@@ -134,9 +134,9 @@ function PostCard({ post }) {
                     </div>
                 }
             </div>
-            {setShowLikes &&
-                <Modal>
-                    <LikesModal/>
+            {showLikes &&
+                <Modal onClose={() => setShowLikes(false)}>
+                    <LikesModal postLikes={post.post_likes}/>
                 </Modal>}
         </li>
     )
