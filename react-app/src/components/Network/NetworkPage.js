@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 import { useState } from "react"
 import SimpleUserCard from "./SimpleUserCard"
 import SimpleFollowerCard from "./SimpleFollowerCard"
-
+import '../../stylesheets/SimpleUserCard.css'
 const NetworkPage = () => {
     const followers = useSelector(state => Object.values(state.session.user.followers))
     const followings = useSelector(state => Object.values(state.session.user.following))
@@ -46,7 +46,7 @@ const NetworkPage = () => {
                 </div>
                 <div className="network-right-view">
                     {selected == "following" &&
-                        <ul>
+                       <ul className= "network-list">
                             {followings.length > 0 && followings.map(following => {
                                 return (<SimpleUserCard following={following} />)
                             })}
@@ -55,7 +55,7 @@ const NetworkPage = () => {
 
 
                     {selected == "followers" &&
-                        <ul>
+                        <ul className= "network-list">
                             {followers.length > 0 && followers.map(follower => {
                                 return (<SimpleFollowerCard follower={follower} />)
                             })}
