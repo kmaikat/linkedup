@@ -2,6 +2,8 @@ import React from "react";
 import "../stylesheets/LikesModal.css"
 
 const LikesModal = ({ postLikes }) => {
+    const likes = Object.values(postLikes)
+
     return (
         <div className="likes-modal-container" >
             <div className="reaction-header">
@@ -25,8 +27,26 @@ const LikesModal = ({ postLikes }) => {
                     </li>
                 </ul>
             </div>
-            <div className="mapped-users">
+            <div className="user-reactions-list">
+                <ul>
+                    {likes.length > 0 && likes.map((user) => {
+                        return (
+                        <div className="user-reaction-profile" key={user.id}>
+                            <div className="user-reaction-profile-picture">
+                                <img src={user.profile_picture} alt="Profile Picture"/>
+                            </div>
+                            <div className="user-reaction-profile-information">
+                                <p className="user-reaction-profile-information-name">{user.first_name} {user.last_name}</p>
+                                <p className="user-reaction-profile-information-title">{user.title}</p>
+                            </div>
+                        </div>
+                        )
+                    }
 
+                    )
+
+                    }
+                </ul>
             </div>
         </div>
     )
