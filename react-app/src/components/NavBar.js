@@ -43,14 +43,14 @@ const NavBar = () => {
               </div>
             </NavLink>
           </li>
-          <li className='app-feed-nav-bar-icon'>
+          {/* <li className='app-feed-nav-bar-icon'>
             <NavLink className='app-feed-nav-bar-icon' to='/messaging' exact={true}>
               <i className="fa-solid fa-message"></i>
               <div className='navbar-action-labels'>
                 Messages
               </div>
             </NavLink>
-          </li>
+          </li> */}
           <li className='app-feed-nav-bar-icon' onClick={() => setShowNavbarOptions(true)} tabIndex={showNavbarOptions ? 1 : -1} onBlur={() => setShowNavbarOptions(false)}>
             <div id="navbar-user-icon">
               <img id='no-pp' src={user.profile_picture || noPP} />
@@ -63,7 +63,7 @@ const NavBar = () => {
                 <div id='navbar-options-content'>
                   <div id='navbar-user-info-container'>
                     <div id="navbar-user-profile-picture">
-                      <img src={user?.profilePicture || noPP} alt="Profile Image" />
+                      <img src={user?.profile_picture || noPP} alt="Profile Image" />
                     </div>
                     <div id="navbar-user-profile-information">
                       {user &&

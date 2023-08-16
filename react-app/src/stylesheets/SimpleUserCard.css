@@ -1,0 +1,57 @@
+.network-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.simple-user{
+    padding: .8rem 2.4rem;
+    flex: 1;
+    position: relative;
+    /* border-bottom: 1px solid rgba(0,0,0,0.08); */
+
+}
+
+.simple-user:not(:last-child)::after{
+    position: absolute;
+    top: 100%;
+    right: 1.2rem;
+    content: "";
+    width: calc(100% - 8.8rem);
+    height: .1rem;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.simple-user-card-left-container{
+    display: flex;
+    column-gap: .8rem;
+    align-items: center;
+    position: relative;
+}
+
+.simple-user-card-picture{
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.simple-user-card-picture > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.simple-user-card-information{
+    height: min-content;
+    margin-bottom: .9rem;
+}
+
+.simple-user-card-information-name{
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.simple-user-card-information-title{
+    font-size: 1.4rem;
+    font-weight: 400;
+}
